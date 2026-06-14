@@ -1,0 +1,198 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                 String               @id @default(uuid())
+  name               String
+  email              String               @unique
+  passwordHash       String
+  profileImage       String?
+  dietaryPreferences String?              // Stored as JSON string or comma-separated tags
+  allergyPreferences String?              // Stored as JSON string or comma-separated tags
+  country            String?
+  role               String               @default("USER") // USER, EDITOR, MODERATOR, ADMIN
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  
+  recipes            Recipe[]
+  reviews            Review[]
+  favorites          Favorite[]
+  shoppingLists      ShoppingList[]
+  modifications      RecipeModification[]
+  conversations      AIConversation[]
+}
+
+model Cuisine {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  country     String
+  description String
+  image       String
+  slug        String   @unique
+  recipes     Recipe[]
+}
+
+model Recipe {
+  id                   String                 @id @default(uuid())
+  slug                 String                 @unique
+  title                String
+  shortDescription     String
+  fullIntroduction     String
+  cuisineId            String
+  cuisine              Cuisine                @relation(fields: [cuisineId], references: [id], onDelete: Cascade)
+  countryId            String?                // Optional secondary country mapping
+  mealType             String                 // Breakfast, Lunch, Dinner, Snack, Dessert, Drink, etc.
+  foodType             String                 // Street Food, Bakery, Grilled, Main Course, Soup, Salad, etc.
+  history              String                 // Long historical description
+  culturalSignificance String
+  regionalVariations   String
+  preparationTime      Int                    // in minutes
+  cookingTime          Int                    // in minutes
+  totalTime            Int                    // in minutes
+  difficulty           String                 // Easy, Medium, Hard
+  defaultServings      Int
+  calories             Int
+  featuredImage        String
+  videoUrl             String?
+  publicationStatus    String                 @default("PUBLISHED") // DRAFT, PENDING, PUBLISHED
+  recipeOfTheDayDate   String?                @unique // Format: YYYY-MM-DD
+  averageRating        Float                  @default(0.0)
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  
+  authorId             String?
+  author               User?                  @relation(fields: [authorId], references: [id])
+  
+  ingredients          RecipeIngredient[]
+  steps                CookingStep[]
+  sources              RecipeHistorySource[]
+  nutrition            Nutrition?
+  reviews              Review[]
+  favorites            Favorite[]
+  modifications        RecipeModification[]
+}
+
+model Ingredient {
+  id                 String             @id @default(uuid())
+  name               String             @unique
+  category           String             // Produce, Pantry, Meat, Dairy, etc.
+  allergyTags        String?            // Comma-separated (e.g., "gluten,dairy,nuts")
+  dietaryTags        String?            // Comma-separated (e.g., "vegan,vegetarian")
+  prohibitedAlcohol  Boolean            @default(false)
+  description        String?
+  storageInformation String?
+  
+  recipes            RecipeIngredient[]
+}
+
+model RecipeIngredient {
+  recipeId         String
+  recipe           Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  ingredientId     String
+  ingredient       Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  quantity         Float
+  measurementUnit  String     // grams, cups, tsp, tbsp, pieces, etc.
+  preparationNote  String?    // e.g., "finely chopped", "sifted"
+  optionalFlag     Boolean    @default(false)
+  substitutionNote String?    // Non-alcoholic substitute note if any
+
+  @@id([recipeId, ingredientId])
+}
+
+model CookingStep {
+  id             String  @id @default(uuid())
+  recipeId       String
+  recipe         Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  stepNumber     Int
+  instruction    String
+  duration       Int?    // duration in minutes (optional)
+  temperature    String? // e.g. "350°F / 180°C" (optional)
+  image          String?
+  foodSafetyNote String? // Specific safety tips like minimum internal temp
+}
+
+model RecipeHistorySource {
+  id          String   @id @default(uuid())
+  recipeId    String
+  recipe      Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  sourceTitle String
+  author      String?
+  publication String?
+  sourceUrl   String?
+  accessDate  DateTime @default(now())
+}
+
+model Nutrition {
+  recipeId     String @id
+  recipe       Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  calories     Int
+  protein      Float  // grams
+  carbohydrates Float // grams
+  fat          Float  // grams
+  saturatedFat Float  // grams
+  fiber        Float  // grams
+  sugar        Float  // grams
+  sodium       Float  // milligrams
+}
+
+model RecipeModification {
+  id                String   @id @default(uuid())
+  userId            String
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  originalRecipeId  String
+  originalRecipe    Recipe   @relation(fields: [originalRecipeId], references: [id], onDelete: Cascade)
+  modificationRequest String
+  modifiedTitle     String
+  modifiedIngredients String // JSON string containing quantity, unit, name, notes
+  modifiedSteps     String   // JSON string containing step numbers and instructions
+  warnings          String?  // JSON or comma separated allergy/safety warnings
+  createdAt         DateTime @default(now())
+}
+
+model Review {
+  id               String   @id @default(uuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipeId         String
+  recipe           Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  rating           Int      // 1 to 5
+  comment          String
+  moderationStatus String   @default("APPROVED") // PENDING, APPROVED, REJECTED
+  createdAt        DateTime @default(now())
+}
+
+model Favorite {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipeId  String
+  recipe    Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@id([userId, recipeId])
+}
+
+model ShoppingList {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ingredientName String
+  quantity       Float
+  unit           String
+  purchased      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
+
+model AIConversation {
+  id             String   @id @default(uuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages       String   // JSON array of message objects: [{role: "user"|"assistant", content: "..."}]
+  attachedRecipeId String?
+  safetyStatus   String   @default("SAFE") // SAFE, FLAGGED_UNSAFE
+  createdAt      DateTime @default(now())
+}
