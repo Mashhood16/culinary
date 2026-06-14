@@ -26,8 +26,16 @@ function normalizeRecipe(body: any) {
   const steps = Array.isArray(body.steps)
     ? body.steps
     : String(body.steps || '')
-        .split('\n')
-        .map((step) => step.trim())
+        .split(/\n\s*\n/)
+        .map((step) =>
+          step
+            .replace(/\r\n/g, '\n')
+            .split('\n')
+            .map((line) => line.trim())
+            .filter(Boolean)
+            .join('\n')
+            .trim(),
+        )
         .filter(Boolean);
 
   return {

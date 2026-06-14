@@ -5,7 +5,7 @@ export default function ContactPage() {
         <article className="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
           <p className="text-sm uppercase tracking-[0.35em] text-amber-700">Contact</p>
           <h1 className="mt-3 text-4xl font-semibold text-stone-900">Get help, share feedback, or submit a recipe.</h1>
-          <p className="mt-4 text-stone-600">The contact form supports recipe corrections, technical support, partnership inquiries, and general questions about the alcohol-free policy.</p>
+          <p className="mt-4 text-stone-600">The contact form supports recipe corrections, technical support, partnership inquiries, and general questions about the site policy.</p>
         </article>
         <form className="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
           <label className="block text-sm font-medium text-stone-700">Full name</label>

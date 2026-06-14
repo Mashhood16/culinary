@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { recipes } from '@/lib/recipes';
 
 export default function DessertsPage() {
@@ -11,13 +12,13 @@ export default function DessertsPage() {
         <article className="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
           <p className="text-sm uppercase tracking-[0.35em] text-amber-700">Desserts</p>
           <h1 className="mt-3 text-4xl font-semibold text-stone-900">Sweet endings from around the world.</h1>
-          <p className="mt-4 text-stone-600">Explore {desserts.length} dessert recipes across {cuisines.length} cuisines, all imported from the alcohol-free catalog.</p>
+          <p className="mt-4 text-stone-600">Explore {desserts.length} dessert recipes across {cuisines.length} cuisines, all imported from the recipe catalog.</p>
         </article>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {desserts.map((recipe) => (
             <Link key={recipe.slug} href={`/recipes/${recipe.slug}`} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <img src={recipe.image} alt={recipe.title} className="h-44 w-full object-cover" />
+              <Image src={recipe.image} alt={recipe.title} width={800} height={480} className="h-44 w-full object-cover" />
               <div className="p-5">
                 <p className="text-xs uppercase tracking-[0.3em] text-amber-700">{recipe.cuisine}</p>
                 <h2 className="mt-2 text-xl font-semibold">{recipe.title}</h2>

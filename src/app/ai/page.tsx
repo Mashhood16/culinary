@@ -45,7 +45,7 @@ function AIPageContent() {
 
     const servingInstruction = servingCount
       ? `Scale this recipe for ${servingCount} people. Adjust ingredient quantities and mention any cooking-time or pan-size changes.`
-      : 'Please suggest substitutions, scaling, or alcohol-free changes and explain why they work.';
+      : 'Please suggest substitutions, scaling, or ingredient swaps and explain why they work.';
 
     setPrompt(`Adapt this recipe for a home cook.\n\n${recipeContext}\n\n${servingInstruction}`);
   }, [recipe, servingCount]);
@@ -80,7 +80,7 @@ function AIPageContent() {
         <div className="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
           <p className="text-sm uppercase tracking-[0.35em] text-amber-700">AI Food Scientist</p>
           <h1 className="mt-3 text-4xl font-semibold text-stone-900 lg:text-5xl">Ask for substitutions, scaling, and food science help.</h1>
-          <p className="mt-4 max-w-3xl text-stone-600">This page now gives you a real AI assistant for recipe tweaks, alcohol-free alternatives, serving-size changes, and practical cooking guidance.</p>
+          <p className="mt-4 max-w-3xl text-stone-600">This page now gives you a real AI assistant for recipe tweaks, ingredient substitutions, serving-size changes, and practical cooking guidance.</p>
 
           <div className="mt-6 rounded-3xl bg-stone-50 p-6">
             <label className="text-sm font-semibold text-stone-900" htmlFor="recipe-search">Search and choose a recipe</label>
@@ -125,10 +125,10 @@ function AIPageContent() {
                 {loading ? 'Thinking…' : 'Ask AI'}
               </button>
               <button
-                onClick={() => setPrompt('Give me 3 alcohol-free substitutions for this recipe and explain why they work.')}
+                onClick={() => setPrompt('Give me 3 substitutions for this recipe and explain why they work.')}
                 className="rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-semibold text-stone-700 hover:border-amber-400 hover:text-amber-700"
               >
-                Try an alcohol-free prompt
+                Try a substitutions prompt
               </button>
             </div>
           </div>
@@ -139,7 +139,7 @@ function AIPageContent() {
               <li>• Make this recipe vegetarian without losing the original flavor.</li>
               <li>• Scale it for six people and adjust cook time.</li>
               <li>• Replace dairy ingredients with plant-based options.</li>
-              <li>• Suggest an alcohol-free substitute for wine or brandy.</li>
+              <li>• Suggest a substitute for a rich cooking ingredient or flavor enhancer.</li>
             </ul>
           </div>
 

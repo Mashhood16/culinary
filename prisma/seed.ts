@@ -360,17 +360,17 @@ async function main() {
     ]
   });
 
-  // Recipe 4: Pasta Alfredo (Alcohol-Free adaptation: June 16, 2026)
+  // Recipe 4: Pasta Alfredo (Adaptation: June 16, 2026)
   await createFullRecipe({
-    slug: "pasta-alfredo-alcohol-free",
-    title: "Alcohol-Free Pasta Alfredo",
-    shortDescription: "Creamy fettuccine Alfredo crafted with heavy cream, garlic, parmesan, and a non-alcoholic white wine substitute.",
-    fullIntroduction: "This modified Italian classic utilizes a custom non-alcoholic substitution of white grape juice, apple cider vinegar, and rich chicken stock to replicate the characteristic acidity and aroma of traditional cooking wine, tossed with creamy parmesan and garlic.",
+    slug: "pasta-alfredo",
+    title: "Pasta Alfredo",
+    shortDescription: "Creamy fettuccine Alfredo crafted with heavy cream, garlic, parmesan, and a white wine substitute.",
+    fullIntroduction: "This modified Italian classic utilizes a custom substitution of white grape juice, apple cider vinegar, and rich chicken stock to replicate the characteristic acidity and aroma of traditional cooking wine, tossed with creamy parmesan and garlic.",
     cuisineSlug: "italian",
     mealType: "Main Courses",
     foodType: "Pasta and Noodles",
     history: "Fettuccine Alfredo was popularized in Rome in the early 20th century by Alfredo di Lelio for his pregnant wife. Traditionally, it used only butter and parmigiano, but American adaptations introduced heavy cream and sometimes white wine.",
-    culturalSignificance: "A favorite comfort food worldwide. The alcohol-free version makes it accessible to those on halal, alcohol-free, or dry diets without losing flavor depth.",
+    culturalSignificance: "A favorite comfort food worldwide. This adaptation makes it accessible to those on halal or dry diets without losing flavor depth.",
     regionalVariations: "American Alfredo contains chicken or shrimp, garlic, and cream. Roman original contains only fresh fettuccine, young butter, and high-quality parmesan.",
     preparationTime: 10,
     cookingTime: 15,
@@ -569,12 +569,12 @@ async function main() {
       sources: []
     },
     {
-      slug: "alcohol-free-mojito",
+      slug: "mint-mojito-mocktail",
       title: "Mint Mojito Mocktail",
-      shortDescription: "A sparkling, alcohol-free mojito packed with crushed lime, fresh mint, and club soda.",
-      fullIntroduction: "A premium non-alcoholic version of the classic Cuban highball. Ripe limes and mint are muddled together to release dynamic oils, topped with ice and sparkling soda.",
+      shortDescription: "A sparkling mojito packed with crushed lime, fresh mint, and club soda.",
+      fullIntroduction: "A premium version of the classic Cuban highball. Ripe limes and mint are muddled together to release dynamic oils, topped with ice and sparkling soda.",
       cuisineSlug: "american", mealType: "Cold Drinks", foodType: "Mocktails",
-      history: "Mocktails rose to fame as alcohol-free bars and healthy living grew in popularity.",
+      history: "Mocktails rose to fame as sober bars and healthy living grew in popularity.",
       culturalSignificance: "A refreshing welcome drink for warm climates.", regionalVariations: "Can add strawberry or watermelon purees.",
       preparationTime: 5, cookingTime: 0, totalTime: 5, difficulty: "Easy", defaultServings: 1, calories: 80,
       featuredImage: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80",

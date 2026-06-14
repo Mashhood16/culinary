@@ -100,7 +100,7 @@ model RecipeIngredient {
   measurementUnit  String     // grams, cups, tsp, tbsp, pieces, etc.
   preparationNote  String?    // e.g., "finely chopped", "sifted"
   optionalFlag     Boolean    @default(false)
-  substitutionNote String?    // Non-alcoholic substitute note if any
+  substitutionNote String?    // substitute note if any
 
   @@id([recipeId, ingredientId])
 }

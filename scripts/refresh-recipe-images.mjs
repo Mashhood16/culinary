@@ -2,7 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const catalogPath = path.join(process.cwd(), 'src/lib/recipe-catalog.json');
+const exactCatalogPath = path.join(process.cwd(), 'src/lib/recipe-catalog-exact.json');
 const recipes = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+const exactRecipes = JSON.parse(fs.readFileSync(exactCatalogPath, 'utf8'));
 
 const curatedImages = {
   rice: [
@@ -56,10 +58,28 @@ function pickImage(recipe, index) {
   return curatedImages.curry[index % curatedImages.curry.length];
 }
 
-const updated = recipes.map((recipe, index) => ({
-  ...recipe,
-  image: pickImage(recipe, index),
-}));
+const updated = recipes.map((recipe, index) => {
+  const image = pickImage(recipe, index);
+  return {
+    ...recipe,
+    image,
+    image_url: image,
+  };
+});
+
+const updatedExact = {
+  ...exactRecipes,
+  recipes: (exactRecipes.recipes || []).map((recipe, index) => {
+    const image = pickImage(recipe, index);
+    return {
+      ...recipe,
+      image,
+      image_url: image,
+    };
+  }),
+};
 
 fs.writeFileSync(catalogPath, `${JSON.stringify(updated, null, 2)}\n`, 'utf8');
+fs.writeFileSync(exactCatalogPath, `${JSON.stringify(updatedExact, null, 2)}\n`, 'utf8');
 console.log(`Updated ${updated.length} recipe images in ${catalogPath}`);
+console.log(`Updated ${updatedExact.recipes.length} exact recipe image links in ${exactCatalogPath}`);
