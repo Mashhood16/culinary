@@ -9,7 +9,11 @@ import IngredientChecklist from '@/components/IngredientChecklist';
 import FavoriteButton from '@/components/FavoriteButton';
 import ImageWithSkeleton from '@/components/ImageWithSkeleton';
 
-export const dynamic = 'force-dynamic';
+// Replace this:
+// export const dynamic = 'force-dynamic';
+
+// With this:
+export const revalidate = 60; // The page will be cached for 60 seconds, making it instant for 99% of users.
 
 interface PageProps {
   // Configured synchronously to prevent Next.js 14 build compilation failures

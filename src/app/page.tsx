@@ -5,7 +5,11 @@ import AIChefForm from '@/components/AIChefForm';
 import FavoritesList from '@/components/FavoritesList';
 import ImageWithSkeleton from '@/components/ImageWithSkeleton'; // 1. Imported ImageWithSkeleton
 
-export const dynamic = 'force-dynamic';
+// Replace this:
+// export const dynamic = 'force-dynamic';
+
+// With this:
+export const revalidate = 60; // The page will be cached for 60 seconds, making it instant for 99% of users.
 
 export default async function Home() {
   const recipes = await loadPublicRecipes();

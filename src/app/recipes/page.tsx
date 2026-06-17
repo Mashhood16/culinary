@@ -4,7 +4,11 @@ import { loadPublicRecipes } from '@/lib/recipe-store';
 import ImageWithSkeleton from '@/components/ImageWithSkeleton';
 import RecipeFilters from '@/components/RecipeFilters';
 
-export const dynamic = 'force-dynamic';
+// Replace this:
+// export const dynamic = 'force-dynamic';
+
+// With this:
+export const revalidate = 60; // The page will be cached for 60 seconds, making it instant for 99% of users.
 
 interface PageProps {
   searchParams: Promise<{ cuisine?: string; mealType?: string; q?: string }> | { cuisine?: string; mealType?: string; q?: string };
