@@ -26,7 +26,24 @@ export async function getAISettings(): Promise<AISettings> {
   // If running on Vercel with KV linked, load from the cloud database
   if (isVercelKVActive) {
     try {
-      const data = await kv.get<AISettings>('settings_data');
+      let data = await kv.get<AISettings>('settings_data');
+      
+      // Auto-Seeder: If the Upstash database is completely empty on first load,
+      // dynamically seed it using the local compiled JSON file data!
+      if (!data) {
+        console.log('Upstash settings are empty. Auto-seeding from settings-data.json...');
+        try {
+          if (fs.existsSync(filePath)) {
+            const localData = JSON.parse(fs.readFileSync(filePath, 'utf8')) as AISettings;
+            await kv.set('settings_data', localData);
+            return localData;
+          }
+        } catch (err: any) {
+          console.error('Failed to auto-seed settings:', err.message);
+        }
+        return defaultSettings;
+      }
+      
       return data ? { ...defaultSettings, ...data } : defaultSettings;
     } catch (e) {
       console.error('Vercel KV settings read error:', e);
@@ -47,7 +64,6 @@ export async function getAISettings(): Promise<AISettings> {
 }
 
 export async function saveAISettings(settings: AISettings) {
-  // If running on Vercel with KV linked, write to the cloud database
   if (isVercelKVActive) {
     try {
       await kv.set('settings_data', settings);
@@ -57,7 +73,6 @@ export async function saveAISettings(settings: AISettings) {
     }
   }
 
-  // Local fallback: save file directly to disk
   fs.writeFileSync(filePath, JSON.stringify(settings, null, 2), 'utf8');
   return settings;
 }

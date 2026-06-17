@@ -155,14 +155,31 @@ export type AdminRecipe = {
 
 const filePath = path.join(process.cwd(), 'recipes-data.json');
 
-// Checks if Vercel KV is linked to the project in production
 const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
 export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
   if (isVercelKVActive) {
     try {
-      // Fetch directly from the cloud database
-      const data = await kv.get<AdminRecipe[]>('recipes_data');
+      let data = await kv.get<AdminRecipe[]>('recipes_data');
+      
+      // Auto-Seeder: If the Upstash database is completely empty on first load,
+      // dynamically seed it using the local compiled JSON file data!
+      if (!data || data.length === 0) {
+        console.log('Upstash database is empty. Auto-seeding from recipes-data.json...');
+        try {
+          if (fs.existsSync(filePath)) {
+            const localData = JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
+            if (localData && localData.length > 0) {
+              await kv.set('recipes_data', localData);
+              console.log(`Auto-seeded ${localData.length} recipes to Upstash successfully.`);
+              return localData;
+            }
+          }
+        } catch (err: any) {
+          console.error('Failed to auto-seed Upstash:', err.message);
+        }
+      }
+      
       return data || [];
     } catch (e) {
       console.error('Vercel KV database read error:', e);
@@ -170,7 +187,6 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
     }
   }
 
-  // Local fallback: read file from your computer's disk
   try {
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf8');
@@ -216,7 +232,6 @@ export async function loadAllRecipes() {
 export async function saveAdminRecipes(items: AdminRecipe[]) {
   if (isVercelKVActive) {
     try {
-      // Save directly to the cloud database
       await kv.set('recipes_data', items);
       return items;
     } catch (e) {
@@ -224,7 +239,6 @@ export async function saveAdminRecipes(items: AdminRecipe[]) {
     }
   }
 
-  // Local fallback: save file directly to disk
   fs.writeFileSync(filePath, JSON.stringify(items, null, 2), 'utf8');
   return items;
 }
