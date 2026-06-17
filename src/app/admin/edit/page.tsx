@@ -177,6 +177,8 @@ function RecipeEditorContent() {
 
     const payload = getPayload(recipeFormRef.current);
 
+    // Call your API route handler. (If your routes are located directly under /admin/recipes
+    // instead of /api/admin/recipes, change this URL to '/admin/recipes')
     const response = await fetch('/api/admin/recipes', {
       method: 'PUT',
       credentials: 'same-origin',
@@ -185,7 +187,9 @@ function RecipeEditorContent() {
     });
 
     if (!response.ok) {
-      setMessage('Unable to update recipe.');
+      // Diagnostic Update: Fetch the exact error JSON returned by your server (e.g., 401, 404, or 500)
+      const errorData = await response.json().catch(() => ({}));
+      setMessage(errorData.error || `Unable to update recipe. (Server returned Status ${response.status})`);
       setSaving(false);
       return;
     }
@@ -213,7 +217,6 @@ function RecipeEditorContent() {
           <span className="text-xs uppercase tracking-wider text-stone-500 font-medium">Standalone Editor</span>
         </div>
 
-        {/* Fixed: Escaped the quotes securely around the title to satisfy ESLint */}
         <h1 className="text-3xl font-bold text-stone-900">
           Edit &ldquo;{recipeForm.title || slug}&rdquo;
         </h1>
@@ -365,7 +368,7 @@ function RecipeEditorContent() {
             {saving ? 'Saving changes...' : 'Save changes'}
           </button>
 
-          {message ? <p className="mt-3 text-sm font-semibold text-emerald-700">{message}</p> : null}
+          {message ? <p className="mt-3 text-sm font-semibold text-rose-700">{message}</p> : null}
         </div>
       </div>
     </main>
