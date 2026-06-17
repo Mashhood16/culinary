@@ -143,7 +143,6 @@ export type AdminRecipe = {
   rating: number;
   calories: string;
   tags: string[];
-  image: string;
   totalTime?: string;
   alcoholFree?: boolean;
   containsAlcohol?: boolean;
@@ -156,6 +155,7 @@ export type AdminRecipe = {
   ingredients?: string[];
   steps?: string[];
   featured?: boolean;
+  image: string | { publicId: string; alt: string; status?: string }; 
 };
 
 const filePath = path.join(process.cwd(), 'recipes-data.json');
