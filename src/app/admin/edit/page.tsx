@@ -48,6 +48,29 @@ const defaultForm: RecipeForm = {
   featured: false,
 };
 
+// Helper to generate slug safely if needed
+function generateSlug(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+// Helper to extract, sanitize, and format payload data before writing to database
+function getPayload(form: RecipeForm) {
+  return {
+    ...form,
+    tags: form.tags.split(',').map((tag) => tag.trim()).filter(Boolean),
+    ingredients: form.ingredients.split('\n').map((item) => item.trim()).filter(Boolean),
+    steps: form.steps.split('\n').map((step) => step.trim()).filter(Boolean),
+    servings: Number(form.servings) || 2,
+    rating: Number(form.rating) || 5,
+    image: form.image || '',
+    slug: form.slug || generateSlug(form.title || 'recipe'),
+  };
+}
+
 export default function EditRecipePage() {
   return (
     <Suspense fallback={
@@ -136,7 +159,7 @@ function RecipeEditorContent() {
       setLoading(false);
       setMessage('No recipe specified to edit.');
     }
-  }, [slug, router]);
+  }, [slug, router]); // Fixed: Restored the closing block of this hook properly
 
   async function handleImageUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -145,11 +168,9 @@ function RecipeEditorContent() {
     setMessage('Uploading image to Vercel Blob...');
 
     try {
-      // Create a standard multipart form data payload
       const formData = new FormData();
       formData.append('file', file);
 
-      // Upload the raw file directly to your secure API endpoint
       const res = await fetch('/api/admin/upload', {
         method: 'POST',
         credentials: 'same-origin',
@@ -162,15 +183,12 @@ function RecipeEditorContent() {
       }
 
       const data = await res.json();
-      
-      // Update the form state with the high-speed Vercel Blob URL
       setRecipeForm((prev) => ({ ...prev, image: data.url }));
       setMessage('Image uploaded successfully. Save the recipe to apply changes.');
     } catch (err: any) {
       console.error(err);
       setMessage(err.message || 'Failed to upload image to Vercel Blob.');
     } finally {
-      // Clear the input value so the same file can be uploaded again if needed
       event.target.value = '';
     }
   }
@@ -186,8 +204,6 @@ function RecipeEditorContent() {
 
     const payload = getPayload(recipeFormRef.current);
 
-    // Call your API route handler. (If your routes are located directly under /admin/recipes
-    // instead of /api/admin/recipes, change this URL to '/admin/recipes')
     const response = await fetch('/api/admin/recipes', {
       method: 'PUT',
       credentials: 'same-origin',
@@ -196,7 +212,6 @@ function RecipeEditorContent() {
     });
 
     if (!response.ok) {
-      // Diagnostic Update: Fetch the exact error JSON returned by your server (e.g., 401, 404, or 500)
       const errorData = await response.json().catch(() => ({}));
       setMessage(errorData.error || `Unable to update recipe. (Server returned Status ${response.status})`);
       setSaving(false);
@@ -205,14 +220,6 @@ function RecipeEditorContent() {
 
     setMessage('Recipe updated successfully.');
     setSaving(false);
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-stone-100 flex items-center justify-center font-sans">
-        <p className="text-stone-600 animate-pulse">Verifying session...</p>
-      </div>
-    );
   }
 
   return (
@@ -322,25 +329,13 @@ function RecipeEditorContent() {
             </div>
           ) : null}
 
-          <label className="block text-sm font-medium text-stone-700">
-            Description
-            <textarea value={recipeForm.description} onChange={(e) => setRecipeForm({ ...recipeForm, description: e.target.value })} rows={3} className="mt-1 w-full rounded-2xl border border-stone-300 p-3" />
-          </label>
-
-          <label className="block text-sm font-medium text-stone-700">
-            History / Story
-            <textarea value={recipeForm.history} onChange={(e) => setRecipeForm({ ...recipeForm, history: e.target.value })} rows={4} className="mt-1 w-full rounded-2xl border border-stone-300 p-3" />
-          </label>
-
-          <label className="block text-sm font-medium text-stone-700">
-            Ingredients (one per line)
-            <textarea value={recipeForm.ingredients} onChange={(e) => setRecipeForm({ ...recipeForm, ingredients: e.target.value })} rows={5} className="mt-1 w-full rounded-2xl border border-stone-300 p-3" />
-          </label>
-
-          <label className="block text-sm font-medium text-stone-700">
-            Instructions (one step per paragraph)
-            <textarea value={recipeForm.steps} onChange={(e) => setRecipeForm({ ...recipeForm, steps: e.target.value })} rows={8} className="mt-1 w-full rounded-2xl border border-stone-300 p-3" />
-          </label>
+          <textarea value={recipeForm.description} onChange={(e) => setRecipeForm({ ...recipeForm, description: e.target.value })} placeholder="Short description" rows={3} className="rounded-2xl border border-stone-300 p-3" />
+          <textarea value={recipeForm.history} onChange={(e) => setRecipeForm({ ...recipeForm, history: e.target.value })} placeholder="Recipe history" rows={4} className="rounded-2xl border border-stone-300 p-3" />
+          <textarea value={recipeForm.ingredients} onChange={(e) => setRecipeForm({ ...recipeForm, ingredients: e.target.value })} placeholder="Ingredients (one per line)" rows={5} className="rounded-2xl border border-stone-300 p-3" />
+          <textarea value={recipeForm.steps} onChange={(e) => setRecipeForm({ ...recipeForm, steps: e.target.value })} placeholder="Write each method step as a paragraph. Leave a blank line between steps to keep multi-line steps." rows={8} className="rounded-2xl border border-stone-300 p-3" />
+          <textarea value={recipeForm.licenseNote} onChange={(e) => setRecipeForm({ ...recipeForm, licenseNote: e.target.value })} placeholder="License note" rows={2} className="rounded-2xl border border-stone-300 p-3" />
+          <textarea value={recipeForm.foodSafetyNote} onChange={(e) => setRecipeForm({ ...recipeForm, foodSafetyNote: e.target.value })} placeholder="Food safety note" rows={2} className="rounded-2xl border border-stone-300 p-3" />
+          <textarea value={recipeForm.editorialNote} onChange={(e) => setRecipeForm({ ...recipeForm, editorialNote: e.target.value })} placeholder="Editorial note" rows={2} className="rounded-2xl border border-stone-300 p-3" />
 
           <div className="grid gap-3 sm:grid-cols-2">
             <label className="flex items-center gap-2 rounded-2xl border border-stone-300 bg-stone-50 p-3 text-sm text-stone-700">
