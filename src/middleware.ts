@@ -4,22 +4,21 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // 1. Identify administrative page and API routes
+  // Define admin routes that require authentication
   const isAdminRoute = pathname.startsWith('/admin') || pathname.startsWith('/api/admin');
   
-  // Exclude login and logout routes so admins can still authenticate
+  // Exclude public authentication pages from the check
   const isAuthRoute = 
     pathname === '/admin/login' || 
     pathname === '/api/admin/login' || 
     pathname === '/api/admin/logout';
 
   if (isAdminRoute && !isAuthRoute) {
-    // 2. Look for your secure, HTTP-only administrator session cookie
-    // (Ensure your login API sets this cookie name upon successful sign-in)
+    // Retrieve the secure http-only session cookie
     const sessionToken = request.cookies.get('admin_session');
 
     if (!sessionToken) {
-      // If unauthorized API request, immediately block it and return 401
+      // If it is an API route, return a JSON unauthorized response
       if (pathname.startsWith('/api/')) {
         return NextResponse.json(
           { error: 'Unauthorized: Session missing or expired' },
@@ -27,32 +26,33 @@ export function middleware(request: NextRequest) {
         );
       }
       
-      // If unauthorized page request, redirect securely to login
+      // If it is a page route, redirect to the login page cleanly
       const loginUrl = new URL('/admin/login', request.url);
       loginUrl.searchParams.set('redirect', pathname);
-      return NextResponse.redirect(loginUrl);
+      
+      const responseRedirect = NextResponse.redirect(loginUrl);
+      // Disable middleware caching on redirects to prevent session conflicts
+      responseRedirect.headers.set('x-middleware-cache', 'no-cache');
+      return responseRedirect;
     }
   }
 
-  // 3. Inject strict HTTP Security Headers into every response
+  // Apply standard security headers to every response
   const response = NextResponse.next();
   
-  // Protects against Clickjacking (prevents the site from being rendered in an iframe)
+  // Disable edge middleware caching to resolve session-sync delays on Vercel
+  response.headers.set('x-middleware-cache', 'no-cache');
+  
+  // Security Headers
   response.headers.set('X-Frame-Options', 'DENY');
-  
-  // Protects against MIME-sniffing attacks
   response.headers.set('X-Content-Type-Options', 'nosniff');
-  
-  // Controls how much referrer information is shared with other sites
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
-  // Disables access to unused hardware to minimize attack vectors
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
   return response;
 }
 
-// Scopes the middleware to run exclusively on administrative endpoints
+// Configure the middleware to run on specific paths only
 export const config = {
   matcher: ['/admin/:path*', '/api/admin/:path*'],
 };

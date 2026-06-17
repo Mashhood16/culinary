@@ -1,18 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 // Cybersecurity Helper: Validates that a redirect path is strictly local
 // and prevents Open Redirect Phishing Vulnerabilities (CWE-601)
 function isSafeLocalUrl(url: string | null): boolean {
   if (!url) return false;
-  // Must start with a single "/" and NOT "//" (which browsers evaluate as a protocol-relative external URL)
+  // Must start with a single "/" and NOT "//"
   return url.startsWith('/') && !url.startsWith('//');
 }
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState('admin@globalrecipehub.com');
   const [password, setPassword] = useState('admin123');
   const [error, setError] = useState('');
@@ -40,10 +38,12 @@ export default function AdminLoginPage() {
     const params = new URLSearchParams(window.location.search);
     const redirectParam = params.get('redirect');
 
-    // If the redirect path is safe and local, use it; otherwise, default to the homepage ('/')
     const redirectTo = isSafeLocalUrl(redirectParam) ? redirectParam! : '/';
 
-    router.push(redirectTo);
+    // FIX: Using window.location.replace instead of router.push() forces the browser
+    // to perform a native redirect. This guarantees the browser has fully written
+    // the HTTP-only cookie before the next page security check is run on Vercel.
+    window.location.replace(redirectTo);
   }
 
   return (
