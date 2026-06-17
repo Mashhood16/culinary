@@ -33,8 +33,6 @@ export function middleware(request: NextRequest) {
         );
       }
       
-      // 2. CRUCIAL FIX: Capture BOTH the path and the search query parameters (e.g. ?recipe=slug)
-      // to ensure you do not lose the recipe context during redirects!
       const fullPath = request.nextUrl.pathname + request.nextUrl.search;
       
       const loginUrl = new URL('/admin/login', request.url);
@@ -52,6 +50,10 @@ export function middleware(request: NextRequest) {
   
   // Disable edge middleware caching to resolve session-sync delays on Vercel
   response.headers.set('x-middleware-cache', 'no-cache');
+  
+  // 2. PRODUCTION FIX: Force Vercel's global CDN Edge Network to never cache 
+  // your dynamic pages, ensuring your production URL always queries the live database.
+  response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   
   // Security Headers
   response.headers.set('X-Frame-Options', 'DENY');
