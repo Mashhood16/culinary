@@ -219,17 +219,37 @@ export default function AdminPage() {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    const result = await new Promise<string>((resolve, reject) => {
-      reader.onload = () => resolve(typeof reader.result === 'string' ? reader.result : '');
-      reader.onerror = () => reject(new Error('Unable to read image file.'));
-      reader.readAsDataURL(file);
-    });
+    setMessage('Uploading image to Vercel Blob...');
 
-    setRecipeForm((prev) => ({ ...prev, image: result }));
-    recipeFormRef.current = { ...recipeFormRef.current, image: result };
-    setMessage('Image selected. Click Save changes to store it.');
-    event.target.value = '';
+    try {
+      // Create a standard multipart form data payload
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Upload the raw file directly to your secure API endpoint
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        credentials: 'same-origin',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || 'Failed to upload image.');
+      }
+
+      const data = await res.json();
+      
+      // Update the form state with the high-speed Vercel Blob URL
+      setRecipeForm((prev) => ({ ...prev, image: data.url }));
+      setMessage('Image uploaded successfully. Save the recipe to apply changes.');
+    } catch (err: any) {
+      console.error(err);
+      setMessage(err.message || 'Failed to upload image to Vercel Blob.');
+    } finally {
+      // Clear the input value so the same file can be uploaded again if needed
+      event.target.value = '';
+    }
   }
 
   async function saveSettings() {
