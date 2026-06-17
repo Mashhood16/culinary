@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import AIChefForm from '@/components/AIChefForm';
 import FavoritesList from '@/components/FavoritesList';
+import ImageWithSkeleton from '@/components/ImageWithSkeleton'; // 1. Imported ImageWithSkeleton
 
 export const dynamic = 'force-dynamic';
 
@@ -58,7 +59,10 @@ export default async function Home() {
                 <h2 className="mt-3 text-2xl font-semibold">{featured.title}</h2>
                 <p className="mt-3 text-stone-300">{featured.description}</p>
                 {featured.image ? (
-                  <Image src={featured.image} alt={featured.title} width={800} height={480} className="mt-5 h-48 w-full rounded-3xl object-cover" />
+                  // Enhanced with ImageWithSkeleton
+                  <div className="mt-5 h-48 w-full rounded-3xl overflow-hidden">
+                    <ImageWithSkeleton src={featured.image} alt={featured.title} width={800} height={480} className="h-full w-full object-cover" />
+                  </div>
                 ) : null}
                 <Link href={`/recipe-of-the-day?recipe=${featured.slug}`} className="mt-5 inline-block rounded-full bg-amber-500 px-4 py-2 text-stone-950 font-medium transition hover:-translate-y-0.5 hover:bg-amber-400">View full recipe</Link>
               </>
@@ -82,14 +86,18 @@ export default async function Home() {
               <div>
                 <div className="relative overflow-hidden rounded-2xl">
                   {recipe.image ? (
-                    <img 
-                      src={recipe.image} 
-                      alt={recipe.title} 
-                      className="h-40 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
-                    />
+                    // 2. Replaced the un-optimized <img> tag with your custom, cache-safe ImageWithSkeleton
+                    <div className="h-40 w-full rounded-2xl overflow-hidden">
+                      <ImageWithSkeleton 
+                        src={recipe.image} 
+                        alt={recipe.title} 
+                        width={800} 
+                        height={480} 
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
+                      />
+                    </div>
                   ) : null}
                   
-                  {/* High contrast, conflict-free floating tag */}
                   <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">
                     {recipe.cuisine}
                   </span>
@@ -127,7 +135,6 @@ export default async function Home() {
             <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Popular cuisines</h2>
             <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">Explore traditional home-kitchen formulations grouped by cultural origin.</p>
             
-            {/* Visual 2-column grid of rich hover cards */}
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {popularCuisines.map((item) => (
                 <Link
@@ -136,7 +143,6 @@ export default async function Home() {
                   className="group flex items-center justify-between rounded-2xl border border-stone-100 bg-stone-50/50 p-4 transition-all duration-300 hover:border-amber-200 hover:bg-amber-50/20 dark:border-stone-800 dark:bg-stone-950/40 dark:hover:border-stone-700 dark:hover:bg-stone-900/60"
                 >
                   <div className="flex items-center gap-2">
-                    {/* Dynamic Globe Icon */}
                     <svg className="h-4 w-4 text-amber-700 dark:text-amber-500 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a1.5 1.5 0 001.5-1.5V9a2 2 0 00-2-2h-1.414a1 1 0 00-.707-.293L12 6.5" />
                     </svg>
@@ -155,7 +161,6 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Dynamic Informational Footer to Balance Height */}
           <div className="mt-8 border-t border-stone-100 dark:border-stone-800 pt-5 flex items-center gap-4 text-xs text-stone-500 dark:text-stone-400">
             <div className="rounded-full bg-amber-50 dark:bg-stone-950 p-2.5 shrink-0">
               <svg className="h-5 w-5 text-amber-700 dark:text-amber-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
