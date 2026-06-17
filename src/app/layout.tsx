@@ -3,6 +3,7 @@ import './globals.css';
 import Link from 'next/link';
 import { Inter, Playfair_Display } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-stone-50 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-100 transition-colors duration-200">
         <SiteHeader />
         {children}
+        <SpeedInsights />
         <footer className="border-t border-stone-200 bg-stone-950 text-stone-200 dark:border-stone-800 dark:bg-stone-950">
           <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 text-sm lg:grid-cols-4 lg:px-10">
             <div>Culnarriest • premium global recipes, AI guidance, and safe cooking recommendations.</div>
