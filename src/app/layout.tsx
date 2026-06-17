@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' });
 
 export const metadata: Metadata = {
-  title: 'Culnarriest',
+  title: 'Culinarriest', // Updated Name
   description: 'A premium recipe discovery and AI-assisted food science platform.',
   metadataBase: new URL('https://culnarriest.example'),
 };

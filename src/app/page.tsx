@@ -28,6 +28,11 @@ export default async function Home() {
   const totalRecipes = recipes.length;
   const totalCuisines = cuisinesList.length;
 
+  // Inside Home component:
+  <h1 className="mt-4 text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl">
+    Culinarriest
+  </h1>
+
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 transition-colors duration-200 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
       <section className="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
