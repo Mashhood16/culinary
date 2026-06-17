@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import type { AdminRecipe } from '@/lib/recipe-store';
 import { summarizeMethodStep } from '@/lib/method-summary';
@@ -18,10 +19,12 @@ export default function RecipeOfTheDayPage() {
 }
 
 function RecipeOfTheDayContent() {
+  const searchParams = useSearchParams();
+  const requestedSlug = searchParams.get('recipe');
+
   const [featured, setFeatured] = useState<AdminRecipe | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch live recipes and pick a random one on mount
   async function loadRandomRecipe() {
     setLoading(true);
     try {
@@ -32,8 +35,11 @@ function RecipeOfTheDayContent() {
       const publishedRecipes = recipes.filter(r => r.status === 'published');
       
       if (publishedRecipes.length > 0) {
-        const randomIndex = Math.floor(Math.random() * publishedRecipes.length);
-        setFeatured(publishedRecipes[randomIndex]);
+        const found = requestedSlug 
+          ? publishedRecipes.find(r => r.slug === requestedSlug) 
+          : publishedRecipes[Math.floor(Math.random() * publishedRecipes.length)];
+        
+        setFeatured(found || publishedRecipes[0]);
       } else {
         setFeatured(null);
       }
@@ -47,15 +53,15 @@ function RecipeOfTheDayContent() {
 
   useEffect(() => {
     loadRandomRecipe();
-  }, []);
+  }, [requestedSlug]);
 
   if (loading) return <main className="min-h-screen bg-stone-50 p-10 text-center font-sans">Loading daily inspiration...</main>;
 
   if (!featured) {
     return (
       <main className="min-h-screen bg-stone-50 p-10 text-center font-sans">
-        <h1 className="text-2xl font-bold text-stone-900">No published recipes found.</h1>
-        <p className="mt-2 text-stone-600">Ensure you have recipes set to "published" in your admin panel.</p>
+        <h1 className="text-2xl font-bold text-stone-900">Recipe Not Found</h1>
+        <p className="mt-2 text-stone-600">Please ensure you have recipes set to &quot;published&quot; in the admin panel.</p>
         <Link href="/" className="mt-4 inline-block text-amber-700 underline">Back to home</Link>
       </main>
     );
