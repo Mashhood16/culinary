@@ -4,6 +4,13 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // 1. PRODUCTION FIX: Bypass Next.js background prefetch requests.
+  // This prevents the background prefetcher from hitting the redirect guard,
+  // caching a stale '307 Redirect' state in the browser, and looping you back to login.
+  const isPrefetch = 
+    request.headers.get('next-router-prefetch') === '1' || 
+    request.headers.get('rsc') === '1';
+
   // Define admin routes that require authentication
   const isAdminRoute = pathname.startsWith('/admin') || pathname.startsWith('/api/admin');
   
@@ -13,7 +20,8 @@ export function middleware(request: NextRequest) {
     pathname === '/api/admin/login' || 
     pathname === '/api/admin/logout';
 
-  if (isAdminRoute && !isAuthRoute) {
+  // Only run the security guard on actual page views, not background prefetches
+  if (isAdminRoute && !isAuthRoute && !isPrefetch) {
     // Retrieve the secure http-only session cookie
     const sessionToken = request.cookies.get('admin_session');
 
