@@ -10,10 +10,12 @@ function formatIngredient(ingredient: { quantity?: string; unit?: string; item?:
   return [ingredient.quantity, ingredient.unit, ingredient.item].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
 }
 
-function simplifyMealType(mealType: string, slug: string): string {
-  const type = mealType.toLowerCase();
-  const id = slug.toLowerCase();
+function simplifyMealType(mealType: string | undefined, slug: string | undefined): string {
+  // 1. Safety Guard: If inputs are missing, default to 'Mains'
+  const type = (mealType || '').toLowerCase();
+  const id = (slug || '').toLowerCase();
 
+  // 2. Drinks
   if (
     type.includes('drink') || 
     type.includes('chai') || 
@@ -28,6 +30,7 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Drink';
   }
   
+  // 3. Desserts
   if (
     type.includes('dessert') || 
     type.includes('sweet') || 
@@ -44,6 +47,7 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Desert';
   }
   
+  // 4. Bakery / Breads
   if (
     type.includes('bakery') || 
     type.includes('bread') || 
@@ -62,6 +66,7 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Bakery';
   }
   
+  // 5. Breakfast
   if (
     type.includes('south indian') || 
     id.includes('dosa') || 
