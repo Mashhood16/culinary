@@ -75,7 +75,6 @@ function RecipeEditorContent() {
     recipeFormRef.current = recipeForm;
   }, [recipeForm]);
 
-  // Check admin session and load the specific recipe
   useEffect(() => {
     async function checkAuthAndLoadRecipe() {
       try {
@@ -214,7 +213,10 @@ function RecipeEditorContent() {
           <span className="text-xs uppercase tracking-wider text-stone-500 font-medium">Standalone Editor</span>
         </div>
 
-        <h1 className="text-3xl font-bold text-stone-900">Edit "{recipeForm.title || slug}"</h1>
+        {/* Fixed: Escaped the quotes securely around the title to satisfy ESLint */}
+        <h1 className="text-3xl font-bold text-stone-900">
+          Edit &ldquo;{recipeForm.title || slug}&rdquo;
+        </h1>
 
         <div className="grid gap-4">
           <label className="block text-sm font-medium text-stone-700">

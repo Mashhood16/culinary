@@ -12,17 +12,18 @@ import ImageWithSkeleton from '@/components/ImageWithSkeleton';
 export const dynamic = 'force-dynamic';
 
 interface PageProps {
-  params: { slug: string }; // Next.js standard route parameters
+  // Configured synchronously to prevent Next.js 14 build compilation failures
+  params: { slug: string }; 
 }
 
 export default async function RecipeDetailPage({ params }: PageProps) {
   const slug = params.slug;
 
-  // 1. Direct filesystem database lookup on the server (instant execution, zero flashing)
+  // Load the public recipes list directly on the server
   const publicRecipes = loadPublicRecipes();
-  const recipe = publicRecipes.find((item) => item.slug === slug || item.id === slug);
+  const recipe = publicRecipes.find((item) => item.slug === slug);
 
-  // 2. Safe, server-side 404 redirect if the recipe is actually deleted
+  // Safe, server-side 404 redirect if the recipe is actually deleted
   if (!recipe) {
     notFound();
   }
@@ -69,7 +70,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               <div className="flex flex-col items-end gap-3 shrink-0">
                 {/* Top Right: Favorite heart button */}
                 <FavoriteButton 
-                  slug={recipe.slug || recipe.id} 
+                  slug={recipe.slug} 
                   title={recipe.title} 
                   cuisine={recipe.cuisine} 
                   image={recipe.image} 
@@ -77,9 +78,9 @@ export default async function RecipeDetailPage({ params }: PageProps) {
                 
                 {/* Directly Below: Quick Edit & Modify with AI */}
                 <div className="flex flex-wrap items-center gap-2">
-                  <QuickEditButton slug={recipe.slug || recipe.id} />
+                  <QuickEditButton slug={recipe.slug} />
                   <Link
-                    href={`/ai?recipe=${recipe.slug || recipe.id}`}
+                    href={`/ai?recipe=${recipe.slug}`}
                     className="inline-flex h-11 items-center justify-center rounded-full bg-amber-700 px-5 text-sm font-semibold text-white transition hover:bg-amber-600 shadow-sm"
                   >
                     Modify with AI
@@ -163,10 +164,10 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               <p className="mt-4 text-stone-600 dark:text-stone-300 leading-relaxed">{recipe.history}</p>
             </div>
             
-           
+            
 
             <div className="mt-6">
-              <ServingScaler recipeSlug={recipe.slug || recipe.id} originalServings={recipe.servings} ingredients={ingredientList} />
+              <ServingScaler recipeSlug={recipe.slug} originalServings={recipe.servings} ingredients={ingredientList} />
             </div>
           </div>
 
@@ -174,7 +175,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
             <h2 className="text-2xl font-semibold text-stone-900 dark:text-stone-100">Method</h2>
             <ol className="mt-4 space-y-4 text-sm text-stone-700 dark:text-stone-100">
               {methodSteps.map((step, index) => (
-                <li key={`${recipe.slug || recipe.id}-${index}`} className="rounded-3xl border border-stone-200 bg-stone-50 px-5 py-4 shadow-sm transition hover:border-amber-300 hover:bg-amber-50/60 dark:border-stone-800 dark:bg-stone-950/95 dark:hover:border-amber-700 dark:hover:bg-stone-900">
+                <li key={`${recipe.slug}-${index}`} className="rounded-3xl border border-stone-200 bg-stone-50 px-5 py-4 shadow-sm transition hover:border-amber-300 hover:bg-amber-50/60 dark:border-stone-800 dark:bg-stone-950/95 dark:hover:border-amber-700 dark:hover:bg-stone-900">
                   <div className="flex items-start gap-3">
                     <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-700 text-sm font-semibold text-white">{index + 1}</span>
                     <p className="leading-6">{step}</p>

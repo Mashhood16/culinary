@@ -87,7 +87,8 @@ function RecipeOfTheDayContent() {
           setRecipes(publicOnly);
 
           // Find requestedRecipe or select random if empty or not found
-          const selectedRecipe = publicOnly.find((recipe) => recipe.slug === requestedRecipe);
+          // Fixed: Explicitly typed the arrow parameter to satisfy strict tsconfig rules
+          const selectedRecipe = publicOnly.find((recipe: AdminRecipe) => recipe.slug === requestedRecipe);
           if (selectedRecipe) {
             setFeatured(selectedRecipe);
           } else if (publicOnly.length > 0) {
@@ -158,7 +159,7 @@ function RecipeOfTheDayContent() {
                 <h2 className="text-xl font-semibold text-stone-900">Method</h2>
                 <ol className="mt-4 space-y-3 text-sm text-stone-700">
                   {methodSteps.map((step, index) => (
-                    <li key={`${featured.slug}-${index}`} className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 shadow-sm transition hover:border-amber-300 hover:bg-amber-50/60 animate-fade-in">
+                    <li key={`${featured.slug}-${index}`} className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 shadow-sm transition hover:border-amber-300 hover:bg-amber-50/60 dark:border-stone-800 dark:bg-stone-950/95 dark:hover:border-amber-700 dark:hover:bg-stone-900">
                       <div className="flex items-start gap-3">
                         <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-700 text-sm font-semibold text-white">{index + 1}</span>
                         <p className="leading-6">{step}</p>
