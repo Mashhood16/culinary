@@ -48,7 +48,6 @@ const defaultForm: RecipeForm = {
   featured: false,
 };
 
-// Helper to generate slug safely if needed
 function generateSlug(value: string) {
   return value
     .trim()
@@ -57,7 +56,6 @@ function generateSlug(value: string) {
     .replace(/^-+|-+$/g, '');
 }
 
-// Helper to extract, sanitize, and format payload data before writing to database
 function getPayload(form: RecipeForm) {
   return {
     ...form,
@@ -103,7 +101,8 @@ function RecipeEditorContent() {
       try {
         const authRes = await fetch('/api/admin/settings', { cache: 'no-store', credentials: 'same-origin' });
         if (!authRes.ok) {
-          router.push(`/admin/login?redirect=/admin/edit?recipe=${slug}`);
+          // Fix: Wrap the redirect path inside encodeURIComponent to prevent query string loss on client transitions
+          router.push(`/admin/login?redirect=${encodeURIComponent(`/admin/edit?recipe=${slug}`)}`);
           return;
         }
 
@@ -147,7 +146,7 @@ function RecipeEditorContent() {
           }
         }
       } catch {
-        router.push(`/admin/login?redirect=/admin/edit?recipe=${slug}`);
+        router.push(`/admin/login?redirect=${encodeURIComponent(`/admin/edit?recipe=${slug}`)}`);
       } finally {
         setLoading(false);
       }
@@ -159,7 +158,7 @@ function RecipeEditorContent() {
       setLoading(false);
       setMessage('No recipe specified to edit.');
     }
-  }, [slug, router]); // Fixed: Restored the closing block of this hook properly
+  }, [slug, router]);
 
   async function handleImageUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];

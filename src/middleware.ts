@@ -5,8 +5,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // 1. PRODUCTION FIX: Bypass Next.js background prefetch requests.
-  // This prevents the background prefetcher from hitting the redirect guard,
-  // caching a stale '307 Redirect' state in the browser, and looping you back to login.
+  // This prevents the background prefetcher from caching redirect states.
   const isPrefetch = 
     request.headers.get('next-router-prefetch') === '1' || 
     request.headers.get('rsc') === '1';
@@ -34,9 +33,12 @@ export function middleware(request: NextRequest) {
         );
       }
       
-      // If it is a page route, redirect to the login page cleanly
+      // 2. CRUCIAL FIX: Capture BOTH the path and the search query parameters (e.g. ?recipe=slug)
+      // to ensure you do not lose the recipe context during redirects!
+      const fullPath = request.nextUrl.pathname + request.nextUrl.search;
+      
       const loginUrl = new URL('/admin/login', request.url);
-      loginUrl.searchParams.set('redirect', pathname);
+      loginUrl.searchParams.set('redirect', fullPath); // URL-encodes the full path safely
       
       const responseRedirect = NextResponse.redirect(loginUrl);
       // Disable middleware caching on redirects to prevent session conflicts
