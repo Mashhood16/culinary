@@ -20,7 +20,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
   const slug = params.slug;
 
   // Load the public recipes list directly on the server
-  const publicRecipes = loadPublicRecipes();
+  const publicRecipes = await loadPublicRecipes();
   const recipe = publicRecipes.find((item) => item.slug === slug);
 
   // Safe, server-side 404 redirect if the recipe is actually deleted

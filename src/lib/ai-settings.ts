@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { kv } from '@vercel/kv'; // Official Vercel KV package
 
 export type AISettings = {
   enabled: boolean;
@@ -19,36 +20,44 @@ const defaultSettings: AISettings = {
   apiKey: '',
 };
 
-// In-Memory Database Cache Variables to prevent disk read performance overhead
-let cachedSettings: AISettings | null = null;
-let lastReadTime = 0;
-const CACHE_TTL = 3000; // Cache database parsed results in RAM for 3 seconds in production
+const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
-export function getAISettings(): AISettings {
-  const now = Date.now();
-  
-  // Only cache in production to ensure terminal updates/saves show instantly in development
-  if (process.env.NODE_ENV === 'production' && cachedSettings && (now - lastReadTime < CACHE_TTL)) {
-    return cachedSettings;
+export async function getAISettings(): Promise<AISettings> {
+  // If running on Vercel with KV linked, load from the cloud database
+  if (isVercelKVActive) {
+    try {
+      const data = await kv.get<AISettings>('settings_data');
+      return data ? { ...defaultSettings, ...data } : defaultSettings;
+    } catch (e) {
+      console.error('Vercel KV settings read error:', e);
+      return defaultSettings;
+    }
   }
 
+  // Local fallback: read file from disk
   try {
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, JSON.stringify(defaultSettings, null, 2), 'utf8');
       return defaultSettings;
     }
-    const data = { ...defaultSettings, ...JSON.parse(fs.readFileSync(filePath, 'utf8')) };
-    cachedSettings = data;
-    lastReadTime = now;
-    return data;
+    return { ...defaultSettings, ...JSON.parse(fs.readFileSync(filePath, 'utf8')) };
   } catch {
     return defaultSettings;
   }
 }
 
-export function saveAISettings(settings: AISettings) {
+export async function saveAISettings(settings: AISettings) {
+  // If running on Vercel with KV linked, write to the cloud database
+  if (isVercelKVActive) {
+    try {
+      await kv.set('settings_data', settings);
+      return settings;
+    } catch (e) {
+      console.error('Vercel KV settings write error:', e);
+    }
+  }
+
+  // Local fallback: save file directly to disk
   fs.writeFileSync(filePath, JSON.stringify(settings, null, 2), 'utf8');
-  cachedSettings = settings;
-  lastReadTime = Date.now();
   return settings;
 }

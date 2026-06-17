@@ -12,13 +12,15 @@ export async function POST(request: Request) {
       if (!Array.isArray(slugs)) {
         return NextResponse.json({ error: 'Invalid slugs' }, { status: 400 });
       }
-      deleteAdminRecipes(slugs);
+      // Added await to the async database deletion helper
+      await deleteAdminRecipes(slugs);
       return NextResponse.json({ message: 'Selected recipes deleted successfully' });
     }
 
     if (action === 'publish-all') {
-      const allRecipes = loadAllRecipes();
-      const adminRecipes = loadAdminRecipes();
+      // Added await to retrieve resolved arrays from your async database helpers
+      const allRecipes = await loadAllRecipes();
+      const adminRecipes = await loadAdminRecipes();
       const updatedAdminRecipes = [...adminRecipes];
 
       for (const recipe of allRecipes) {
@@ -29,7 +31,8 @@ export async function POST(request: Request) {
           updatedAdminRecipes.push({ ...recipe, status: 'published' });
         }
       }
-      saveAdminRecipes(updatedAdminRecipes);
+      // Added await to save operations
+      await saveAdminRecipes(updatedAdminRecipes);
       return NextResponse.json({ message: 'All visible recipes published successfully' });
     }
 
@@ -37,8 +40,9 @@ export async function POST(request: Request) {
       if (!Array.isArray(slugs)) {
         return NextResponse.json({ error: 'Invalid slugs' }, { status: 400 });
       }
-      const allRecipes = loadAllRecipes();
-      const adminRecipes = loadAdminRecipes();
+      // Added await to retrieve resolved arrays from your async database helpers
+      const allRecipes = await loadAllRecipes();
+      const adminRecipes = await loadAdminRecipes();
       const updatedAdminRecipes = [...adminRecipes];
 
       for (const slug of slugs) {
@@ -53,7 +57,8 @@ export async function POST(request: Request) {
           updatedAdminRecipes.push(mergedUpdate);
         }
       }
-      saveAdminRecipes(updatedAdminRecipes);
+      // Added await to save operations
+      await saveAdminRecipes(updatedAdminRecipes);
       return NextResponse.json({ message: 'Bulk edit applied successfully' });
     }
 

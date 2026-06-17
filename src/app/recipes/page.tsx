@@ -16,7 +16,7 @@ export default async function RecipesPage({ searchParams }: PageProps) {
   const mealType = resolvedSearchParams.mealType;
   const q = resolvedSearchParams.q;
 
-  const allRecipes = loadPublicRecipes();
+  const allRecipes = await loadPublicRecipes();
 
   const uniqueCuisines = Array.from(new Set(allRecipes.map(r => r.cuisine).filter(Boolean))).sort();
   const uniqueMealTypes = Array.from(new Set(allRecipes.map(r => r.mealType).filter(Boolean))).sort();

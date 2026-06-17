@@ -82,9 +82,9 @@ export async function POST(request: Request) {
       .map((row: any) => normalizeRow(row))
       .filter(Boolean) as any[];
 
-    const existing = loadAdminRecipes();
+    const existing = await loadAdminRecipes();
     const merged = [...imported, ...existing];
-    saveAdminRecipes(merged);
+    await saveAdminRecipes(merged);
 
     return NextResponse.json({ ok: true, imported: imported.length, total: merged.length });
   } catch (error) {

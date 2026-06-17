@@ -1,15 +1,19 @@
 import fs from 'fs';
 import path from 'path';
+import { kv } from '@vercel/kv'; // Official Vercel KV package
 import exactRecipeCatalog from './recipe-catalog-exact.json';
 
 const rawRecipeCatalog = exactRecipeCatalog as { recipes?: Array<Record<string, unknown>> };
 
-// Automatic mapping engine to group dozens of raw fields into your 5 unified categories
+function formatIngredient(ingredient: { quantity?: string; unit?: string; item?: string } | string) {
+  if (typeof ingredient === 'string') return ingredient;
+  return [ingredient.quantity, ingredient.unit, ingredient.item].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+}
+
 function simplifyMealType(mealType: string, slug: string): string {
   const type = mealType.toLowerCase();
   const id = slug.toLowerCase();
 
-  // 1. Drinks
   if (
     type.includes('drink') || 
     type.includes('chai') || 
@@ -24,7 +28,6 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Drink';
   }
   
-  // 2. Desserts (Mapped precisely to "Desert" as requested)
   if (
     type.includes('dessert') || 
     type.includes('sweet') || 
@@ -41,7 +44,6 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Desert';
   }
   
-  // 3. Bakery / Breads
   if (
     type.includes('bakery') || 
     type.includes('bread') || 
@@ -60,7 +62,6 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Bakery';
   }
   
-  // 4. Breakfast (Traditional South Indian & Turkish breakfast elements)
   if (
     type.includes('south indian') || 
     id.includes('dosa') || 
@@ -77,13 +78,7 @@ function simplifyMealType(mealType: string, slug: string): string {
     return 'Breakfast';
   }
 
-  // 5. Default to Mains for all stews, curries, pastas, hot pots, and main courses
   return 'Mains';
-}
-
-function formatIngredient(ingredient: { quantity?: string; unit?: string; item?: string } | string) {
-  if (typeof ingredient === 'string') return ingredient;
-  return [ingredient.quantity, ingredient.unit, ingredient.item].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
 }
 
 function normalizeRecipe(recipe: Record<string, unknown>): AdminRecipe {
@@ -160,30 +155,34 @@ export type AdminRecipe = {
 
 const filePath = path.join(process.cwd(), 'recipes-data.json');
 
-// In-Memory Database Cache Variables
-let cachedAdminRecipes: AdminRecipe[] | null = null;
-let lastReadTime = 0;
-const CACHE_TTL = 3000;
+// Checks if Vercel KV is linked to the project in production
+const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
-export function loadAdminRecipes(): AdminRecipe[] {
-  const now = Date.now();
-  
-  if (process.env.NODE_ENV === 'production' && cachedAdminRecipes && (now - lastReadTime < CACHE_TTL)) {
-    return cachedAdminRecipes;
+export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
+  if (isVercelKVActive) {
+    try {
+      // Fetch directly from the cloud database
+      const data = await kv.get<AdminRecipe[]>('recipes_data');
+      return data || [];
+    } catch (e) {
+      console.error('Vercel KV database read error:', e);
+      return [];
+    }
   }
-  
+
+  // Local fallback: read file from your computer's disk
   try {
-    const data = JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
-    cachedAdminRecipes = data;
-    lastReadTime = now;
-    return data;
+    if (!fs.existsSync(filePath)) {
+      fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf8');
+    }
+    return JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
   } catch {
     return [];
   }
 }
 
-export function loadPublicRecipes() {
-  const allRecipes = loadAllRecipes();
+export async function loadPublicRecipes() {
+  const allRecipes = await loadAllRecipes();
   return allRecipes.filter(recipe => 
     recipe.status !== 'draft' && 
     recipe.status !== 'archived' && 
@@ -191,8 +190,8 @@ export function loadPublicRecipes() {
   );
 }
 
-export function loadAllRecipes() {
-  const adminRecipes = loadAdminRecipes();
+export async function loadAllRecipes() {
+  const adminRecipes = await loadAdminRecipes();
   const merged = new Map<string, AdminRecipe>();
 
   for (const recipe of (rawRecipeCatalog.recipes ?? []).map(normalizeRecipe)) {
@@ -203,7 +202,6 @@ export function loadAllRecipes() {
     if (recipe.status === 'deleted') {
       merged.delete(recipe.slug);
     } else {
-      // Normalization check: Ensure any edited admin entries are also simplified before merging
       const normalizedAdmin = {
         ...recipe,
         mealType: simplifyMealType(recipe.mealType || '', recipe.slug),
@@ -215,24 +213,31 @@ export function loadAllRecipes() {
   return Array.from(merged.values());
 }
 
-export function saveAdminRecipes(items: AdminRecipe[]) {
+export async function saveAdminRecipes(items: AdminRecipe[]) {
+  if (isVercelKVActive) {
+    try {
+      // Save directly to the cloud database
+      await kv.set('recipes_data', items);
+      return items;
+    } catch (e) {
+      console.error('Vercel KV database write error:', e);
+    }
+  }
+
+  // Local fallback: save file directly to disk
   fs.writeFileSync(filePath, JSON.stringify(items, null, 2), 'utf8');
-  
-  cachedAdminRecipes = items;
-  lastReadTime = Date.now();
-  
   return items;
 }
 
-export function addAdminRecipe(item: AdminRecipe) {
-  const recipes = loadAdminRecipes();
+export async function addAdminRecipe(item: AdminRecipe) {
+  const recipes = await loadAdminRecipes();
   const next = [item, ...recipes];
-  saveAdminRecipes(next);
+  await saveAdminRecipes(next);
   return next;
 }
 
-export function updateAdminRecipe(slug: string, item: AdminRecipe) {
-  const recipes = loadAdminRecipes();
+export async function updateAdminRecipe(slug: string, item: AdminRecipe) {
+  const recipes = await loadAdminRecipes();
   const existingRecipe = recipes.find((recipe) => recipe.slug === slug);
   const baseRecipe = (rawRecipeCatalog.recipes ?? []).map(normalizeRecipe).find((recipe) => recipe.slug === slug);
 
@@ -247,12 +252,12 @@ export function updateAdminRecipe(slug: string, item: AdminRecipe) {
         ...recipes,
       ];
 
-  saveAdminRecipes(next);
+  await saveAdminRecipes(next);
   return next;
 }
 
-export function deleteAdminRecipes(slugs: string[]) {
-  const adminRecipes = loadAdminRecipes();
+export async function deleteAdminRecipes(slugs: string[]) {
+  const adminRecipes = await loadAdminRecipes();
   const staticRecipes = (rawRecipeCatalog.recipes ?? []).map(normalizeRecipe);
 
   let updatedRecipes = adminRecipes.filter(r => {
@@ -279,11 +284,11 @@ export function deleteAdminRecipes(slugs: string[]) {
     }
   }
 
-  saveAdminRecipes(updatedRecipes);
+  await saveAdminRecipes(updatedRecipes);
   return updatedRecipes;
 }
 
-export function deleteAllRecipes() {
+export async function deleteAllRecipes() {
   const staticRecipes = (rawRecipeCatalog.recipes ?? []).map(normalizeRecipe);
   
   const tombstones: AdminRecipe[] = staticRecipes.map(sr => ({
@@ -291,6 +296,6 @@ export function deleteAllRecipes() {
     status: 'deleted',
   }));
 
-  saveAdminRecipes(tombstones);
+  await saveAdminRecipes(tombstones);
   return tombstones;
 }

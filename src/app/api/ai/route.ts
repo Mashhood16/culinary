@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     // 1. Read both 'prompt' and 'type' from the client request payload
     const { prompt, type } = await request.json();
 
-    const settings = getAISettings();
+    const settings = await getAISettings();
 
     if (!settings.enabled) {
       return NextResponse.json({

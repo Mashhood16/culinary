@@ -7,7 +7,7 @@ import FavoritesList from '@/components/FavoritesList';
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const recipes = loadPublicRecipes();
+  const recipes = await loadPublicRecipes();
   
   const featured = recipes.length > 0 
     ? recipes[Math.floor(Math.random() * recipes.length)] || recipes[0]

@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function CuisinesPage() {
   // Load public recipes instantly from the file system on the server
-  const recipes = loadPublicRecipes();
+  const recipes = await loadPublicRecipes();
 
   // Extract unique active cuisines dynamically from the database
   const uniqueCuisines = Array.from(new Set(recipes.map((r) => r.cuisine).filter(Boolean)));
