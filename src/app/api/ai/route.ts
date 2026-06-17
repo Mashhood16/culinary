@@ -5,7 +5,8 @@ import { getAISettings } from '@/lib/ai-settings';
 
 export async function POST(request: Request) {
   try {
-    const { prompt } = await request.json();
+    // 1. Read both 'prompt' and 'type' from the client request payload
+    const { prompt, type } = await request.json();
 
     const settings = getAISettings();
 
@@ -26,6 +27,12 @@ export async function POST(request: Request) {
 
     if (openRouterKey) {
       const modelName = settings.model || 'meta-llama/llama-3.1-8b-instruct';
+
+      // 2. Select the correct system prompt based on the incoming request 'type'
+      const systemPrompt = type === 'modify'
+        ? settings.systemPromptModify || 'You are an expert food scientist. Adapt, scale, or substitute ingredients for the provided recipe accurately while maintaining flavor.'
+        : settings.systemPrompt || 'You are a helpful recipe assistant.';
+
       const openRouterRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -37,7 +44,8 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           model: modelName,
           messages: [
-            { role: 'system', content: settings.systemPrompt || 'You are a helpful recipe assistant.' },
+            // 3. Dynamically insert the resolved starting system prompt
+            { role: 'system', content: systemPrompt }, 
             { role: 'user', content: question },
           ],
           temperature: 0.7,

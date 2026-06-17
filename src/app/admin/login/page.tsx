@@ -3,6 +3,14 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+// Cybersecurity Helper: Validates that a redirect path is strictly local
+// and prevents Open Redirect Phishing Vulnerabilities (CWE-601)
+function isSafeLocalUrl(url: string | null): boolean {
+  if (!url) return false;
+  // Must start with a single "/" and NOT "//" (which browsers evaluate as a protocol-relative external URL)
+  return url.startsWith('/') && !url.startsWith('//');
+}
+
 export default function AdminLoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('admin@globalrecipehub.com');
@@ -28,13 +36,20 @@ export default function AdminLoginPage() {
       return;
     }
 
-    router.push('/admin');
+    // Parse the redirect target securely
+    const params = new URLSearchParams(window.location.search);
+    const redirectParam = params.get('redirect');
+
+    // If the redirect path is safe and local, use it; otherwise, default to the homepage ('/')
+    const redirectTo = isSafeLocalUrl(redirectParam) ? redirectParam! : '/';
+
+    router.push(redirectTo);
   }
 
   return (
-    <main className="min-h-screen bg-stone-100 p-10 text-stone-900">
+    <main className="min-h-screen bg-stone-100 p-10 text-stone-900 font-sans">
       <div className="mx-auto max-w-md rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
-        <p className="text-sm uppercase tracking-[0.35em] text-amber-700">Admin Access</p>
+        <p className="text-sm uppercase tracking-[0.35em] text-amber-700 font-medium">Admin Access</p>
         <h1 className="mt-3 text-3xl font-semibold">Sign in to manage AI settings</h1>
         <p className="mt-3 text-stone-600">Use the admin credentials to update your AI configuration.</p>
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">

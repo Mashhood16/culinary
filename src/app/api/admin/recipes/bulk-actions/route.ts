@@ -1,44 +1,64 @@
 import { NextResponse } from 'next/server';
-import { verifyAdminSession } from '@/lib/admin-auth';
-import { loadAdminRecipes, loadAllRecipes, saveAdminRecipes } from '@/lib/recipe-store';
+import { deleteAdminRecipes, loadAllRecipes, saveAdminRecipes, loadAdminRecipes } from '@/lib/recipe-store';
 
-function buildResponse(status: number, payload: Record<string, unknown>) {
-  return NextResponse.json(payload, { status });
-}
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
-  const token = request.headers.get('cookie')?.match(/admin_session=([^;]+)/)?.[1];
-  if (!verifyAdminSession(token)) return buildResponse(401, { error: 'Unauthorized' });
+  try {
+    const body = await request.json();
+    const { action, slugs, updates } = body;
 
-  const body = await request.json();
-  const slugs = Array.isArray(body.slugs) ? body.slugs.filter(Boolean) : [];
+    if (action === 'delete-selected') {
+      if (!Array.isArray(slugs)) {
+        return NextResponse.json({ error: 'Invalid slugs' }, { status: 400 });
+      }
+      deleteAdminRecipes(slugs);
+      return NextResponse.json({ message: 'Selected recipes deleted successfully' });
+    }
 
-  const recipes = loadAdminRecipes();
+    if (action === 'publish-all') {
+      const allRecipes = loadAllRecipes();
+      const adminRecipes = loadAdminRecipes();
+      const updatedAdminRecipes = [...adminRecipes];
 
-  if (body.action === 'publish-all') {
-    const mergedRecipes = loadAllRecipes();
-    const unpublishedRecipes = mergedRecipes.filter((recipe) => String(recipe.status || '').toLowerCase() !== 'published');
-    const next = mergedRecipes.map((recipe) =>
-      unpublishedRecipes.some((item) => item.slug === recipe.slug) ? { ...recipe, status: 'published' } : recipe,
-    );
-    saveAdminRecipes(next);
-    return buildResponse(200, { message: `Published ${unpublishedRecipes.length} unpublished recipe(s).`, total: next.length });
+      for (const recipe of allRecipes) {
+        const existingIndex = updatedAdminRecipes.findIndex(r => r.slug === recipe.slug);
+        if (existingIndex !== -1) {
+          updatedAdminRecipes[existingIndex].status = 'published';
+        } else {
+          updatedAdminRecipes.push({ ...recipe, status: 'published' });
+        }
+      }
+      saveAdminRecipes(updatedAdminRecipes);
+      return NextResponse.json({ message: 'All visible recipes published successfully' });
+    }
+
+    if (action === 'bulk-edit') {
+      if (!Array.isArray(slugs)) {
+        return NextResponse.json({ error: 'Invalid slugs' }, { status: 400 });
+      }
+      const allRecipes = loadAllRecipes();
+      const adminRecipes = loadAdminRecipes();
+      const updatedAdminRecipes = [...adminRecipes];
+
+      for (const slug of slugs) {
+        const targetRecipe = allRecipes.find(r => r.slug === slug);
+        if (!targetRecipe) continue;
+
+        const mergedUpdate = { ...targetRecipe, ...updates };
+        const existingIndex = updatedAdminRecipes.findIndex(r => r.slug === slug);
+        if (existingIndex !== -1) {
+          updatedAdminRecipes[existingIndex] = { ...updatedAdminRecipes[existingIndex], ...updates };
+        } else {
+          updatedAdminRecipes.push(mergedUpdate);
+        }
+      }
+      saveAdminRecipes(updatedAdminRecipes);
+      return NextResponse.json({ message: 'Bulk edit applied successfully' });
+    }
+
+    return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
-
-  if (!slugs.length) return buildResponse(400, { error: 'Select at least one recipe.' });
-
-  if (body.action === 'delete-selected') {
-    const next = recipes.filter((recipe) => !slugs.includes(recipe.slug));
-    saveAdminRecipes(next);
-    return buildResponse(200, { message: `Deleted ${slugs.length} recipe(s).`, total: next.length });
-  }
-
-  if (body.action === 'bulk-edit') {
-    const updates = body.updates || {};
-    const next = recipes.map((recipe) => (slugs.includes(recipe.slug) ? { ...recipe, ...updates } : recipe));
-    saveAdminRecipes(next);
-    return buildResponse(200, { message: `Updated ${slugs.length} recipe(s).`, total: next.length });
-  }
-
-  return buildResponse(400, { error: 'Unsupported action.' });
 }

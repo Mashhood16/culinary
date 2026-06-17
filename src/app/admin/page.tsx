@@ -68,7 +68,13 @@ function computeTotalTime(prep: string, cook: string) {
 
 export default function AdminPage() {
   const router = useRouter();
-  const [settings, setSettings] = useState({ enabled: true, model: 'meta-llama/llama-3.1-8b-instruct', systemPrompt: '', apiKey: '' });
+  const [settings, setSettings] = useState({ 
+    enabled: true, 
+    model: 'meta-llama/llama-3.1-8b-instruct', 
+    systemPrompt: '', 
+    systemPromptModify: '', // Holds the separate Recipe Modifier prompt
+    apiKey: '' 
+  });
   const [apiKey, setApiKey] = useState('');
   const [adminRecipes, setAdminRecipes] = useState<AdminRecipe[]>([]);
   const [searchRecipeTerm, setSearchRecipeTerm] = useState('');
@@ -90,6 +96,8 @@ export default function AdminPage() {
   const [bulkEditCuisine, setBulkEditCuisine] = useState('');
   const [bulkEditMealType, setBulkEditMealType] = useState('');
   const [bulkEditFeatured, setBulkEditFeatured] = useState(false);
+  const [isDeletingAll, setIsDeletingAll] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const cuisines = useMemo(() => Array.from(new Set(adminRecipes.map((recipe) => recipe.cuisine))).filter(Boolean).sort(), [adminRecipes]);
   const mealTypes = useMemo(() => Array.from(new Set(adminRecipes.map((recipe) => recipe.mealType))).filter(Boolean).sort(), [adminRecipes]);
@@ -118,6 +126,7 @@ export default function AdminPage() {
           enabled: Boolean(data.enabled),
           model: data.model || 'meta-llama/llama-3.1-8b-instruct',
           systemPrompt: data.systemPrompt || '',
+          systemPromptModify: data.systemPromptModify || '', // Load the modifier prompt
           apiKey: data.apiKey || '',
         });
         setApiKey(data.apiKey || '');
@@ -150,6 +159,19 @@ export default function AdminPage() {
       setRecipeForm((prev) => ({ ...prev, totalTime: autoTotal }));
     }
   }, [recipeForm.prepTime, recipeForm.cookTime]);
+
+  // Listen for "?edit=slug" parameter and load the recipe fields automatically
+  useEffect(() => {
+    if (adminRecipes.length === 0) return;
+    const params = new URLSearchParams(window.location.search);
+    const editSlug = params.get('edit');
+    if (editSlug) {
+      const targetRecipe = adminRecipes.find((recipe) => recipe.slug === editSlug);
+      if (targetRecipe && editingSlug !== editSlug) {
+        loadRecipeForEdit(targetRecipe);
+      }
+    }
+  }, [adminRecipes, editingSlug]);
 
   function resetRecipeForm() {
     setRecipeForm(defaultForm);
@@ -401,6 +423,37 @@ export default function AdminPage() {
     }
   }
 
+  async function removeAllRecipes() {
+    setIsDeletingAll(true);
+    try {
+      let response = await fetch('/api/admin/recipes', {
+        method: 'DELETE',
+        credentials: 'same-origin',
+      });
+      
+      if (!response.ok) {
+        response = await fetch('/api/admin/recipes/bulk-actions', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'delete-selected', slugs: adminRecipes.map(r => r.slug).filter(Boolean) }),
+        });
+      }
+      
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to remove recipes.');
+      }
+      setMessage('All recipes have been removed successfully.');
+      await refreshRecipes();
+      setShowDeleteConfirm(false);
+    } catch (e: any) {
+      setMessage(`Error: ${e.message}`);
+    } finally {
+      setIsDeletingAll(false);
+    }
+  }
+
   function handleLogout() {
     fetch('/api/admin/logout', { method: 'POST', credentials: 'same-origin' }).finally(() => router.push('/admin/login'));
   }
@@ -427,12 +480,12 @@ export default function AdminPage() {
   };
 
   return (
-    <main className="min-h-screen bg-stone-100 p-10 text-stone-900">
+    <main className="min-h-screen bg-stone-100 p-10 text-stone-900 font-sans">
       <div className="mx-auto max-w-7xl space-y-8">
         <section className="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-amber-700">Admin dashboard</p>
+              <p className="text-sm uppercase tracking-[0.35em] text-amber-700 font-medium">Admin dashboard</p>
               <h1 className="mt-3 text-4xl font-semibold text-stone-900">Manage recipes and AI settings</h1>
               <p className="mt-3 max-w-2xl text-sm text-stone-600">Upgrade the existing admin panel without adding a second management area. Use the summary cards, filters, and editor to manage the live recipe catalog.</p>
             </div>
@@ -543,7 +596,7 @@ export default function AdminPage() {
                 <div key={recipe.slug} className="rounded-3xl border border-stone-200 bg-stone-50 p-5 shadow-sm">
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div className="min-w-0">
-                      <p className="text-xs uppercase tracking-[0.3em] text-amber-700">{recipe.cuisine || 'Global'}</p>
+                      <p className="text-xs uppercase tracking-[0.3em] text-amber-700 font-medium">{recipe.cuisine || 'Global'}</p>
                       <h3 className="mt-2 text-lg font-semibold text-stone-900">{recipe.title || recipe.slug}</h3>
                       <p className="mt-2 text-sm text-stone-600">{recipe.mealType} · {recipe.foodType}</p>
                     </div>
@@ -708,9 +761,16 @@ export default function AdminPage() {
                   <input value={settings.model} onChange={(e) => setSettings({ ...settings, model: e.target.value })} placeholder="Model name" className="mt-1 w-full rounded-2xl border border-stone-300 bg-white p-3" />
                 </label>
 
+                {/* Updated Pantry Chef Prompt */}
                 <label className="block text-sm text-stone-700">
-                  <span className="mb-2 block font-medium text-stone-900">System prompt</span>
-                  <textarea value={settings.systemPrompt} onChange={(e) => setSettings({ ...settings, systemPrompt: e.target.value })} placeholder="System prompt for AI responses" rows={4} className="mt-1 w-full rounded-2xl border border-stone-300 bg-white p-3" />
+                  <span className="mb-2 block font-medium text-stone-900">Pantry Chef System Prompt (Homepage AI)</span>
+                  <textarea value={settings.systemPrompt} onChange={(e) => setSettings({ ...settings, systemPrompt: e.target.value })} placeholder="Instructions for the homepage ingredient assistant" rows={3} className="mt-1 w-full rounded-2xl border border-stone-300 bg-white p-3" />
+                </label>
+
+                {/* Updated Recipe Modifier Prompt */}
+                <label className="block text-sm text-stone-700">
+                  <span className="mb-2 block font-medium text-stone-900">Recipe Modifier System Prompt (Modify AI Page)</span>
+                  <textarea value={settings.systemPromptModify} onChange={(e) => setSettings({ ...settings, systemPromptModify: e.target.value })} placeholder="Instructions for the scaling and substitutions assistant" rows={3} className="mt-1 w-full rounded-2xl border border-stone-300 bg-white p-3" />
                 </label>
 
                 <label className="block text-sm text-stone-700">
@@ -720,6 +780,55 @@ export default function AdminPage() {
 
                 <button onClick={saveSettings} disabled={savingSettings} className="rounded-full bg-slate-700 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60">{savingSettings ? 'Saving settings…' : 'Save AI settings'}</button>
                 {settingsMessage ? <p className="text-sm text-emerald-700">{settingsMessage}</p> : null}
+              </div>
+            </div>
+
+            {/* Danger Zone */}
+            <div className="mt-8 rounded-3xl border border-red-200 bg-red-50/50 p-5">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-red-900">Danger Zone</h3>
+                  <p className="mt-1 text-sm text-red-700">Irreversible administrative actions.</p>
+                </div>
+              </div>
+
+              <div className="mt-5 space-y-4">
+                <p className="text-xs text-red-650 leading-relaxed">
+                  Clicking below will permanently remove all recipes from the backend database and reset the frontend list.
+                </p>
+
+                {!showDeleteConfirm ? (
+                  <button
+                    type="button"
+                    onClick={() => setShowDeleteConfirm(true)}
+                    className="w-full rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white hover:bg-red-700 transition-all hover:shadow-lg focus:outline-none"
+                  >
+                    Remove All Recipes Everywhere
+                  </button>
+                ) : (
+                  <div className="space-y-3 p-4 bg-white border border-red-200 rounded-2xl">
+                    <p className="text-xs font-bold text-red-700 uppercase tracking-wider">
+                      ⚠️ Are you absolutely sure? This cannot be undone!
+                    </p>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={removeAllRecipes}
+                        disabled={isDeletingAll}
+                        className="flex-1 px-4 py-2 bg-red-700 hover:bg-red-850 text-white rounded-xl font-bold text-xs disabled:opacity-50 transition-all focus:outline-none"
+                      >
+                        {isDeletingAll ? "Erasing..." : "Yes, Delete All"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setShowDeleteConfirm(false)}
+                        className="px-4 py-2 bg-stone-200 text-stone-700 rounded-xl font-bold text-xs hover:bg-stone-300 transition-all focus:outline-none"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </aside>
