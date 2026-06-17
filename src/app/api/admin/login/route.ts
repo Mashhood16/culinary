@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers'; // Imported the official next/headers cookies utility
 import { loadUsers } from '@/lib/user-store';
 
 export const dynamic = 'force-dynamic';
@@ -21,17 +20,19 @@ export async function POST(request: Request) {
 
     const sessionToken = `session-${Date.now()}-${Math.random().toString(36).substring(2)}`;
 
-    // 1. Securely set the cookie on the server using Next.js framework-level headers
-    cookies().set('admin_session', sessionToken, {
+    // 1. Create the response object first
+    const response = NextResponse.json({ success: true, message: 'Logged in successfully' });
+
+    // 2. Set the cookie directly on the response instance (Required standard for Next.js Route Handlers)
+    response.cookies.set('admin_session', sessionToken, {
       path: '/',
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: true, // Securely transmitted over HTTPS
       sameSite: 'lax',
       maxAge: 86400, // 24 hours
     });
 
-    // 2. Return a simple successful JSON response
-    return NextResponse.json({ success: true, message: 'Logged in successfully' });
+    return response;
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

@@ -6,7 +6,6 @@ import { useState } from 'react';
 // and prevents Open Redirect Phishing Vulnerabilities (CWE-601)
 function isSafeLocalUrl(url: string | null): boolean {
   if (!url) return false;
-  // Must start with a single "/" and NOT "//"
   return url.startsWith('/') && !url.startsWith('//');
 }
 
@@ -24,6 +23,7 @@ export default function AdminLoginPage() {
     const response = await fetch('/api/admin/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin', // Enforce credentials mapping to save cookies securely
       body: JSON.stringify({ email, password }),
     });
 
@@ -34,15 +34,12 @@ export default function AdminLoginPage() {
       return;
     }
 
-    // Parse the redirect target securely
     const params = new URLSearchParams(window.location.search);
     const redirectParam = params.get('redirect');
 
     const redirectTo = isSafeLocalUrl(redirectParam) ? redirectParam! : '/';
 
-    // FIX: Using window.location.replace instead of router.push() forces the browser
-    // to perform a native redirect. This guarantees the browser has fully written
-    // the HTTP-only cookie before the next page security check is run on Vercel.
+    // Native browser-level redirect to prevent cookie-write race conditions
     window.location.replace(redirectTo);
   }
 
