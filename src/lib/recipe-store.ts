@@ -154,16 +154,16 @@ export type AdminRecipe = {
 };
 
 const filePath = path.join(process.cwd(), 'recipes-data.json');
-
 const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
 export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
   if (isVercelKVActive) {
     try {
-      let data = await kv.get<AdminRecipe[]>('recipes_data');
+      // FIX: Removed in-memory cached variables entirely. All serverless containers 
+      // now query the cloud database in real-time, enforcing perfect synchronization.
+      const data = await kv.get<AdminRecipe[]>('recipes_data');
       
-      // Auto-Seeder: If the Upstash database is completely empty on first load,
-      // dynamically seed it using the local compiled JSON file data!
+      // Auto-Seeder
       if (!data || data.length === 0) {
         console.log('Upstash database is empty. Auto-seeding from recipes-data.json...');
         try {
@@ -171,7 +171,6 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
             const localData = JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
             if (localData && localData.length > 0) {
               await kv.set('recipes_data', localData);
-              console.log(`Auto-seeded ${localData.length} recipes to Upstash successfully.`);
               return localData;
             }
           }
@@ -187,6 +186,7 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
     }
   }
 
+  // Local fallback
   try {
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf8');

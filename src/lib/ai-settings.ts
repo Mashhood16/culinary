@@ -11,7 +11,9 @@ export type AISettings = {
 };
 
 const filePath = path.join(process.cwd(), 'settings-data.json');
+const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
+// Restored: Fallback settings object used during first-time initialization
 const defaultSettings: AISettings = {
   enabled: true,
   model: 'meta-llama/llama-3.1-8b-instruct',
@@ -20,16 +22,11 @@ const defaultSettings: AISettings = {
   apiKey: '',
 };
 
-const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
-
 export async function getAISettings(): Promise<AISettings> {
-  // If running on Vercel with KV linked, load from the cloud database
   if (isVercelKVActive) {
     try {
-      let data = await kv.get<AISettings>('settings_data');
+      const data = await kv.get<AISettings>('settings_data');
       
-      // Auto-Seeder: If the Upstash database is completely empty on first load,
-      // dynamically seed it using the local compiled JSON file data!
       if (!data) {
         console.log('Upstash settings are empty. Auto-seeding from settings-data.json...');
         try {
@@ -51,7 +48,6 @@ export async function getAISettings(): Promise<AISettings> {
     }
   }
 
-  // Local fallback: read file from disk
   try {
     if (!fs.existsSync(filePath)) {
       fs.writeFileSync(filePath, JSON.stringify(defaultSettings, null, 2), 'utf8');
