@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    // Whitelist external domains so Next.js is authorized to render and optimize them
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com', // Securely allows Vercel Blob storage images
+      },
+    ],
+  },
   async headers() {
     return [
       {
