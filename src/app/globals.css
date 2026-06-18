@@ -23,8 +23,14 @@ html { scroll-behavior: smooth; }
   Globally overrides your central page containers to reduce empty space 
   on widescreen monitors, expanding the max-width from 1280px to 1440px.
 */
+/* Remove the !important and the fixed 1440px width */
 .max-w-7xl {
-  max-width: 1440px !important; 
+  width: 100%;           /* Takes up full width on mobile */
+  max-width: 1440px;      /* Caps at 1440px on large screens */
+  margin-left: auto;      /* Centers the container */
+  margin-right: auto;     /* Centers the container */
+  padding-left: 1rem;     /* Adds a little breathing room on mobile */
+  padding-right: 1rem;
 }
 
 /* Premium Custom Scrollbar */
@@ -161,13 +167,16 @@ a { text-decoration: none; }
   }
 }
 
-/* This ensures no element can ever be wider than the phone screen */
+/* Force everything to fit the screen width */
 html, body {
-  max-width: 100vw;
   overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* This is a standard CSS best practice for all modern projects */
-*, *::before, *::after {
+/* Ensure no element is wider than the screen */
+* {
+  max-width: 100vw;
   box-sizing: border-box;
 }
