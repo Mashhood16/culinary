@@ -160,3 +160,14 @@ a { text-decoration: none; }
     box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 12px 24px rgba(75, 51, 25, 0.08);
   }
 }
+
+/* This ensures no element can ever be wider than the phone screen */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* This is a standard CSS best practice for all modern projects */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
