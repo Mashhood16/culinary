@@ -70,6 +70,18 @@ function computeTotalTime(prep: string, cook: string) {
   return `${prepMinutes + cookMinutes} min`;
 }
 
+function getImageInputValue(image: string | { url?: string; src?: string; alt?: string; status?: string } | null | undefined) {
+  if (typeof image === 'string') {
+    return image;
+  }
+
+  if (image && typeof image === 'object') {
+    return image.url || image.src || '';
+  }
+
+  return '';
+}
+
 export default function AdminPage() {
   const router = useRouter();
   const [settings, setSettings] = useState({ 
@@ -171,7 +183,7 @@ export default function AdminPage() {
     setRecipeImageDrafts((current) => {
       const next: Record<string, string> = {};
       adminRecipes.forEach((recipe) => {
-        next[recipe.slug] = current[recipe.slug] ?? recipe.image ?? '';
+        next[recipe.slug] = current[recipe.slug] ?? getImageInputValue(recipe.image);
       });
       return next;
     });
@@ -215,7 +227,7 @@ export default function AdminPage() {
       servings: recipe.servings || 2,
       rating: recipe.rating || 5,
       calories: recipe.calories || '',
-      image: typeof recipe.image === 'string' ? recipe.image : (recipe.image?.url || recipe.image?.src || ''),
+      image: getImageInputValue(recipe.image),
       tags: Array.isArray(recipe.tags) ? recipe.tags.join(', ') : '',
       ingredients: Array.isArray(recipe.ingredients) ? recipe.ingredients.join('\n') : '',
       steps: Array.isArray(recipe.steps) ? recipe.steps.join('\n\n') : '',
@@ -462,8 +474,12 @@ export default function AdminPage() {
 
   async function saveRecipeImage(recipe: AdminRecipe, overrideImageUrl?: string) {
     const draftImage = recipeImageDrafts[recipe.slug];
-    const imageUrl = (overrideImageUrl ?? (typeof draftImage === 'string' ? draftImage : '')).trim();
+    const imageUrl = (overrideImageUrl ?? getImageInputValue(draftImage as any)).trim();
     if (!recipe.slug) return;
+    if (!imageUrl) {
+      setMessage(`Please enter or upload an image for ${recipe.title || recipe.slug}.`);
+      return;
+    }
 
     setSavingRecipeImageSlug(recipe.slug);
     try {
@@ -599,7 +615,7 @@ export default function AdminPage() {
             {[
               { id: 'overview', label: 'Overview' },
               { id: 'recipes', label: 'Recipes' },
-              { id: 'allRecipes', label: 'All Recipes' },
+              { id: 'allRecipes', label: 'Change Image' },
               { id: 'editor', label: 'Editor' },
               { id: 'import', label: 'Import' },
               { id: 'settings', label: 'AI Settings' },
@@ -761,8 +777,8 @@ export default function AdminPage() {
             <div className="mt-8 rounded-3xl border border-stone-200 bg-white p-6 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-xl font-semibold text-stone-900">All recipes</h2>
-                  <p className="mt-1 text-sm text-stone-600">Filter the full catalog and update recipe images one by one.</p>
+                  <h2 className="text-xl font-semibold text-stone-900">Change image</h2>
+                  <p className="mt-1 text-sm text-stone-600">Filter the catalog and update recipe images one by one.</p>
                 </div>
               </div>
 
