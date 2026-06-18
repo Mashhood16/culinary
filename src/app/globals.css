@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  
+  /* 1. SECURELY EXTRACTED THE EXACT COLORS FROM YOUR ATTACHED PALETTE */
+  --color-black: #0F0E0E;       /* Top Block: Charcoal-black */
+  --color-dark-brown: #231710;  /* 2nd Block: Rich Espresso Brown */
+  --color-warm-brown: #4B3319;  /* 3rd Block: Warm Coffee Bronze */
+  --color-cream: #E3DFD2;       /* Bottom Block: Warm Linen Cream */
+  
+  --surface: #FCFAF7;           /* Warm, soft ivory paper for card surfaces */
+  --border: rgba(75, 51, 25, 0.12); /* Soft bronze borders */
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 
+  Globally overrides your central page containers to reduce empty space 
+  on widescreen monitors, expanding the max-width from 1280px to 1440px.
+*/
+.max-w-7xl {
+  max-width: 1440px !important; 
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #E3DFD2; /* Warm Linen Cream */
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #0c0a09; /* Dark stone-950 */
+}
+::-webkit-scrollbar-thumb {
+  background: #b5a28c; /* stone-300 */
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4B3319; /* Warm Coffee Bronze */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #44403c; /* Dark stone-700 */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #78716c; /* Dark stone-500 */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::selection { background: rgba(251, 191, 36, 0.25); color: #1c1917; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* Premium, warm parchment-like gradient background using your Linen Cream base */
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.45), transparent 40%),
+    linear-gradient(180deg, var(--color-cream) 0%, #EBE8DE 45%, #F5F3EC 100%);
+  color: var(--color-dark-brown);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transitions */
+}
+
+/* 
+  2. COMPREHENSIVE LIGHT-MODE OVERRIDES
+  Bypasses basic light-greys and maps them to your premium coffee-and-cream colors
+*/
+html:not(.dark) .bg-stone-50,
+html:not(.dark) .bg-stone-100 {
+  background-color: #F1EFE6 !important; /* Warm, rich sand surface */
+}
+
+html:not(.dark) .border-stone-200,
+html:not(.dark) .border-stone-300 {
+  border-color: rgba(75, 51, 25, 0.12) !important; /* Soft, warm bronze borders */
+}
+
+html:not(.dark) .text-stone-900,
+html:not(.dark) .text-stone-800 {
+  color: var(--color-dark-brown) !important; /* Deep dark espresso text */
+}
+
+html:not(.dark) .text-stone-700 {
+  color: var(--color-warm-brown) !important; /* Warm coffee bronze secondary text */
+}
+
+html:not(.dark) .text-stone-600 {
+  color: #6F5E4E !important; /* Muted warm taupe text */
+}
+
+
+/* 
+  3. COMPREHENSIVE DARK-MODE CONFIGURATION
+*/
+html.dark body {
+  background: linear-gradient(180deg, #111827 0%, #1f2937 45%, #111827 100%);
+  color: #f5f5f4;
+}
+
+html.dark main {
+  background: linear-gradient(180deg, #111827 0%, #1f2937 45%, #111827 100%) !important;
+  color: #f5f5f4 !important;
+}
+
+html.dark body {
+  background:
+    radial-gradient(circle at top, rgba(251, 191, 36, 0.08), transparent 18%),
+    linear-gradient(180deg, #111827 0%, #1f2937 45%, #111827 100%);
+}
+
+html.dark .bg-white {
+  background-color: #111827 !important;
+  color: #f5f5f4 !important;
+}
+
+html.dark .bg-stone-50,
+html.dark .bg-stone-100 {
+  background-color: #18181b !important;
+}
+
+html.dark .border-stone-200,
+html.dark .border-stone-300 {
+  border-color: #3f3f46 !important;
+}
+
+html.dark .text-stone-900 { color: #f5f5f4 !important; }
+html.dark .text-stone-800 { color: #e7e5e4 !important; }
+html.dark .text-stone-700 { color: #d6d3d1 !important; }
+html.dark .text-stone-600 { color: #a8a29e !important; }
+
+html.dark {
+  color-scheme: dark;
+}
+
+a { text-decoration: none; }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .glass-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 18px 40px rgba(75, 51, 25, 0.1); /* Adjusted to match warm shadows */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .soft-ring {
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.25), 0 12px 24px rgba(75, 51, 25, 0.08);
+  }
+}

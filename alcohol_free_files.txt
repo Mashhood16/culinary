@@ -1,0 +1,12 @@
+﻿C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\server\app\admin\page.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\server\app\api\admin\recipes\route.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\server\app\recipes\page.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\server\app\page.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\static\chunks\app\admin\page.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\static\chunks\app\recipes\page.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\.next\static\chunks\app\page.js
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\prisma\seed.ts
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\scripts\import-recipe-catalog.mjs
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\src\app\admin\page.tsx
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\src\lib\recipe-catalog.json
+C:\Users\mashh\.gemini\antigravity\scratch\global-recipe-hub\src\lib\recipes-data.json

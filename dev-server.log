@@ -1,0 +1,230 @@
+
+> global-recipe-hub@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 3.6s
+ ○ Compiling /recipes ...
+ ✓ Compiled /recipes in 2.8s (534 modules)
+ GET /recipes 200 in 3333ms
+ ✓ Compiled in 659ms (259 modules)
+ GET /recipes 200 in 195ms
+ ○ Compiling /cuisines ...
+ ✓ Compiled /cuisines in 706ms (526 modules)
+ GET /cuisines 200 in 1030ms
+ ○ Compiling /drinks ...
+ ✓ Compiled /drinks in 529ms (528 modules)
+ GET /drinks 200 in 674ms
+ ✓ Compiled /desserts in 343ms (530 modules)
+ GET /desserts 200 in 449ms
+ ○ Compiling /recipes/[slug] ...
+ ✓ Compiled /recipes/[slug] in 563ms (537 modules)
+ GET /recipes/pakistani-chicken-biryani 200 in 1799ms
+ ✓ Compiled / in 468ms (538 modules)
+ GET / 200 in 674ms
+ ✓ Compiled /_not-found in 271ms (541 modules)
+ GET /_next/static/css/app/layout.css?v=1781365088569 404 in 483ms
+ GET /_next/static/chunks/main-app.js?v=1781365088569 404 in 472ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 472ms
+ GET /_next/static/chunks/app/layout.js 404 in 471ms
+ GET / 200 in 54ms
+ GET /_next/static/css/app/layout.css?v=1781365091655 404 in 74ms
+ GET /_next/static/chunks/main-app.js?v=1781365091655 404 in 84ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 85ms
+ GET /_next/static/chunks/app/layout.js 404 in 84ms
+ ✓ Compiled /favicon.ico in 166ms (321 modules)
+ GET /favicon.ico 200 in 288ms
+ ✓ Compiled in 1541ms (544 modules)
+ ✓ Compiled in 800ms (544 modules)
+ ✓ Compiled /_not-found in 312ms (533 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1323ms (756 modules)
+ GET /_next/static/css/app/layout.css?v=1781367488566 500 in 5178ms
+ GET /recipes/pakistani-chicken-biryani 404 in 249ms
+ GET /recipes/pakistani-chicken-biryani 404 in 255ms
+ GET /recipes/pakistani-chicken-biryani 404 in 246ms
+ GET /recipes/pakistani-chicken-biryani 500 in 910ms
+ GET /recipes/pakistani-chicken-biryani 500 in 870ms
+ GET /recipes/pakistani-chicken-biryani 500 in 807ms
+ GET /recipes/pakistani-chicken-biryani 500 in 942ms
+ GET /recipes/pakistani-chicken-biryani 200 in 1264ms
+ GET /recipes/pakistani-chicken-biryani 200 in 99ms
+ GET /_next/static/css/app/layout.css?v=1781367509469 500 in 58ms
+ GET /_next/static/chunks/webpack.js?v=1781367509469 500 in 86ms
+ GET /_next/static/chunks/main-app.js?v=1781367509469 500 in 83ms
+ GET /_next/static/chunks/app-pages-internals.js 500 in 78ms
+ GET /_next/static/chunks/app/recipes/%5Bslug%5D/page.js 500 in 38ms
+ ✓ Compiled in 1019ms (751 modules)
+ ✓ Compiled in 544ms (751 modules)
+ ✓ Compiled in 558ms (751 modules)
+ ✓ Compiled in 353ms (751 modules)
+ ✓ Compiled in 1286ms (766 modules)
+ ✓ Compiled in 551ms (447 modules)
+ ✓ Compiled in 186ms (447 modules)
+ ✓ Compiled in 146ms (447 modules)
+ ✓ Compiled in 147ms (447 modules)
+ ✓ Compiled in 615ms (447 modules)
+ ✓ Compiled in 1778ms (750 modules)
+ ✓ Compiled in 1551ms (752 modules)
+ ✓ Compiled in 544ms (447 modules)
+ ✓ Compiled in 400ms (447 modules)
+ ✓ Compiled in 2.1s (447 modules)
+ ✓ Compiled in 363ms (447 modules)
+ ✓ Compiled in 1326ms (766 modules)
+ ✓ Compiled in 537ms (447 modules)
+ ✓ Compiled in 141ms (447 modules)
+ ✓ Compiled in 490ms (769 modules)
+ ✓ Compiled in 117ms (448 modules)
+ ✓ Compiled in 292ms (769 modules)
+ ✓ Compiled in 179ms (448 modules)
+ ✓ Compiled in 681ms (769 modules)
+ ✓ Compiled in 951ms (769 modules)
+ ✓ Compiled in 448ms (769 modules)
+ ✓ Compiled in 243ms (448 modules)
+ ✓ Compiled in 2.6s (769 modules)
+ ✓ Compiled in 557ms (448 modules)
+ ✓ Compiled in 454ms (448 modules)
+ ✓ Compiled in 1272ms (779 modules)
+ ✓ Compiled in 3s (779 modules)
+ ✓ Compiled in 573ms (779 modules)
+ ✓ Compiled in 555ms (779 modules)
+ ✓ Compiled in 512ms (779 modules)
+ ✓ Compiled in 423ms (779 modules)
+ ✓ Compiled in 888ms (779 modules)
+ ✓ Compiled in 785ms (772 modules)
+ ✓ Compiled in 4.1s (769 modules)
+ ✓ Compiled in 667ms (448 modules)
+ ✓ Compiled in 272ms (448 modules)
+ ✓ Compiled in 1670ms (448 modules)
+ ✓ Compiled in 176ms (448 modules)
+ ✓ Compiled in 143ms (448 modules)
+ ✓ Compiled in 296ms (448 modules)
+ ✓ Compiled in 182ms (448 modules)
+ ✓ Compiled in 909ms (769 modules)
+ ✓ Compiled in 794ms (771 modules)
+ ✓ Compiled in 686ms (771 modules)
+ ✓ Compiled in 449ms (771 modules)
+ ✓ Compiled in 590ms (771 modules)
+ ✓ Compiled in 151ms (449 modules)
+ ✓ Compiled in 472ms (771 modules)
+ ✓ Compiled in 147ms (449 modules)
+ ✓ Compiled in 303ms (771 modules)
+ ✓ Compiled in 138ms (449 modules)
+ ✓ Compiled in 119ms (449 modules)
+ ✓ Compiled in 275ms (757 modules)
+ ✓ Compiled in 312ms (449 modules)
+ ✓ Compiled in 165ms (449 modules)
+ ✓ Compiled in 344ms (771 modules)
+ ✓ Compiled in 264ms (771 modules)
+ ✓ Compiled in 369ms (771 modules)
+ ✓ Compiled in 295ms (771 modules)
+ ✓ Compiled in 353ms (771 modules)
+ ✓ Compiled in 295ms (771 modules)
+ ✓ Compiled in 228ms (771 modules)
+ ✓ Compiled in 415ms (771 modules)
+ ✓ Compiled in 327ms (771 modules)
+ ✓ Compiled in 343ms (771 modules)
+ ✓ Compiled in 328ms (771 modules)
+ ✓ Compiled in 278ms (771 modules)
+ ✓ Compiled in 378ms (771 modules)
+ ✓ Compiled in 234ms (771 modules)
+ ✓ Compiled in 722ms (771 modules)
+ ✓ Compiled in 454ms (449 modules)
+ ✓ Compiled in 263ms (449 modules)
+ ✓ Compiled in 400ms (449 modules)
+ ✓ Compiled in 2.6s (757 modules)
+ ✓ Compiled in 1683ms (771 modules)
+ ✓ Compiled in 660ms (449 modules)
+ ✓ Compiled in 432ms (449 modules)
+ ✓ Compiled in 603ms (449 modules)
+ ✓ Compiled in 618ms (757 modules)
+ ✓ Compiled in 2.7s (449 modules)
+ ✓ Compiled in 2s (757 modules)
+ ✓ Compiled in 2.6s (449 modules)
+ ✓ Compiled in 249ms (449 modules)
+ ✓ Compiled in 1980ms (757 modules)
+ ✓ Compiled in 621ms (771 modules)
+ ✓ Compiled in 1088ms (757 modules)
+ ✓ Compiled in 1935ms (771 modules)
+ ✓ Compiled in 127ms (449 modules)
+ ✓ Compiled in 143ms (449 modules)
+ ✓ Compiled in 204ms (449 modules)
+ ✓ Compiled in 1349ms (771 modules)
+ ✓ Compiled in 177ms (449 modules)
+ ✓ Compiled in 232ms (449 modules)
+ ✓ Compiled in 121ms (449 modules)
+ ✓ Compiled in 123ms (449 modules)
+ ✓ Compiled in 142ms (449 modules)
+ ✓ Compiled in 157ms (449 modules)
+ ✓ Compiled in 268ms (449 modules)
+ ✓ Compiled in 136ms (449 modules)
+ ✓ Compiled in 214ms (449 modules)
+ ✓ Compiled in 145ms (449 modules)
+ ✓ Compiled in 386ms (757 modules)
+ ✓ Compiled in 152ms (449 modules)
+ ✓ Compiled in 370ms (771 modules)
+ ✓ Compiled in 404ms (768 modules)
+ ✓ Compiled in 241ms (450 modules)
+ ✓ Compiled in 478ms (768 modules)
+ ✓ Compiled in 177ms (450 modules)
+ ✓ Compiled in 1270ms (768 modules)
+ ✓ Compiled in 532ms (754 modules)
+ ✓ Compiled in 384ms (768 modules)
+ ✓ Compiled in 258ms (768 modules)
+ ✓ Compiled in 239ms (768 modules)
+ ✓ Compiled in 414ms (768 modules)
+ ✓ Compiled in 123ms (450 modules)
+ ✓ Compiled in 305ms (768 modules)
+ ✓ Compiled in 418ms (768 modules)
+ ✓ Compiled in 195ms (768 modules)
+ ✓ Compiled in 198ms (450 modules)
+ ✓ Compiled in 174ms (450 modules)
+ ✓ Compiled in 128ms (450 modules)
+ ✓ Compiled in 1149ms (754 modules)
+ ✓ Compiled in 398ms (768 modules)
+ ✓ Compiled in 467ms (754 modules)
+ ✓ Compiled in 619ms (768 modules)
+ ✓ Compiled in 303ms (768 modules)
+ ✓ Compiled in 362ms (768 modules)
+ ✓ Compiled in 2.4s (770 modules)
+ ✓ Compiled in 262ms (756 modules)
+ ✓ Compiled in 1034ms (756 modules)
+ ✓ Compiled in 190ms (451 modules)
+ ✓ Compiled in 1113ms (756 modules)
+ ✓ Compiled in 252ms (756 modules)
+ ✓ Compiled in 274ms (756 modules)
+ ✓ Compiled in 1295ms (770 modules)
+ ✓ Compiled in 1091ms (770 modules)
+ ✓ Compiled in 1174ms (770 modules)
+ ✓ Compiled in 322ms (770 modules)
+ ✓ Compiled in 1185ms (770 modules)
+ ✓ Compiled in 1072ms (770 modules)
+ ✓ Compiled in 2s (770 modules)
+ ✓ Compiled in 141ms (451 modules)
+ ✓ Compiled in 423ms (770 modules)
+ ✓ Compiled in 191ms (451 modules)
+ ✓ Compiled in 313ms (770 modules)
+ ✓ Compiled in 159ms (451 modules)
+ ✓ Compiled in 144ms (451 modules)
+ ✓ Compiled in 1935ms (770 modules)
+ ✓ Compiled in 153ms (451 modules)
+ ✓ Compiled in 133ms (451 modules)
+ ✓ Compiled in 274ms (770 modules)
+ ✓ Compiled in 666ms (451 modules)
+ ✓ Compiled in 186ms (451 modules)
+ ✓ Compiled in 121ms (451 modules)
+ ✓ Compiled in 1037ms (451 modules)
+ ✓ Compiled in 402ms (451 modules)
+ ✓ Compiled in 232ms (451 modules)
+ ✓ Compiled in 1286ms (451 modules)
+ ✓ Compiled in 932ms (770 modules)
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3004
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 3.6s
