@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com', // Securely allows Vercel Blob storage images
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com', // Authorizes loading optimized images from your Cloudinary account
+      },
     ],
   },
   async headers() {

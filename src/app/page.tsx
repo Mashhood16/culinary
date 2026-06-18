@@ -67,8 +67,10 @@ export default async function Home() {
                   <div className="mt-5 h-48 w-full rounded-3xl overflow-hidden bg-stone-800">
                     <Image 
                       src={getImageUrl(featured.image, { width: 800, height: 480 })} 
-                      alt={typeof featured.image === 'object' ? featured.image.alt : featured.title} 
-                      width={800} height={480} className="h-full w-full object-cover" 
+                      alt={typeof featured.image === 'object' && featured.image !== null ? featured.image.alt : featured.title} 
+                      width={800} 
+                      height={480} 
+                      className="h-full w-full object-cover" 
                       unoptimized 
                     />
                   </div>
@@ -106,8 +108,9 @@ export default async function Home() {
                   {recipe.image ? (
                     <Image 
                       src={getImageUrl(recipe.image, { width: 640, height: 400 })} 
-                      alt={typeof recipe.image === 'object' ? recipe.image.alt : recipe.title} 
-                      width={640} height={400} 
+                      alt={typeof recipe.image === 'object' && recipe.image !== null ? recipe.image.alt : recipe.title} 
+                      width={640} 
+                      height={400} 
                       sizes="(max-width: 768px) 100vw, 320px"
                       unoptimized
                       className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 

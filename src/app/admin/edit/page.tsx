@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { getImageUrl } from '@/lib/recipe-image';
 import Link from 'next/link';
 import type { AdminRecipe } from '@/lib/recipe-store';
 
@@ -314,7 +315,11 @@ function RecipeEditorContent() {
 
           <label className="block text-sm font-medium text-stone-700 rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-4">
             Image URL
-            <input value={recipeForm.image} onChange={(e) => setRecipeForm({ ...recipeForm, image: e.target.value })} className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3" />
+            <input 
+              value={typeof recipeForm.image === 'string' ? recipeForm.image : (recipeForm.image?.publicId || '')} 
+              onChange={(e) => setRecipeForm({ ...recipeForm, image: e.target.value })} 
+              className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3" 
+            />
           </label>
 
           <label className="block text-sm font-medium text-stone-700 rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-4">
@@ -323,10 +328,14 @@ function RecipeEditorContent() {
           </label>
 
           {recipeForm.image ? (
-            <div className="rounded-2xl border border-stone-200 bg-stone-50 p-3">
-              <img src={recipeForm.image} alt="Preview" className="h-48 w-full rounded-xl object-cover" />
-            </div>
-          ) : null}
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-3">
+                <img 
+                  src={typeof recipeForm.image === 'string' ? recipeForm.image : (recipeForm.image?.publicId || '')} 
+                  alt="Preview" 
+                  className="h-48 w-full rounded-xl object-cover" 
+                />
+              </div>
+            ) : null}
 
           <textarea value={recipeForm.description} onChange={(e) => setRecipeForm({ ...recipeForm, description: e.target.value })} placeholder="Short description" rows={3} className="rounded-2xl border border-stone-300 p-3" />
           <textarea value={recipeForm.history} onChange={(e) => setRecipeForm({ ...recipeForm, history: e.target.value })} placeholder="Recipe history" rows={4} className="rounded-2xl border border-stone-300 p-3" />

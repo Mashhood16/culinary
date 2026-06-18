@@ -1,16 +1,11 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { loadPublicRecipes } from '@/lib/recipe-store';
-import ImageWithSkeleton from '@/components/ImageWithSkeleton';
 import RecipeFilters from '@/components/RecipeFilters';
-import Image from 'next/image'; // 1. Import Image
-import { getImageUrl } from '@/lib/recipe-image'; // 2. Import helper
+import Image from 'next/image'; 
+import { getImageUrl } from '@/lib/recipe-image'; 
 
-// Replace this:
-// export const dynamic = 'force-dynamic';
-
-// With this:
-export const revalidate = 60; // The page will be cached for 60 seconds, making it instant for 99% of users.
+export const revalidate = 60; // Page cached for 60 seconds
 
 interface PageProps {
   searchParams: Promise<{ cuisine?: string; mealType?: string; q?: string }> | { cuisine?: string; mealType?: string; q?: string };
@@ -59,8 +54,6 @@ export default async function RecipesPage({ searchParams }: PageProps) {
             </p>
           </div>
 
-          {/* Render the full-width dynamic search & select filter bar */}
-          {/* Removed max-w-4xl from fallback skeleton so it perfectly matches the expanded inputs */}
           <Suspense fallback={<div className="h-12 bg-stone-100/50 dark:bg-stone-900/50 rounded-2xl animate-pulse w-full" />}>
             <RecipeFilters cuisines={uniqueCuisines} mealTypes={uniqueMealTypes} />
           </Suspense>
@@ -80,7 +73,7 @@ export default async function RecipesPage({ searchParams }: PageProps) {
                     {recipe.image ? (
                       <Image 
                         src={getImageUrl(recipe.image, { width: 640, height: 400 })}
-                        alt={typeof recipe.image === 'object' ? recipe.image.alt : recipe.title}
+                        alt={typeof recipe.image === 'object' && recipe.image !== null ? recipe.image.alt : recipe.title}
                         width={640}
                         height={400}
                         sizes="(max-width: 768px) 100vw, 320px"

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { loadPublicRecipes } from '@/lib/recipe-store';
 import { summarizeMethodStep } from '@/lib/method-summary';
 import { getImageUrl } from '@/lib/recipe-image';
 import ServingScaler from './ServingScaler';
@@ -23,13 +22,19 @@ export default function RecipeDetailPage({ params }: { params: { slug: string } 
     let isMounted = true;
     async function fetchData() {
       try {
-        const publicRecipes = await loadPublicRecipes();
+        // Fetch data through your pre-existing backend API route
+        const res = await fetch('/api/recipes');
+        if (!res.ok) throw new Error('Failed to fetch recipes from server');
+        
+        const publicRecipes: AdminRecipe[] = await res.json();
         const found = publicRecipes.find((item) => item.slug === params.slug);
+        
         if (isMounted) {
           setRecipe(found || null);
           setLoading(false);
         }
       } catch (err) {
+        console.error("Error loading recipe data:", err);
         if (isMounted) setLoading(false);
       }
     }
@@ -38,7 +43,7 @@ export default function RecipeDetailPage({ params }: { params: { slug: string } 
   }, [params.slug]);
 
   if (loading) {
-    return <main className="min-h-screen bg-stone-50 p-10 text-center font-sans">Loading...</main>;
+    return <main className="min-h-screen bg-stone-50 p-10 text-center font-sans dark:bg-stone-900">Loading...</main>;
   }
 
   if (!recipe) notFound();
@@ -98,7 +103,6 @@ export default function RecipeDetailPage({ params }: { params: { slug: string } 
             </div>
 
             <div className="space-y-4 rounded-3xl border border-stone-200 bg-stone-50 p-6 text-sm text-stone-700 shadow-sm dark:border-stone-800 dark:bg-stone-950/95 dark:text-stone-100">
-               {/* Details grid remains same as provided previously */}
                <p><strong>Country:</strong> {recipe.country}</p>
                <p><strong>Difficulty:</strong> {recipe.difficulty}</p>
             </div>

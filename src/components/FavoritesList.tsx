@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // 1. Import Image
-import { getImageUrl } from '@/lib/recipe-image'; // 2. Import helper
+import Image from 'next/image'; 
+import { getImageUrl } from '@/lib/recipe-image'; 
 
 export default function FavoritesList() {
   const [favorites, setFavorites] = useState<any[]>([]);
@@ -39,7 +39,7 @@ export default function FavoritesList() {
                 {recipe.image ? (
                   <Image 
                     src={getImageUrl(recipe.image, { width: 640, height: 400 })}
-                    alt={typeof recipe.image === 'object' ? recipe.image.alt : recipe.title}
+                    alt={typeof recipe.image === 'object' && recipe.image !== null ? recipe.image.alt : recipe.title}
                     width={640}
                     height={400}
                     sizes="(max-width: 768px) 100vw, 320px"
