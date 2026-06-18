@@ -115,7 +115,11 @@ function normalizeRecipe(recipe: Record<string, unknown>): AdminRecipe {
     image: String(recipe.image || (recipe.image_url as string) || ''),
     alcoholFree: Boolean((recipe.alcoholFree as boolean | undefined) ?? (recipe.contains_alcohol as boolean | undefined) === false),
     containsAlcohol: Boolean(recipe.containsAlcohol ?? recipe.contains_alcohol ?? false),
+<<<<<<< HEAD
     status: String(recipe.status || '').trim().toLowerCase(),
+=======
+    status: String(recipe.status || ''),
+>>>>>>> origin/main
     sourceType: String(recipe.source_type || ''),
     licenseNote: String(recipe.license_note || ''),
     foodSafetyNote: String(recipe.food_safety_note || ''),
@@ -143,7 +147,10 @@ export type AdminRecipe = {
   rating: number;
   calories: string;
   tags: string[];
+<<<<<<< HEAD
   image: string;
+=======
+>>>>>>> origin/main
   totalTime?: string;
   alcoholFree?: boolean;
   containsAlcohol?: boolean;
@@ -156,6 +163,10 @@ export type AdminRecipe = {
   ingredients?: string[];
   steps?: string[];
   featured?: boolean;
+<<<<<<< HEAD
+=======
+  image: string | { publicId: string; alt: string; status?: string }; 
+>>>>>>> origin/main
 };
 
 const filePath = path.join(process.cwd(), 'recipes-data.json');
@@ -204,14 +215,23 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
 
 export async function loadPublicRecipes() {
   const allRecipes = await loadAllRecipes();
+<<<<<<< HEAD
   return allRecipes.filter(recipe => {
     const status = (recipe.status || '').trim().toLowerCase();
     return status === 'published' || status === 'featured';
   });
+=======
+  return allRecipes.filter(recipe => 
+    recipe.status !== 'draft' && 
+    recipe.status !== 'archived' && 
+    recipe.status !== 'deleted'
+  );
+>>>>>>> origin/main
 }
 
 export async function loadAllRecipes() {
   const adminRecipes = await loadAdminRecipes();
+<<<<<<< HEAD
 
   // If the admin store already contains records, treat that as the source of truth.
   // This prevents stale static placeholder catalog entries from being mixed into the
@@ -224,6 +244,8 @@ export async function loadAllRecipes() {
     }));
   }
 
+=======
+>>>>>>> origin/main
   const merged = new Map<string, AdminRecipe>();
 
   for (const recipe of (rawRecipeCatalog.recipes ?? []).map(normalizeRecipe)) {

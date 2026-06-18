@@ -1,10 +1,18 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { loadPublicRecipes } from '@/lib/recipe-store';
+<<<<<<< HEAD
 import ImageWithSkeleton from '@/components/ImageWithSkeleton';
 import RecipeFilters from '@/components/RecipeFilters';
 
 export const dynamic = 'force-dynamic';
+=======
+import RecipeFilters from '@/components/RecipeFilters';
+import Image from 'next/image'; 
+import { getImageUrl } from '@/lib/recipe-image'; 
+
+export const revalidate = 60; // Page cached for 60 seconds
+>>>>>>> origin/main
 
 interface PageProps {
   searchParams: Promise<{ cuisine?: string; mealType?: string; q?: string }> | { cuisine?: string; mealType?: string; q?: string };
@@ -53,8 +61,11 @@ export default async function RecipesPage({ searchParams }: PageProps) {
             </p>
           </div>
 
+<<<<<<< HEAD
           {/* Render the full-width dynamic search & select filter bar */}
           {/* Removed max-w-4xl from fallback skeleton so it perfectly matches the expanded inputs */}
+=======
+>>>>>>> origin/main
           <Suspense fallback={<div className="h-12 bg-stone-100/50 dark:bg-stone-900/50 rounded-2xl animate-pulse w-full" />}>
             <RecipeFilters cuisines={uniqueCuisines} mealTypes={uniqueMealTypes} />
           </Suspense>
@@ -66,6 +77,7 @@ export default async function RecipesPage({ searchParams }: PageProps) {
             {filteredRecipes.map((recipe) => (
               <Link 
                 key={recipe.slug} 
+<<<<<<< HEAD
                 href={`/recipes/${recipe.slug}`}                className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95"
               >
                 <div>
@@ -79,6 +91,26 @@ export default async function RecipesPage({ searchParams }: PageProps) {
                       />
                     ) : null}
                     
+=======
+                href={`/recipes/${recipe.slug}`} 
+                className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95"
+              >
+                <div>
+                  <div className="relative overflow-hidden rounded-2xl h-40 w-full bg-stone-100 dark:bg-stone-800">
+                    {recipe.image ? (
+                      <Image 
+                        src={getImageUrl(recipe.image, { width: 640, height: 400 })}
+                        alt={typeof recipe.image === 'object' && recipe.image !== null ? recipe.image.alt : recipe.title}
+                        width={640}
+                        height={400}
+                        sizes="(max-width: 768px) 100vw, 320px"
+                        unoptimized
+                        className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center text-stone-400 text-xs">No Image</div>
+                    )}
+>>>>>>> origin/main
                     <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">
                       {recipe.cuisine}
                     </span>

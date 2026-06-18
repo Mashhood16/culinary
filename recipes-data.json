@@ -11848,7 +11848,11 @@
     "title": "Zunka Bhakar",
     "cuisine": "Indian",
     "country": "Indian",
+<<<<<<< HEAD
     "mealType": "Mains",
+=======
+    "mealType": "Maharashtra and Western Indian Cuisine",
+>>>>>>> origin/main
     "foodType": "main",
     "description": "A practical home-style Zunka Bhakar recipe from Indian cuisine",
     "history": "",
@@ -11865,7 +11869,15 @@
       "main",
       "vegetarian"
     ],
+<<<<<<< HEAD
     "image": "",
+=======
+    "image": {
+      "publicId": "culinarriest/recipes/indian-zunka-bhakar",
+      "alt": "Zunka Bhakar",
+      "status": "approved"
+    },
+>>>>>>> origin/main
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",

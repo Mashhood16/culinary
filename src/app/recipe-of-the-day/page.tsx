@@ -3,6 +3,10 @@ import Image from 'next/image';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import { summarizeMethodStep } from '@/lib/method-summary';
 import QuickEditButton from '@/components/QuickEditButton';
+<<<<<<< HEAD
+=======
+import { getImageUrl } from '@/lib/recipe-image';
+>>>>>>> origin/main
 
 // 1. Force the page to re-randomize every time, but render it on the server.
 export const revalidate = 0; 
@@ -49,11 +53,20 @@ export default async function RecipeOfTheDayPage() {
         
         {featured.image && (
           <Image 
+<<<<<<< HEAD
             src={featured.image} 
             alt={featured.title} 
             width={800} 
             height={400} 
             className="mt-6 w-full h-[300px] object-cover rounded-3xl"
+=======
+            src={getImageUrl(featured.image, { width: 800, height: 400 })} 
+            alt={typeof featured.image === 'object' && featured.image !== null ? featured.image.alt : featured.title} 
+            width={800} 
+            height={400} 
+            unoptimized
+            className="rounded-2xl object-cover"
+>>>>>>> origin/main
           />
         )}
 
