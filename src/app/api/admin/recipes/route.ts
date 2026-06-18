@@ -1,13 +1,12 @@
 import { NextResponse } from 'next/server';
-import { loadAllRecipes, deleteAllRecipes, addAdminRecipe, updateAdminRecipe } from '@/lib/recipe-store';
+import { loadAdminRecipes, deleteAllRecipes, addAdminRecipe, updateAdminRecipe } from '@/lib/recipe-store';
 
 export const dynamic = 'force-dynamic';
 
 // GET /api/admin/recipes
 export async function GET() {
   try {
-    // Added await to safely resolve the async database array before serializing to JSON
-    const recipes = await loadAllRecipes();
+    const recipes = await loadAdminRecipes();
     return NextResponse.json(recipes);
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -19,7 +18,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     await addAdminRecipe(body);
-    return NextResponse.json(await loadAllRecipes());
+    return NextResponse.json(await loadAdminRecipes());
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -34,7 +33,7 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
     }
     await updateAdminRecipe(slug, body);
-    return NextResponse.json(await loadAllRecipes());
+    return NextResponse.json(await loadAdminRecipes());
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
