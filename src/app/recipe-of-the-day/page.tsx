@@ -3,10 +3,9 @@ import Image from 'next/image';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import { summarizeMethodStep } from '@/lib/method-summary';
 import QuickEditButton from '@/components/QuickEditButton';
-<<<<<<< HEAD
-=======
+
 import { getImageUrl } from '@/lib/recipe-image';
->>>>>>> origin/main
+
 
 // 1. Force the page to re-randomize every time, but render it on the server.
 export const revalidate = 0; 
@@ -52,23 +51,25 @@ export default async function RecipeOfTheDayPage() {
         <p className="text-sm uppercase tracking-wider text-amber-600 dark:text-amber-500 font-semibold mt-2">{featured.cuisine}</p>
         
         {featured.image && (
-          <Image 
-<<<<<<< HEAD
-            src={featured.image} 
-            alt={featured.title} 
-            width={800} 
-            height={400} 
-            className="mt-6 w-full h-[300px] object-cover rounded-3xl"
-=======
-            src={getImageUrl(featured.image, { width: 800, height: 400 })} 
-            alt={typeof featured.image === 'object' && featured.image !== null ? featured.image.alt : featured.title} 
-            width={800} 
-            height={400} 
-            unoptimized
-            className="rounded-2xl object-cover"
->>>>>>> origin/main
-          />
-        )}
+  <Image 
+    // Use the utility to get the correct URL regardless of whether 'image' is a string or an object
+    src={getImageUrl(featured.image, { width: 800, height: 400 })} 
+    
+    // Determine the alt text safely
+    alt={
+      typeof featured.image === 'object' && featured.image !== null && 'alt' in featured.image 
+        ? (featured.image.alt || featured.title)
+        : featured.title
+    } 
+    
+    width={800} 
+    height={400} 
+    unoptimized
+    
+    // Combine the styles you wanted
+    className="mt-6 w-full h-[300px] object-cover rounded-3xl"
+  />
+)}
 
         <p className="mt-6 text-lg text-stone-700 dark:text-stone-300 leading-relaxed">{featured.description}</p>
         

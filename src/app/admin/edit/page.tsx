@@ -3,22 +3,19 @@
 import { Suspense, useEffect, useState, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-<<<<<<< HEAD
-=======
-import { getImageUrl } from '@/lib/recipe-image';
->>>>>>> origin/main
 import Link from 'next/link';
 import type { AdminRecipe } from '@/lib/recipe-store';
 
 export const dynamic = 'force-dynamic';
 
-type RecipeForm = Omit<AdminRecipe, 'tags' | 'ingredients' | 'steps' | 'servings' | 'rating'> & {
+type RecipeForm = Omit<AdminRecipe, 'tags' | 'ingredients' | 'steps' | 'servings' | 'rating' | 'image'> & {
   tags: string;
   ingredients: string;
   steps: string;
   slug: string;
   servings: number | '';
   rating: number | '';
+  image: string;
 };
 
 const defaultForm: RecipeForm = {
@@ -131,7 +128,7 @@ function RecipeEditorContent() {
               servings: target.servings || 2,
               rating: target.rating || 5,
               calories: target.calories || '',
-              image: target.image || '',
+              image: typeof target.image === 'string' ? target.image : '',
               tags: Array.isArray(target.tags) ? target.tags.join(', ') : '',
               ingredients: Array.isArray(target.ingredients) ? target.ingredients.join('\n') : '',
               steps: Array.isArray(target.steps) ? target.steps.join('\n\n') : '',
@@ -316,40 +313,38 @@ function RecipeEditorContent() {
             <input value={recipeForm.tags} onChange={(e) => setRecipeForm({ ...recipeForm, tags: e.target.value })} className="mt-1 w-full rounded-2xl border border-stone-300 p-3" />
           </label>
 
-          <label className="block text-sm font-medium text-stone-700 rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-4">
-            Image URL
-<<<<<<< HEAD
-            <input value={recipeForm.image} onChange={(e) => setRecipeForm({ ...recipeForm, image: e.target.value })} className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3" />
-=======
-            <input 
-              value={typeof recipeForm.image === 'string' ? recipeForm.image : (recipeForm.image?.publicId || '')} 
-              onChange={(e) => setRecipeForm({ ...recipeForm, image: e.target.value })} 
-              className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3" 
-            />
->>>>>>> origin/main
-          </label>
+          <div className="rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-4">
+            <label className="block text-sm font-medium text-stone-700">
+              Image URL
+              <input
+                value={recipeForm.image || ''}
+                onChange={(e) => setRecipeForm({ ...recipeForm, image: e.target.value })}
+                className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3"
+              />
+            </label>
 
-          <label className="block text-sm font-medium text-stone-700 rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-4">
-            Upload Image File
-            <input type="file" accept="image/*" onChange={handleImageUpload} className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3" />
-          </label>
+            <label className="mt-3 block text-sm font-medium text-stone-700">
+              Upload image file
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="mt-1 w-full rounded-xl border border-stone-300 bg-white p-3"
+              />
+            </label>
+          </div>
 
           {recipeForm.image ? (
-<<<<<<< HEAD
             <div className="rounded-2xl border border-stone-200 bg-stone-50 p-3">
-              <img src={recipeForm.image} alt="Preview" className="h-48 w-full rounded-xl object-cover" />
+              <Image
+                src={recipeForm.image}
+                alt="Recipe preview"
+                width={800}
+                height={320}
+                className="h-32 w-full rounded-xl object-cover"
+              />
             </div>
           ) : null}
-=======
-              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-3">
-                <img 
-                  src={typeof recipeForm.image === 'string' ? recipeForm.image : (recipeForm.image?.publicId || '')} 
-                  alt="Preview" 
-                  className="h-48 w-full rounded-xl object-cover" 
-                />
-              </div>
-            ) : null}
->>>>>>> origin/main
 
           <textarea value={recipeForm.description} onChange={(e) => setRecipeForm({ ...recipeForm, description: e.target.value })} placeholder="Short description" rows={3} className="rounded-2xl border border-stone-300 p-3" />
           <textarea value={recipeForm.history} onChange={(e) => setRecipeForm({ ...recipeForm, history: e.target.value })} placeholder="Recipe history" rows={4} className="rounded-2xl border border-stone-300 p-3" />

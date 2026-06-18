@@ -2,11 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-<<<<<<< HEAD
-=======
 import Image from 'next/image'; 
 import { getImageUrl } from '@/lib/recipe-image'; 
->>>>>>> origin/main
 
 export default function FavoritesList() {
   const [favorites, setFavorites] = useState<any[]>([]);
@@ -38,22 +35,11 @@ export default function FavoritesList() {
             className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95"
           >
             <div>
-<<<<<<< HEAD
-              <div className="relative overflow-hidden rounded-2xl">
-                {recipe.image ? (
-                  <img 
-                    src={recipe.image} 
-                    alt={recipe.title} 
-                    className="h-40 w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
-                  />
-                ) : null}
-                
-=======
               <div className="relative overflow-hidden rounded-2xl h-40 w-full bg-stone-100 dark:bg-stone-800">
                 {recipe.image ? (
                   <Image 
                     src={getImageUrl(recipe.image, { width: 640, height: 400 })}
-                    alt={typeof recipe.image === 'object' && recipe.image !== null ? recipe.image.alt : recipe.title}
+                    alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
                     width={640}
                     height={400}
                     sizes="(max-width: 768px) 100vw, 320px"
@@ -63,7 +49,6 @@ export default function FavoritesList() {
                 ) : (
                   <div className="flex h-full items-center justify-center text-stone-400 text-xs">No Image</div>
                 )}
->>>>>>> origin/main
                 <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">
                   {recipe.cuisine}
                 </span>
@@ -73,6 +58,7 @@ export default function FavoritesList() {
                 {recipe.title}
               </h3>
             </div>
+            
             <div className="mt-4 border-t border-stone-100 pt-3 flex items-center justify-end text-xs text-stone-500 dark:border-stone-800">
               <span className="font-semibold text-amber-700 dark:text-amber-500 group-hover:underline flex items-center gap-1">
                 Cook now 

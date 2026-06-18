@@ -1,11 +1,28 @@
 // Pure JavaScript - No TypeScript annotations to crash the compiler
-const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+const FALLBACK_IMAGE = '/fallback-recipe.jpg';
 
-export function getImageUrl(imageObj, { width = 800, height = 500 } = {}) {
-  // If it's the new object structure
-  if (typeof imageObj === 'object' && imageObj?.publicId) {
-    return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto,c_fill,w_${width},h_${height}/${imageObj.publicId}`;
+export function getImageUrl(imageObj, { width: _width = 800, height: _height = 500 } = {}) {
+  const candidate =
+    typeof imageObj === 'string'
+      ? imageObj
+      : imageObj && typeof imageObj === 'object'
+        ? (imageObj.url || imageObj.src || '')
+        : '';
+
+  if (typeof candidate !== 'string') {
+    return FALLBACK_IMAGE;
   }
-  // Fallback for old string URLs or missing items
-  return typeof imageObj === 'string' ? imageObj : '/fallback-recipe.jpg';
+
+  const trimmed = candidate.trim();
+
+  if (!trimmed) {
+    return FALLBACK_IMAGE;
+  }
+
+  // Allow absolute URLs and local paths, but reject anything that is not a usable image reference.
+  if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith('/')) {
+    return trimmed;
+  }
+
+  return FALLBACK_IMAGE;
 }

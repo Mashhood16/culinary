@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { recipes } from '@/lib/recipes';
+import { loadPublicRecipes } from '@/lib/recipe-store';
+import { getImageUrl } from '@/lib/recipe-image';
 
-export default function DrinksPage() {
-  const drinks = recipes.filter((recipe) => recipe.mealType === 'Drink' || recipe.foodType === 'Drink');
+export default async function DrinksPage() {
+  const allRecipes = await loadPublicRecipes();
+  const drinks = allRecipes.filter((recipe) => recipe.mealType === 'Drink' || recipe.foodType === 'Drink');
   const cuisines = Array.from(new Set(drinks.map((recipe) => recipe.cuisine))).sort();
 
   return (
@@ -18,7 +20,14 @@ export default function DrinksPage() {
         <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {drinks.map((recipe) => (
             <Link key={recipe.slug} href={`/recipes/${recipe.slug}`} className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <Image src={recipe.image} alt={recipe.title} width={800} height={480} className="h-44 w-full object-cover" />
+              <Image
+                src={getImageUrl(recipe.image, { width: 800, height: 480 })}
+                alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
+                width={800}
+                height={480}
+                className="h-44 w-full object-cover"
+                unoptimized
+              />
               <div className="p-5">
                 <p className="text-xs uppercase tracking-[0.3em] text-amber-700">{recipe.cuisine}</p>
                 <h2 className="mt-2 text-xl font-semibold">{recipe.title}</h2>

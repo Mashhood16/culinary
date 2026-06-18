@@ -1,19 +1,13 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { loadPublicRecipes } from '@/lib/recipe-store';
-<<<<<<< HEAD
-import ImageWithSkeleton from '@/components/ImageWithSkeleton';
+import { getImageUrl } from '@/lib/recipe-image';
 import RecipeFilters from '@/components/RecipeFilters';
 
 export const dynamic = 'force-dynamic';
-=======
-import RecipeFilters from '@/components/RecipeFilters';
-import Image from 'next/image'; 
-import { getImageUrl } from '@/lib/recipe-image'; 
-
 export const revalidate = 60; // Page cached for 60 seconds
->>>>>>> origin/main
-
+ 
 interface PageProps {
   searchParams: Promise<{ cuisine?: string; mealType?: string; q?: string }> | { cuisine?: string; mealType?: string; q?: string };
 }
@@ -32,16 +26,16 @@ export default async function RecipesPage({ searchParams }: PageProps) {
   let filteredRecipes = [...allRecipes];
 
   if (cuisine && cuisine !== 'All') {
-    filteredRecipes = filteredRecipes.filter(r => r.cuisine.toLowerCase() === cuisine.toLowerCase());
+    filteredRecipes = filteredRecipes.filter(r => r.cuisine?.toLowerCase() === cuisine.toLowerCase());
   }
   if (mealType && mealType !== 'All') {
-    filteredRecipes = filteredRecipes.filter(r => r.mealType.toLowerCase() === mealType.toLowerCase());
+    filteredRecipes = filteredRecipes.filter(r => r.mealType?.toLowerCase() === mealType.toLowerCase());
   }
   if (q) {
     const query = q.toLowerCase();
     filteredRecipes = filteredRecipes.filter(r => 
       r.title.toLowerCase().includes(query) || 
-      r.cuisine.toLowerCase().includes(query) || 
+      r.cuisine?.toLowerCase().includes(query) || 
       r.description.toLowerCase().includes(query) || 
       (r.tags ?? []).some(t => t.toLowerCase().includes(query))
     );
@@ -61,11 +55,6 @@ export default async function RecipesPage({ searchParams }: PageProps) {
             </p>
           </div>
 
-<<<<<<< HEAD
-          {/* Render the full-width dynamic search & select filter bar */}
-          {/* Removed max-w-4xl from fallback skeleton so it perfectly matches the expanded inputs */}
-=======
->>>>>>> origin/main
           <Suspense fallback={<div className="h-12 bg-stone-100/50 dark:bg-stone-900/50 rounded-2xl animate-pulse w-full" />}>
             <RecipeFilters cuisines={uniqueCuisines} mealTypes={uniqueMealTypes} />
           </Suspense>
@@ -77,21 +66,6 @@ export default async function RecipesPage({ searchParams }: PageProps) {
             {filteredRecipes.map((recipe) => (
               <Link 
                 key={recipe.slug} 
-<<<<<<< HEAD
-                href={`/recipes/${recipe.slug}`}                className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95"
-              >
-                <div>
-                  <div className="relative overflow-hidden rounded-2xl h-40 w-full">
-                    {recipe.image ? (
-                      <ImageWithSkeleton 
-                        src={recipe.image} 
-                        alt={recipe.title} 
-                        fill
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
-                      />
-                    ) : null}
-                    
-=======
                 href={`/recipes/${recipe.slug}`} 
                 className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95"
               >
@@ -100,7 +74,7 @@ export default async function RecipesPage({ searchParams }: PageProps) {
                     {recipe.image ? (
                       <Image 
                         src={getImageUrl(recipe.image, { width: 640, height: 400 })}
-                        alt={typeof recipe.image === 'object' && recipe.image !== null ? recipe.image.alt : recipe.title}
+                        alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
                         width={640}
                         height={400}
                         sizes="(max-width: 768px) 100vw, 320px"
@@ -110,7 +84,6 @@ export default async function RecipesPage({ searchParams }: PageProps) {
                     ) : (
                       <div className="flex h-full items-center justify-center text-stone-400 text-xs">No Image</div>
                     )}
->>>>>>> origin/main
                     <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">
                       {recipe.cuisine}
                     </span>

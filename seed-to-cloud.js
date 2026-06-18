@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import 'dotenv/config'; // Add this line
 import fs from 'node:fs';
 import path from 'node:path';
@@ -58,4 +58,4 @@ async function seed() {
   console.log('\n✓ Cloud database synced perfectly.');
 }
 seed();
->>>>>>> origin/main
+ 
