@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // 1. Added usePathname
 import ThemeToggle from '@/components/ThemeToggle';
+import Image from 'next/image';
+
 
 const navItems = [
   { href: '/recipe-of-the-day', label: 'Recipe of the Day' },
@@ -24,13 +26,14 @@ export default function SiteHeader() {
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link
           href="/"
-          className="rounded-full border border-amber-200 bg-amber-50/90 px-3 py-2 text-xs md:text-xl font-semibold tracking-[0.1em] md:tracking-[0.18em] text-amber-900 shadow-sm transition hover:border-amber-300 hover:bg-amber-100 dark:border-amber-900/70 dark:bg-stone-900/90 dark:text-amber-200 whitespace-nowrap shrink-0"
+          className="shrink-0 flex items-center"
           onClick={() => setIsOpen(false)}
         >
-          CULINARRIEST
+          <Image src="/logo.png" alt="Culinarriest" width={220} height={88} className="h-[48px] md:h-[56px] lg:h-[64px] w-auto object-contain" />
         </Link>
 
-        <div className="flex items-center gap-3 text-sm text-stone-700 dark:text-stone-200">
+        <div className="flex i
+        tems-center gap-3 text-sm text-stone-700 dark:text-stone-200">
           <div className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => {
               // 3. Highlight Logic: If current path matches href, use amber colors

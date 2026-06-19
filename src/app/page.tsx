@@ -38,7 +38,7 @@ export default async function Home() {
         {/* Main Hero */}
         <article className="glass-card rounded-[32px] p-8 soft-ring dark:border-stone-800 dark:bg-stone-900/95">
           <p className="text-sm uppercase tracking-[0.35em] text-amber-700 font-medium">Discover the world, one recipe at a time</p>
-          <h1 className="mt-4 text-3xl md:text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl">Culinarriest</h1>
+          <h1 className="mt-4 text-3xl md:text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl">CULINARRIEST</h1>
           <p className="mt-4 max-w-2xl text-lg text-stone-600 dark:text-stone-300">Explore global recipes with a premium, safe recipe approach and AI-assisted food science guidance.</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/recipes" className="rounded-full bg-amber-700 px-5 py-3 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-amber-800 font-medium">Explore recipes</Link>
@@ -56,28 +56,10 @@ export default async function Home() {
           </div>
         </article>
 
-        {/* Sidebar */}
+        {/* Sidebar - Cook with what you have (AI Chef) */}
         <aside className="rounded-[32px] border border-stone-800 bg-stone-950 p-8 text-stone-100 shadow-[0_24px_60px_rgba(15,23,42,0.35)] flex flex-col justify-between">
-          <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-300 font-medium">Recipe of the Day</p>
-            {featured ? (
-              <>
-                <h2 className="mt-3 text-2xl font-semibold">{featured.title}</h2>
-                <p className="mt-3 text-stone-300">{featured.description}</p>
-                <div className="mt-5 h-48 w-full rounded-3xl overflow-hidden bg-stone-800">
-                  <Image 
-                    src={getImageUrl(featured.image, { width: 800, height: 480 })} 
-                    alt={typeof featured.image === 'object' && featured.image !== null && 'alt' in featured.image ? featured.image.alt || featured.title : featured.title} 
-                    width={800} height={480} 
-                    className="h-full w-full object-cover" 
-                    unoptimized 
-                  />
-                </div>
-                <Link href={`/recipe-of-the-day?recipe=${featured.slug}`} className="mt-5 inline-block rounded-full bg-amber-500 px-4 py-2 text-stone-950 font-medium transition hover:-translate-y-0.5 hover:bg-amber-400">View full recipe</Link>
-              </>
-            ) : (
-              <p className="mt-4 text-stone-300">Recipe data is currently unavailable.</p>
-            )}
+          <div className="w-full h-full">
+            <AIChefForm />
           </div>
         </aside>
       </section>
@@ -95,7 +77,7 @@ export default async function Home() {
 
        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 w-full">
         {recipeHighlights.map((recipe) => (
-          <div key={recipe.slug} className="min-w-0"> {/* min-w-0 is vital for grids */}
+          <div key={recipe.slug} className="min-w-0">
             <Link key={recipe.slug} href={`/recipes/${recipe.slug}`} className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95">
               <div>
                 <div className="relative overflow-hidden rounded-2xl h-40 w-full bg-stone-100 dark:bg-stone-800">
@@ -123,7 +105,7 @@ export default async function Home() {
           </div>
       </section>
 
-      {/* Cuisines & AI Section */}
+      {/* Cuisines & Recipe of the Day Section */}
       <section className="mx-auto w-full max-w-7xl px-4 pb-8 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         <article className="rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900 flex flex-col">
           <span className="text-xs uppercase tracking-[0.25em] text-amber-700 dark:text-amber-500 font-bold">Inspiration</span>
@@ -137,9 +119,30 @@ export default async function Home() {
             ))}
           </div>
         </article>
-        <div className="w-full h-full">
-          <AIChefForm />
-        </div>
+        {/* Recipe of the Day - moved here */}
+        <article className="rounded-[32px] border border-stone-800 bg-stone-950 p-8 text-stone-100 shadow-[0_24px_60px_rgba(15,23,42,0.35)] flex flex-col justify-between">
+          <div>
+            <p className="text-sm uppercase tracking-[0.35em] text-amber-300 font-medium">Recipe of the Day</p>
+            {featured ? (
+              <>
+                <h2 className="mt-3 text-2xl font-semibold">{featured.title}</h2>
+                <p className="mt-3 text-stone-300">{featured.description}</p>
+                <div className="mt-5 h-48 w-full rounded-3xl overflow-hidden bg-stone-800">
+                  <Image 
+                    src={getImageUrl(featured.image, { width: 800, height: 480 })} 
+                    alt={typeof featured.image === 'object' && featured.image !== null && 'alt' in featured.image ? featured.image.alt || featured.title : featured.title} 
+                    width={800} height={480} 
+                    className="h-full w-full object-cover" 
+                    unoptimized 
+                  />
+                </div>
+                <Link href={`/recipe-of-the-day?recipe=${featured.slug}`} className="mt-5 inline-block rounded-full bg-amber-500 px-4 py-2 text-stone-950 font-medium transition hover:-translate-y-0.5 hover:bg-amber-400">View full recipe</Link>
+              </>
+            ) : (
+              <p className="mt-4 text-stone-300">Recipe data is currently unavailable.</p>
+            )}
+          </div>
+        </article>
       </section>
     </main>
   );
