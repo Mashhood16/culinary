@@ -10,9 +10,11 @@ const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfa
 export const metadata: Metadata = {
   title: 'CULINARRIEST', // Updated Name
   description: 'A premium recipe discovery and AI-assisted food science platform.',
-  metadataBase: new URL('https://culnarriest.example'),
   icons: {
-    icon: '/favicon.png',
+    icon: [
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
+    ],
     apple: '/logo.png',
   },
 };
