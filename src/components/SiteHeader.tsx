@@ -24,7 +24,7 @@ export default function SiteHeader() {
       <nav className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link
           href="/"
-          className="rounded-full border border-amber-200 bg-amber-50/90 px-4 py-2 text-xl font-semibold tracking-[0.18em] text-amber-900 shadow-sm transition hover:border-amber-300 hover:bg-amber-100 dark:border-amber-900/70 dark:bg-stone-900/90 dark:text-amber-200"
+          className="rounded-full border border-amber-200 bg-amber-50/90 px-4 py-2 text-lg md:text-xl font-semibold tracking-[0.18em] text-amber-900 shadow-sm transition hover:border-amber-300 hover:bg-amber-100 dark:border-amber-900/70 dark:bg-stone-900/90 dark:text-amber-200 truncate max-w-[160px] md:max-w-none shrink-0"
           onClick={() => setIsOpen(false)}
         >
           CULINARRIEST
