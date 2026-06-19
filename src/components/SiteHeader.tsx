@@ -29,7 +29,7 @@ export default function SiteHeader() {
           className="shrink-0 flex items-center"
           onClick={() => setIsOpen(false)}
         >
-          <Image src="/logo.png" alt="Culinarriest" width={220} height={88} className="h-[48px] md:h-[56px] lg:h-[64px] w-auto object-contain" />
+          <Image src="/logo-light.png" alt="Culinarriest" width={220} height={88} className="h-[48px] md:h-[56px] lg:h-[64px] w-auto object-contain" />
         </Link>
 
         <div className="flex i
