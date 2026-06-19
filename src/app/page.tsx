@@ -34,8 +34,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 transition-colors duration-200 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
-      <section className="mx-auto grid max-w-[1440px] gap-8 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">
-        
+      <section className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">        
         {/* Main Hero */}
         <article className="glass-card rounded-[32px] p-8 soft-ring dark:border-stone-800 dark:bg-stone-900/95">
           <p className="text-sm uppercase tracking-[0.35em] text-amber-700 font-medium">Discover the world, one recipe at a time</p>
@@ -86,7 +85,7 @@ export default async function Home() {
       <FavoritesList />
 
       {/* Featured Grid */}
-      <section className="mx-auto max-w-[1440px] px-6 pb-8 lg:px-10">
+      <section className="mx-auto w-full max-w-7xl px-6 pb-8 lg:px-10">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100">
             {featuredInAdmin.length > 0 ? "Featured Recipes" : "Fresh Picks"}
@@ -123,7 +122,7 @@ export default async function Home() {
       </section>
 
       {/* Cuisines & AI Section */}
-      <section className="mx-auto grid max-w-[1440px] gap-6 px-6 pb-10 lg:grid-cols-[1fr_1fr] lg:px-10">
+      <section className="mx-auto w-full max-w-7xl px-6 pb-8 lg:px-10">
         <article className="rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900">
           <span className="text-xs uppercase tracking-[0.25em] text-amber-700 dark:text-amber-500 font-bold">Inspiration</span>
           <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Popular cuisines</h2>
