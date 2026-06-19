@@ -2,26 +2,32 @@
 const FALLBACK_IMAGE = '/fallback-recipe.jpg';
 
 export function getImageUrl(imageObj, { width: _width = 800, height: _height = 500 } = {}) {
-  const candidate =
-    typeof imageObj === 'string'
-      ? imageObj
-      : imageObj && typeof imageObj === 'object'
-        ? (imageObj.url || imageObj.src || '')
-        : '';
-
-  if (typeof candidate !== 'string') {
+  // Case 1: String — use directly
+  if (typeof imageObj === 'string') {
+    const trimmed = imageObj.trim();
+    if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith('/')) {
+      return trimmed;
+    }
     return FALLBACK_IMAGE;
   }
 
-  const trimmed = candidate.trim();
+  // Case 2: Object with url or src
+  if (imageObj && typeof imageObj === 'object') {
+    if (imageObj.url || imageObj.src) {
+      const candidate = (imageObj.url || imageObj.src).trim();
+      if (/^https?:\/\//i.test(candidate) || candidate.startsWith('/')) {
+        return candidate;
+      }
+    }
 
-  if (!trimmed) {
-    return FALLBACK_IMAGE;
-  }
-
-  // Allow absolute URLs and local paths, but reject anything that is not a usable image reference.
-  if (/^https?:\/\//i.test(trimmed) || trimmed.startsWith('/')) {
-    return trimmed;
+    // Case 3: Cloudinary publicId format — construct URL
+    if (imageObj.publicId) {
+      const publicId = imageObj.publicId.trim();
+      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dlzc5iwue';
+      // Remove leading slash if present
+      const cleanId = publicId.replace(/^\//, '');
+      return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto,w_${_width},h_${_height}/v1/${cleanId}`;
+    }
   }
 
   return FALLBACK_IMAGE;

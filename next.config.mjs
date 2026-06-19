@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
+    images: {
     // Whitelist external domains so Next.js is authorized to render and optimize them
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '*.public.blob.vercel-storage.com', // Securely allows Vercel Blob storage images
+        hostname: 'public.blob.vercel-storage.com', // Securely allows Vercel Blob storage images
       },
       {
         protocol: 'https',
         hostname: 'encrypted-tbn0.gstatic.com', // Allows Google-hosted recipe thumbnail images
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com', // Allows Cloudinary recipe images
       },
     ],
   },

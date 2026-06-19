@@ -133,10 +133,23 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
   }
 
   if (kvData.length > 0) {
-    // Merge KV data over local data — KV values win for matching slugs
+    // Merge KV data over local data — KV values win for matching slugs,
+    // but keep local image if KV image is empty/null
     const merged = new Map<string, AdminRecipe>();
     for (const r of localData) merged.set(r.slug, r);
-    for (const r of kvData) merged.set(r.slug, { ...(merged.get(r.slug) || {}), ...r });
+    for (const r of kvData) {
+      const local = merged.get(r.slug);
+      const mergedRecipe = { ...(local || {}), ...r };
+      // If KV has no image but local has one, keep local image
+      const rImage = r.image as any;
+      if (local && rImage && typeof rImage === 'object' && !rImage.url && !rImage.src && !rImage.publicId) {
+        mergedRecipe.image = local.image;
+      }
+      if (local && (!r.image || r.image === '')) {
+        mergedRecipe.image = local.image;
+      }
+      merged.set(r.slug, mergedRecipe);
+    }
     const result = Array.from(merged.values());
 
     // If local data had recipes KV didn't, sync them back to KV
