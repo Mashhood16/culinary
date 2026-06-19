@@ -93,8 +93,9 @@ export default async function Home() {
           <Link href="/recipes" className="text-sm font-semibold text-amber-700 hover:text-amber-800 dark:text-amber-500">View all →</Link>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {recipeHighlights.map((recipe) => (
+       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 w-full">
+        {recipeHighlights.map((recipe) => (
+          <div key={recipe.slug} className="min-w-0"> {/* min-w-0 is vital for grids */}
             <Link key={recipe.slug} href={`/recipes/${recipe.slug}`} className="group relative flex flex-col justify-between overflow-hidden rounded-[32px] border border-stone-200 bg-white p-5 shadow-[0_15px_40px_rgba(28,25,23,0.03)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(28,25,23,0.08)] dark:border-stone-850 dark:bg-stone-900/95">
               <div>
                 <div className="relative overflow-hidden rounded-2xl h-40 w-full bg-stone-100 dark:bg-stone-800">
@@ -117,8 +118,9 @@ export default async function Home() {
                 <span className="font-semibold text-amber-700 dark:text-amber-500 group-hover:underline">Read more →</span>
               </div>
             </Link>
+          </div>
           ))}
-        </div>
+          </div>
       </section>
 
       {/* Cuisines & AI Section */}

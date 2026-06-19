@@ -170,16 +170,16 @@ a { text-decoration: none; }
   }
 }
 
-/* Force everything to fit the screen width */
 html, body {
   overflow-x: hidden;
   width: 100%;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
-/* Ensure no element is wider than the screen */
+/* This stops any child element from being wider than the screen */
 * {
-  max-width: 100vw;
   box-sizing: border-box;
+  max-width: 100vw;
 }
