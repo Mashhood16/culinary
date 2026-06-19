@@ -160,7 +160,7 @@ a { text-decoration: none; }
   .text-balance { text-wrap: balance; }
   .glass-card {
     background: var(--surface);
-    border: 1px solid var(--border);
+    border: none;
     box-shadow: 0 18px 40px rgba(75, 51, 25, 0.1); /* Adjusted to match warm shadows */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);

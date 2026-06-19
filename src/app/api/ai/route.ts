@@ -5,8 +5,8 @@ import { getAISettings } from '@/lib/ai-settings';
 
 export async function POST(request: Request) {
   try {
-    // 1. Read both 'prompt' and 'type' from the client request payload
-    const { prompt, type } = await request.json();
+    // 1. Read 'prompt', 'type', and optional 'history' from the client request payload
+    const { prompt, type, history } = await request.json();
 
     const settings = await getAISettings();
 
@@ -21,9 +21,6 @@ export async function POST(request: Request) {
       : 'Give me 3 practical recipe adaptation ideas for a home cook.';
 
     const openRouterKey = String(process.env.OPENROUTER_API_KEY || '').trim();
-    // const apiKey = String(
-    //   settings.apiKey || process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ''
-    // ).trim();
 
     if (openRouterKey) {
       const modelName = settings.model || 'meta-llama/llama-3.1-8b-instruct';
@@ -32,6 +29,23 @@ export async function POST(request: Request) {
       const systemPrompt = type === 'modify'
         ? settings.systemPromptModify || 'You are an expert food scientist. Adapt, scale, or substitute ingredients for the provided recipe accurately while maintaining flavor.'
         : settings.systemPrompt || 'You are a helpful recipe assistant.';
+
+      // 3. Build messages array with conversation history for context
+      const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
+        { role: 'system', content: systemPrompt },
+      ];
+
+      // Add previous conversation history if provided
+      if (Array.isArray(history) && history.length > 0) {
+        for (const msg of history) {
+          if (msg.role === 'user' || msg.role === 'assistant') {
+            messages.push({ role: msg.role, content: msg.content });
+          }
+        }
+      }
+
+      // Add the current user message
+      messages.push({ role: 'user', content: question });
 
       const openRouterRes = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
@@ -43,11 +57,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           model: modelName,
-          messages: [
-            // 3. Dynamically insert the resolved starting system prompt
-            { role: 'system', content: systemPrompt }, 
-            { role: 'user', content: question },
-          ],
+          messages,
           temperature: 0.7,
         }),
       });

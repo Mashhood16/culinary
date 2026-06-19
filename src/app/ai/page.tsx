@@ -1,4 +1,4 @@
-'use client';
+ue chat 'use client';
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useMemo, useState } from 'react';
@@ -168,7 +168,7 @@ function AIPageContent() {
     [recipes, recipeSlug, selectedRecipeSlug]
   );
 
-  const [prompt, setPrompt] = useState('Help me adapt this recipe and make it dairy-free.');
+  const [prompt, setPrompt] = useState('Suggest 3 ingredient substitutions for this recipe and explain why they work.');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const [recipeQuery, setRecipeQuery] = useState(recipe?.title || '');
@@ -301,12 +301,14 @@ function AIPageContent() {
           </div>
 
           <div className="mt-6 rounded-3xl border border-stone-200 bg-stone-50 p-6 text-sm text-stone-700">
-            <p className="font-semibold text-stone-900">Example prompts</p>
+            <p className="font-semibold text-stone-900">Example prompts to try</p>
             <ul className="mt-3 grid gap-2 md:grid-cols-2">
-              <li>• Make this recipe vegetarian without losing the original flavor.</li>
-              <li>• Scale it for six people and adjust cook time.</li>
-              <li>• Replace dairy ingredients with plant-based options.</li>
-              <li>• Suggest a substitute for a rich cooking ingredient or flavor enhancer.</li>
+              <li>• Make this recipe vegetarian while keeping the same flavor profile.</li>
+              <li>• Scale this recipe for 8 people and adjust cooking times.</li>
+              <li>• Replace all dairy ingredients with plant-based alternatives.</li>
+              <li>• Suggest substitutes for eggs and explain how they affect texture.</li>
+              <li>• Make this recipe gluten-free with easy ingredient swaps.</li>
+              <li>• Reduce the cooking time by suggesting faster techniques.</li>
             </ul>
           </div>
 

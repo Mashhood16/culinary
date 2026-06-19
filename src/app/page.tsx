@@ -57,11 +57,9 @@ export default async function Home() {
         </article>
 
         {/* Sidebar - Cook with what you have (AI Chef) */}
-        <aside className="rounded-[32px] border border-stone-800 bg-stone-950 p-8 text-stone-100 shadow-[0_24px_60px_rgba(15,23,42,0.35)] flex flex-col justify-between">
-          <div className="w-full h-full">
-            <AIChefForm />
-          </div>
-        </aside>
+        <div className="w-full rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+          <AIChefForm />
+        </div>
       </section>
 
       <FavoritesList />
