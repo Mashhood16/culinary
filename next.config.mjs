@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com', // Allows Cloudinary recipe images
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com', // Allows Unsplash catalog fallback images
+      },
     ],
   },
   async headers() {

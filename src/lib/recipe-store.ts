@@ -184,7 +184,20 @@ export async function loadAllRecipes() {
     if (recipe.status === 'deleted') {
       merged.delete(recipe.slug);
     } else {
-      merged.set(recipe.slug, { ...(merged.get(recipe.slug) || {}), ...recipe });
+      const existing = merged.get(recipe.slug) || ({} as AdminRecipe);
+      const mergedRecipe = { ...existing, ...recipe };
+      // If the admin/KV entry has no usable image, preserve the catalog
+      // placeholder so the page never renders a broken/empty image slot.
+      const img = recipe.image as any;
+      const hasAdminImage = typeof img === 'string'
+        ? img.trim() !== ''
+        : img && typeof img === 'object'
+          ? Boolean(img.url || img.src || img.publicId)
+          : false;
+      if (!hasAdminImage && existing.image) {
+        mergedRecipe.image = existing.image;
+      }
+      merged.set(recipe.slug, mergedRecipe);
     }
   }
   return Array.from(merged.values());
