@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   title: 'CULINARRIEST', // Updated Name
   description: 'A premium recipe discovery and AI-assisted food science platform.',
   metadataBase: new URL('https://culnarriest.example'),
+  icons: {
+    icon: '/favicon.png',
+    apple: '/logo.png',
+  },
 };
 
 export const viewport = {
@@ -29,8 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
