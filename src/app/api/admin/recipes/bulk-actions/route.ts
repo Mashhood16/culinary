@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { deleteAdminRecipes, loadAllRecipes, saveAdminRecipes, loadAdminRecipes } from '@/lib/recipe-store';
+import { deleteAdminRecipes, loadAllRecipes, saveAdminRecipes, loadAdminRecipes, cleanupStaleImages } from '@/lib/recipe-store';
 
 export const dynamic = 'force-dynamic';
 
@@ -60,6 +60,11 @@ export async function POST(request: Request) {
       // Added await to save operations
       await saveAdminRecipes(updatedAdminRecipes);
       return NextResponse.json({ message: 'Bulk edit applied successfully' });
+    }
+
+    if (action === 'cleanup-images') {
+      const result = await cleanupStaleImages();
+      return NextResponse.json({ message: `Cleaned ${result.cleaned} recipes. ${result.saved ? 'Saved to KV.' : 'No changes needed.'}` });
     }
 
     return NextResponse.json({ error: 'Unknown action' }, { status: 400 });

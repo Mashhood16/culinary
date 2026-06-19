@@ -108,6 +108,32 @@ export type AdminRecipe = {
 const filePath = path.join(process.cwd(), 'recipes-data.json');
 const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
+// Build a slug→image lookup from the catalog so stale KV objects can be replaced
+const catalogImageBySlug = new Map<string, string>();
+for (const r of rawRecipeCatalog.recipes ?? []) {
+  const slug = String(r.slug || '');
+  const img = r.image;
+  if (slug && typeof img === 'string' && img.trim()) {
+    catalogImageBySlug.set(slug, img.trim());
+  }
+}
+
+/** Returns true if the image field is a stale Cloudinary/publicId object with no usable url/src. */
+function isStaleCloudinaryImage(image: unknown): boolean {
+  if (!image || typeof image !== 'object') return false;
+  const obj = image as Record<string, unknown>;
+  return Boolean(obj.publicId) && !obj.url && !obj.src;
+}
+
+/** Returns a usable image value: if the field is a stale Cloudinary object,
+ *  replace it with the catalog Unsplash URL (or empty string if no catalog match). */
+function cleanImageField(slug: string, image: unknown): AdminRecipe['image'] {
+  if (isStaleCloudinaryImage(image)) {
+    return catalogImageBySlug.get(slug) || '';
+  }
+  return image as AdminRecipe['image'];
+}
+
 function loadLocalAdminRecipes(): AdminRecipe[] {
   if (!fs.existsSync(filePath)) return [];
   return JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
@@ -139,10 +165,12 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
     for (const r of localData) merged.set(r.slug, r);
     for (const r of kvData) {
       const local = merged.get(r.slug);
-      const mergedRecipe = { ...(local || {}), ...r };
-      // If KV image is empty, an object without usable url/src, or only has a stale
-      // Cloudinary publicId (no longer used), prefer the local file image.
-      const rImage = r.image as any;
+      // Clean stale Cloudinary publicId objects before merging
+      const cleanedImage = cleanImageField(r.slug, r.image);
+      const cleanedRecipe = { ...r, image: cleanedImage };
+      const mergedRecipe = { ...(local || {}), ...cleanedRecipe };
+      // If cleaned KV image is still empty, prefer the local file image.
+      const rImage = mergedRecipe.image as any;
       const kvHasUsableImage = typeof rImage === 'string'
         ? rImage.trim() !== ''
         : rImage && typeof rImage === 'object'
@@ -151,17 +179,12 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
       if (local && !kvHasUsableImage && local.image) {
         mergedRecipe.image = local.image;
       }
-      if (local && (!r.image || r.image === '')) {
-        mergedRecipe.image = local.image;
-      }
       merged.set(r.slug, mergedRecipe);
     }
     const result = Array.from(merged.values());
 
-    // If local data had recipes KV didn't, sync them back to KV
-    if (result.length > localData.length && isVercelKVActive) {
-      try { await kv.set('recipes_data', result); } catch {}
-    }
+    // NOTE: Removed sync-back to prevent overwriting user-uploaded Vercel Blob URLs
+    // with stale local file data. KV is the source of truth for admin edits.
 
     return result;
   }
@@ -280,6 +303,23 @@ export async function deleteAdminRecipes(slugs: string[]) {
 
   await saveAdminRecipes(updatedRecipes);
   return updatedRecipes;
+}
+
+export async function cleanupStaleImages(): Promise<{ cleaned: number; saved: boolean }> {
+  const recipes = await loadAdminRecipes();
+  let cleaned = 0;
+  const updated = recipes.map(r => {
+    if (isStaleCloudinaryImage(r.image)) {
+      cleaned++;
+      return { ...r, image: cleanImageField(r.slug, r.image) };
+    }
+    return r;
+  });
+  if (cleaned > 0 && isVercelKVActive) {
+    await saveAdminRecipes(updated);
+    return { cleaned, saved: true };
+  }
+  return { cleaned, saved: false };
 }
 
 export async function deleteAllRecipes() {
