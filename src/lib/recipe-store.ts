@@ -114,38 +114,35 @@ function loadLocalAdminRecipes(): AdminRecipe[] {
 }
 
 export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
-  if (process.env.NODE_ENV !== 'production') {
+  // Always try local file first (works in dev and on Vercel when file is committed)
+  try {
+    const localData = loadLocalAdminRecipes();
+    if (localData && localData.length > 0) {
+      // If KV is active, sync it from local data so it stays fresh
+      if (process.env.NODE_ENV === 'production' && isVercelKVActive) {
+        try {
+          await kv.set('recipes_data', localData);
+        } catch {
+          // KV sync failed but we still have local data — that's fine
+        }
+      }
+      return localData;
+    }
+  } catch {
+    // Local file not found, continue to KV/catalog fallback
+  }
+
+  // Fallback: try KV (only if local file was empty)
+  if (isVercelKVActive) {
     try {
-      return loadLocalAdminRecipes();
+      const data = await kv.get<AdminRecipe[]>('recipes_data');
+      return data || [];
     } catch {
       return [];
     }
   }
-
-  if (isVercelKVActive) {
-    try {
-      const data = await kv.get<AdminRecipe[]>('recipes_data');
-      if (!data || data.length === 0) {
-        try {
-          const localData = loadLocalAdminRecipes();
-          if (localData && localData.length > 0) {
-            await kv.set('recipes_data', localData);
-            return localData;
-          }
-        } catch {
-          return [];
-        }
-      }
-      return data || [];
-    } catch (e) {
-      return [];
-    }
-  }
-  try {
-    return loadLocalAdminRecipes();
-  } catch {
-    return [];
-  }
+  
+  return [];
 }
 
 export async function loadPublicRecipes() {
