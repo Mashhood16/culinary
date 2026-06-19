@@ -140,9 +140,15 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
     for (const r of kvData) {
       const local = merged.get(r.slug);
       const mergedRecipe = { ...(local || {}), ...r };
-      // If KV has no image but local has one, keep local image
+      // If KV image is empty, an object without usable url/src, or only has a stale
+      // Cloudinary publicId (no longer used), prefer the local file image.
       const rImage = r.image as any;
-      if (local && rImage && typeof rImage === 'object' && !rImage.url && !rImage.src && !rImage.publicId) {
+      const kvHasUsableImage = typeof rImage === 'string'
+        ? rImage.trim() !== ''
+        : rImage && typeof rImage === 'object'
+          ? Boolean(rImage.url || rImage.src)
+          : false;
+      if (local && !kvHasUsableImage && local.image) {
         mergedRecipe.image = local.image;
       }
       if (local && (!r.image || r.image === '')) {
@@ -192,7 +198,7 @@ export async function loadAllRecipes() {
       const hasAdminImage = typeof img === 'string'
         ? img.trim() !== ''
         : img && typeof img === 'object'
-          ? Boolean(img.url || img.src || img.publicId)
+          ? Boolean(img.url || img.src)
           : false;
       if (!hasAdminImage && existing.image) {
         mergedRecipe.image = existing.image;

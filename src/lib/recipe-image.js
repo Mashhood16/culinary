@@ -20,14 +20,8 @@ export function getImageUrl(imageObj, { width: _width = 800, height: _height = 5
       }
     }
 
-    // Case 3: Cloudinary publicId format — construct URL
-    if (imageObj.publicId) {
-      const publicId = imageObj.publicId.trim();
-      const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'dlzc5iwue';
-      // Remove leading slash if present
-      const cleanId = publicId.replace(/^\//, '');
-      return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto,w_${_width},h_${_height}/v1/${cleanId}`;
-    }
+    // If object has publicId but no url/src, the image was stored in Cloudinary
+    // but we no longer use Cloudinary — fall back to default
   }
 
   return FALLBACK_IMAGE;
