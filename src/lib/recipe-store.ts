@@ -114,35 +114,41 @@ function loadLocalAdminRecipes(): AdminRecipe[] {
 }
 
 export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
-  // Always try local file first (works in dev and on Vercel when file is committed)
+  // Try local file first
+  let localData: AdminRecipe[] = [];
   try {
-    const localData = loadLocalAdminRecipes();
-    if (localData && localData.length > 0) {
-      // If KV is active, sync it from local data so it stays fresh
-      if (process.env.NODE_ENV === 'production' && isVercelKVActive) {
-        try {
-          await kv.set('recipes_data', localData);
-        } catch {
-          // KV sync failed but we still have local data — that's fine
-        }
-      }
-      return localData;
-    }
+    localData = loadLocalAdminRecipes();
   } catch {
-    // Local file not found, continue to KV/catalog fallback
+    localData = [];
   }
 
-  // Fallback: try KV (only if local file was empty)
+  // Try KV and merge its data on top (so KV edits like images take precedence)
+  let kvData: AdminRecipe[] = [];
   if (isVercelKVActive) {
     try {
-      const data = await kv.get<AdminRecipe[]>('recipes_data');
-      return data || [];
+      kvData = (await kv.get<AdminRecipe[]>('recipes_data')) || [];
     } catch {
-      return [];
+      kvData = [];
     }
   }
-  
-  return [];
+
+  if (kvData.length > 0) {
+    // Merge KV data over local data — KV values win for matching slugs
+    const merged = new Map<string, AdminRecipe>();
+    for (const r of localData) merged.set(r.slug, r);
+    for (const r of kvData) merged.set(r.slug, { ...(merged.get(r.slug) || {}), ...r });
+    const result = Array.from(merged.values());
+
+    // If local data had recipes KV didn't, sync them back to KV
+    if (result.length > localData.length && isVercelKVActive) {
+      try { await kv.set('recipes_data', result); } catch {}
+    }
+
+    return result;
+  }
+
+  // No KV data — return local data as-is
+  return localData;
 }
 
 export async function loadPublicRecipes() {
