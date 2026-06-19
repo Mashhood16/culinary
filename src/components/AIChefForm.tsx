@@ -250,7 +250,7 @@ export default function AIChefForm() {
             <div className="mt-2 text-stone-700 dark:text-stone-300 text-sm leading-relaxed">
               {mounted ? (
                 <p className="text-stone-500 dark:text-stone-400">
-                  List your ingredients above and I'll suggest recipes you can make right now, with substitutions and cooking tips.
+                  List your ingredients above and I{"'"}ll suggest recipes you can make right now, with substitutions and cooking tips.
                 </p>
               ) : (
                 <p className="text-stone-500 animate-pulse">Loading...</p>
