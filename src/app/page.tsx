@@ -34,11 +34,11 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 transition-colors duration-200 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
-      <section className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">        
+      <section className="mx-auto grid w-full max-w-7xl gap-4 px-4 py-6 grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">        
         {/* Main Hero */}
         <article className="glass-card rounded-[32px] p-8 soft-ring dark:border-stone-800 dark:bg-stone-900/95">
           <p className="text-sm uppercase tracking-[0.35em] text-amber-700 font-medium">Discover the world, one recipe at a time</p>
-          <h1 className="mt-4 text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl">Culinarriest</h1>
+          <h1 className="mt-4 text-3xl md:text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl">Culinarriest</h1>
           <p className="mt-4 max-w-2xl text-lg text-stone-600 dark:text-stone-300">Explore global recipes with a premium, safe recipe approach and AI-assisted food science guidance.</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/recipes" className="rounded-full bg-amber-700 px-5 py-3 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-amber-800 font-medium">Explore recipes</Link>
@@ -85,7 +85,7 @@ export default async function Home() {
       <FavoritesList />
 
       {/* Featured Grid */}
-      <section className="mx-auto w-full max-w-7xl px-6 pb-8 lg:px-10">
+      <section className="mx-auto w-full max-w-7xl px-4 pb-8 lg:px-10">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100">
             {featuredInAdmin.length > 0 ? "Featured Recipes" : "Fresh Picks"}
@@ -124,11 +124,11 @@ export default async function Home() {
       </section>
 
       {/* Cuisines & AI Section */}
-      <section className="mx-auto w-full max-w-7xl px-6 pb-8 lg:px-10">
-        <article className="rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+      <section className="mx-auto w-full max-w-7xl px-4 pb-8 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        <article className="rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900 flex flex-col">
           <span className="text-xs uppercase tracking-[0.25em] text-amber-700 dark:text-amber-500 font-bold">Inspiration</span>
-          <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Popular cuisines</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Popular cuisines</h2>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 flex-grow">
             {popularCuisines.map((item) => (
               <Link key={item.name} href={`/recipes?cuisine=${encodeURIComponent(item.name)}`} className="group flex items-center justify-between rounded-2xl border border-stone-100 bg-stone-50/50 p-4 transition hover:border-amber-200 dark:border-stone-800 dark:bg-stone-950/40">
                 <span className="font-semibold text-stone-850 dark:text-stone-200 group-hover:text-amber-700 dark:group-hover:text-amber-500">{item.name}</span>
@@ -137,7 +137,9 @@ export default async function Home() {
             ))}
           </div>
         </article>
-        <AIChefForm />
+        <div className="w-full h-full">
+          <AIChefForm />
+        </div>
       </section>
     </main>
   );
