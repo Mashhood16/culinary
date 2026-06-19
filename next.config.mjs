@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com', // Securely allows Vercel Blob storage images
       },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com', // Allows Google-hosted recipe thumbnail images
+      },
     ],
   },
   async headers() {

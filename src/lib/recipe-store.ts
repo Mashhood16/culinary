@@ -108,17 +108,32 @@ export type AdminRecipe = {
 const filePath = path.join(process.cwd(), 'recipes-data.json');
 const isVercelKVActive = !!(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
 
+function loadLocalAdminRecipes(): AdminRecipe[] {
+  if (!fs.existsSync(filePath)) return [];
+  return JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
+}
+
 export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      return loadLocalAdminRecipes();
+    } catch {
+      return [];
+    }
+  }
+
   if (isVercelKVActive) {
     try {
       const data = await kv.get<AdminRecipe[]>('recipes_data');
       if (!data || data.length === 0) {
-        if (fs.existsSync(filePath)) {
-          const localData = JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
+        try {
+          const localData = loadLocalAdminRecipes();
           if (localData && localData.length > 0) {
             await kv.set('recipes_data', localData);
             return localData;
           }
+        } catch {
+          return [];
         }
       }
       return data || [];
@@ -127,8 +142,7 @@ export async function loadAdminRecipes(): Promise<AdminRecipe[]> {
     }
   }
   try {
-    if (!fs.existsSync(filePath)) return [];
-    return JSON.parse(fs.readFileSync(filePath, 'utf8')) as AdminRecipe[];
+    return loadLocalAdminRecipes();
   } catch {
     return [];
   }
