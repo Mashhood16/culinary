@@ -70,7 +70,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
           return (
             <GradientBackground
               lightGradient={gradientBg}
-              className="relative w-full h-[380px] rounded-3xl overflow-hidden shadow-md animate-fade-in"
+              className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-md animate-fade-in"
             >
               {/* Main image fills the container */}
               <ImageWithSkeleton 
@@ -80,7 +80,8 @@ export default async function RecipeDetailPage({ params }: PageProps) {
                 height={900}
                 sizes="100vw"
                 wrapperClassName="bg-transparent h-full"
-                className="relative w-full h-full object-cover" 
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ objectFit: 'cover' }}
               />
             </GradientBackground>
           );
