@@ -66,7 +66,7 @@ export default function IngredientChecklist({ recipeTitle, ingredients, original
     const textList = [
       `🛒 Missing Ingredients for ${recipeTitle}:`,
       ...listToExport.map((item) => `- [ ] ${item}`),
-      `\nShared via Culnarriest.`
+      `\nShared via Culinarriest.`
     ].join('\n');
     navigator.clipboard.writeText(textList).then(() => {
       setCopied(true);

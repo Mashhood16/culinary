@@ -57,8 +57,8 @@ export async function POST(request: Request) {
         headers: {
           'Authorization': `Bearer ${openRouterKey}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://culnarriest.local',
-          'X-Title': 'Culnarriest',
+          'HTTP-Referer': 'https://culinarriest.local',
+          'X-Title': 'Culinarriest',
         },
         body: JSON.stringify({
           model: modelName,

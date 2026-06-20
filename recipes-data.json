@@ -23655,11 +23655,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-yangzhou-fried-rice",
-      "alt": "Yangzhou Fried Rice",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995893728-chinese-yangzhou-fried-rice.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23698,7 +23694,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-egg-fried-rice",
@@ -23722,11 +23719,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-egg-fried-rice",
-      "alt": "Egg Fried Rice",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995938442-chinese-egg-fried-rice.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23761,7 +23754,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-chicken-fried-rice",
@@ -23785,11 +23779,7 @@
       "chinese-rice-and-noodle-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-chicken-fried-rice",
-      "alt": "Chicken Fried Rice",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995983533-chinese-chicken-fried-rice.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23826,7 +23816,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-beef-fried-rice",
@@ -23850,11 +23841,7 @@
       "chinese-rice-and-noodle-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-beef-fried-rice",
-      "alt": "Beef Fried Rice",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996028430-chinese-beef-fried-rice.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23891,7 +23878,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-vegetable-fried-rice",
@@ -23915,11 +23903,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-vegetable-fried-rice",
-      "alt": "Vegetable Fried Rice",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996074015-chinese-vegetable-fried-rice.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23959,7 +23943,8 @@
       "bottomColor": "#dde0f3",
       "gradientLight": "linear-gradient(135deg, #eaecf8 0%, #d9dde1 35%, #eceef9 65%, #e9ebf7 100%)",
       "gradientDark": "linear-gradient(135deg, #9a9dab 0%, #969b9f 35%, #9d9fac 65%, #9fa1af 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-chow-mein",
@@ -23983,11 +23968,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-chow-mein",
-      "alt": "Chow Mein",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996118699-chinese-chow-mein.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24027,7 +24008,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-lo-mein",
@@ -24051,11 +24033,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-lo-mein",
-      "alt": "Lo Mein",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996163539-chinese-lo-mein.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24094,7 +24072,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-dan-dan-noodles",
@@ -24118,11 +24097,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-dan-dan-noodles",
-      "alt": "Dan Dan Noodles",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996208318-chinese-dan-dan-noodles.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24162,7 +24137,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-lanzhou-beef-noodles",
@@ -24186,11 +24162,7 @@
       "chinese-rice-and-noodle-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-lanzhou-beef-noodles",
-      "alt": "Lanzhou Beef Noodles",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996253791-chinese-lanzhou-beef-noodles.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24233,7 +24205,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-biang-biang-noodles",
@@ -24257,11 +24230,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-biang-biang-noodles",
-      "alt": "Biang Biang Noodles",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996298819-chinese-biang-biang-noodles.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24300,7 +24269,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-chow-fun-rice-noodles",
@@ -24324,11 +24294,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-chow-fun-rice-noodles",
-      "alt": "Chow Fun—Rice Noodles",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996343625-chinese-chow-fun-rice-noodles.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24367,7 +24333,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-mongolian-beef",
@@ -24391,11 +24358,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-mongolian-beef",
-      "alt": "Mongolian Beef",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996388835-chinese-mongolian-beef.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24430,7 +24393,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-beef-with-broccoli",
@@ -24454,11 +24418,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-beef-with-broccoli",
-      "alt": "Beef with Broccoli",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996433636-chinese-beef-with-broccoli.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24494,7 +24454,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-black-pepper-beef",
@@ -24518,11 +24479,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-black-pepper-beef",
-      "alt": "Black Pepper Beef",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996478621-chinese-black-pepper-beef.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24561,7 +24518,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-hunan-beef",
@@ -24717,11 +24675,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-braised-beef-stew",
-      "alt": "Braised Beef Stew",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996524110-chinese-braised-beef-stew.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24760,7 +24714,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-sichuan-spicy-beef",
@@ -24784,11 +24739,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-sichuan-spicy-beef",
-      "alt": "Sichuan Spicy Beef",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996568237-chinese-sichuan-spicy-beef.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24825,7 +24776,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-beef-hot-pot",
@@ -24984,11 +24936,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-kung-pao-tofu",
-      "alt": "Kung Pao Tofu",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996615497-chinese-kung-pao-tofu.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25028,7 +24976,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-stir-fried-bok-choy",
@@ -25052,11 +25001,7 @@
       "side",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-stir-fried-bok-choy",
-      "alt": "Stir-Fried Bok Choy",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996659251-chinese-stir-fried-bok-choy.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25090,7 +25035,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-garlic-chinese-eggplant",
@@ -25114,11 +25060,7 @@
       "side",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-garlic-chinese-eggplant",
-      "alt": "Garlic Chinese Eggplant",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996703674-chinese-garlic-chinese-eggplant.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25154,7 +25096,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-dry-fried-green-beans",
@@ -25178,11 +25121,7 @@
       "side",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-dry-fried-green-beans",
-      "alt": "Dry-Fried Green Beans",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996748495-chinese-dry-fried-green-beans.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25218,7 +25157,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-buddhas-delight",
