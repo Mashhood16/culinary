@@ -11,13 +11,14 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 60; // Page cached for 60 seconds
 
 interface PageProps {
-  searchParams: Promise<{ cuisine?: string; mealType?: string; q?: string }> | { cuisine?: string; mealType?: string; q?: string };
+  searchParams: Promise<{ cuisine?: string; mealType?: string; difficulty?: string; q?: string }> | { cuisine?: string; mealType?: string; difficulty?: string; q?: string };
 }
 
 export default async function RecipesPage({ searchParams }: PageProps) {
   const resolvedSearchParams = await searchParams;
   const cuisine = resolvedSearchParams.cuisine;
   const mealType = resolvedSearchParams.mealType;
+  const difficulty = resolvedSearchParams.difficulty;
   const q = resolvedSearchParams.q;
 
   const allRecipes = await loadPublicRecipes();
@@ -32,6 +33,9 @@ export default async function RecipesPage({ searchParams }: PageProps) {
   }
   if (mealType && mealType !== 'All') {
     filteredRecipes = filteredRecipes.filter(r => r.mealType?.toLowerCase() === mealType.toLowerCase());
+  }
+  if (difficulty && difficulty !== 'All') {
+    filteredRecipes = filteredRecipes.filter(r => r.difficulty?.toLowerCase() === difficulty.toLowerCase());
   }
   if (q) {
     const query = q.toLowerCase();
