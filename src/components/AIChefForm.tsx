@@ -190,7 +190,7 @@ export default function AIChefForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           prompt: userMessage,
-          type: 'pantry',
+          type: 'chat',
           history: priorMessages
         }),
       });

@@ -88,7 +88,8 @@ export default function AdminPage() {
     enabled: true, 
     model: 'meta-llama/llama-3.1-8b-instruct', 
     systemPrompt: '', 
-    systemPromptModify: '', // Holds the separate Recipe Modifier prompt
+    systemPromptModify: '',
+    systemPromptChat: '',
     apiKey: '' 
   });
   const [apiKey, setApiKey] = useState('');
@@ -145,7 +146,8 @@ export default function AdminPage() {
           enabled: Boolean(data.enabled),
           model: data.model || 'meta-llama/llama-3.1-8b-instruct',
           systemPrompt: data.systemPrompt || '',
-          systemPromptModify: data.systemPromptModify || '', // Load the modifier prompt
+          systemPromptModify: data.systemPromptModify || '',
+          systemPromptChat: data.systemPromptChat || '',
           apiKey: data.apiKey || '',
         });
         setApiKey(data.apiKey || '');
@@ -1010,6 +1012,11 @@ export default function AdminPage() {
                 <label className="block text-sm text-stone-700">
                   <span className="mb-2 block font-medium text-stone-900">Recipe Modifier System Prompt (Modify AI Page)</span>
                   <textarea value={settings.systemPromptModify} onChange={(e) => setSettings({ ...settings, systemPromptModify: e.target.value })} placeholder="Instructions for the scaling and substitutions assistant" rows={3} className="mt-1 w-full rounded-2xl border border-stone-300 bg-white p-3" />
+                </label>
+
+                <label className="block text-sm text-stone-700">
+                  <span className="mb-2 block font-medium text-stone-900">Chat System Prompt (Continue Chat Feature)</span>
+                  <textarea value={settings.systemPromptChat} onChange={(e) => setSettings({ ...settings, systemPromptChat: e.target.value })} placeholder="Instructions for the follow-up chat conversations" rows={3} className="mt-1 w-full rounded-2xl border border-stone-300 bg-white p-3" />
                 </label>
 
                 <label className="block text-sm text-stone-700">

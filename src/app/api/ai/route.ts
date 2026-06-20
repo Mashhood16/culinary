@@ -26,9 +26,14 @@ export async function POST(request: Request) {
       const modelName = settings.model || 'meta-llama/llama-3.1-8b-instruct';
 
       // 2. Select the correct system prompt based on the incoming request 'type'
-      const systemPrompt = type === 'modify'
-        ? settings.systemPromptModify || 'You are an expert food scientist. Adapt, scale, or substitute ingredients for the provided recipe accurately while maintaining flavor.'
-        : settings.systemPrompt || 'You are a helpful recipe assistant.';
+      let systemPrompt: string;
+      if (type === 'modify') {
+        systemPrompt = settings.systemPromptModify || 'You are an expert food scientist. Adapt, scale, or substitute ingredients for the provided recipe accurately while maintaining flavor.';
+      } else if (type === 'chat') {
+        systemPrompt = settings.systemPromptChat || 'You are a friendly culinary assistant. Maintain context from the previous conversation and provide helpful cooking advice.';
+      } else {
+        systemPrompt = settings.systemPrompt || 'You are a helpful recipe assistant.';
+      }
 
       // 3. Build messages array with conversation history for context
       const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [

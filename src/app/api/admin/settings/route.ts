@@ -26,6 +26,7 @@ export async function POST(request: Request) {
       model: String(body.model || 'meta-llama/llama-3.1-8b-instruct'),
       systemPrompt: String(body.systemPrompt || '').trim(),
       systemPromptModify: String(body.systemPromptModify || '').trim(),
+      systemPromptChat: String(body.systemPromptChat || '').trim(),
       apiKey: String(body.apiKey || '').trim(),
     });
 
