@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import { getImageUrl } from '@/lib/recipe-image';
 import RecipeFilters from '@/components/RecipeFilters';
+import ScrollToTopOnMount from '@/components/ScrollToTopOnMount';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 60; // Page cached for 60 seconds
@@ -43,6 +44,7 @@ export default async function RecipesPage({ searchParams }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
+      <ScrollToTopOnMount />
       <div className="mx-auto max-w-7xl px-6 py-10 lg:px-10 space-y-8 animate-fade-in">
         
         {/* Page Header */}
