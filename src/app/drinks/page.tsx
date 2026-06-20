@@ -25,8 +25,8 @@ export default async function DrinksPage() {
                 alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
                 width={800}
                 height={480}
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 400px"
                 className="h-44 w-full object-cover"
-                unoptimized
               />
               <div className="p-5">
                 <p className="text-xs uppercase tracking-[0.3em] text-amber-700">{recipe.cuisine}</p>

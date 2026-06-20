@@ -84,8 +84,8 @@ export default async function Home() {
                       src={getImageUrl(recipe.image, { width: 640, height: 400 })} 
                       alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title} 
                       width={640} height={400} 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 320px"
                       className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
-                      unoptimized 
                     />
                   )}
                   <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">{recipe.cuisine}</span>
@@ -130,8 +130,8 @@ export default async function Home() {
                     src={getImageUrl(featured.image, { width: 800, height: 480 })} 
                     alt={typeof featured.image === 'object' && featured.image !== null && 'alt' in featured.image ? featured.image.alt || featured.title : featured.title} 
                     width={800} height={480} 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
                     className="h-full w-full object-cover" 
-                    unoptimized 
                   />
                 </div>
                 <Link href={`/recipe-of-the-day?recipe=${featured.slug}`} className="mt-5 inline-block rounded-full bg-amber-500 px-4 py-2 text-stone-950 font-medium transition hover:-translate-y-0.5 hover:bg-amber-400">View full recipe</Link>

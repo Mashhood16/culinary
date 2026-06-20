@@ -42,8 +42,7 @@ export default function FavoritesList() {
                     alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
                     width={640}
                     height={400}
-                    sizes="(max-width: 768px) 100vw, 320px"
-                    unoptimized
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 320px"
                     className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
                   />
                 ) : (

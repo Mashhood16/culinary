@@ -68,6 +68,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
               width={1400}
               height={900}
+              sizes="100vw"
               className="h-full w-full object-cover object-center" 
             />
           </div>

@@ -52,21 +52,15 @@ export default async function RecipeOfTheDayPage() {
         
         {featured.image && (
   <Image 
-    // Use the utility to get the correct URL regardless of whether 'image' is a string or an object
     src={getImageUrl(featured.image, { width: 800, height: 400 })} 
-    
-    // Determine the alt text safely
     alt={
       typeof featured.image === 'object' && featured.image !== null && 'alt' in featured.image 
         ? (featured.image.alt || featured.title)
         : featured.title
     } 
-    
     width={800} 
     height={400} 
-    unoptimized
-    
-    // Combine the styles you wanted
+    sizes="(max-width: 768px) 100vw, 800px"
     className="mt-6 w-full h-[300px] object-cover rounded-3xl"
   />
 )}
