@@ -7,6 +7,7 @@ import QuickEditButton from '@/components/QuickEditButton';
 import IngredientChecklist from '@/components/IngredientChecklist';
 import FavoriteButton from '@/components/FavoriteButton';
 import ImageWithSkeleton from '@/components/ImageWithSkeleton';
+import AdaptiveImageContainer from '@/components/AdaptiveImageContainer';
 
 export const dynamic = 'force-dynamic';
 
@@ -62,7 +63,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
 
         {/* Image */}
         {recipe.image && (
-          <div className="w-full rounded-3xl shadow-md animate-fade-in bg-gradient-to-br from-stone-100 via-stone-50 to-amber-50/30 dark:from-stone-800 dark:via-stone-850 dark:to-stone-900">
+          <AdaptiveImageContainer src={getImageUrl(recipe.image)}>
             <ImageWithSkeleton 
               src={getImageUrl(recipe.image, { width: 1400, height: 900 })}
               alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
@@ -72,7 +73,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               wrapperClassName="bg-transparent"
               className="w-full h-auto max-h-[520px] object-contain" 
             />
-          </div>
+          </AdaptiveImageContainer>
         )}
 
         {/* Story Section */}
