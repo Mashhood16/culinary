@@ -3,25 +3,33 @@ import { getAISettings, saveAISettings } from '@/lib/ai-settings';
 
 export const dynamic = 'force-dynamic';
 
+/** Mask an API key: show only last 4 characters */
+function maskApiKey(key: string): string {
+  if (!key || key.length <= 8) return key ? '••••••••' : '';
+  return '••••••••' + key.slice(-4);
+}
+
 export async function GET() {
-  const settings = getAISettings();
-  return NextResponse.json(settings);
+  const settings = await getAISettings();
+  return NextResponse.json({
+    ...settings,
+    apiKey: maskApiKey(settings.apiKey),
+  });
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     
-    // Securely extract, sanitize, and type-cast each field of your AI configuration
-    const settings = saveAISettings({
+    const settings = await saveAISettings({
       enabled: Boolean(body.enabled),
       model: String(body.model || 'meta-llama/llama-3.1-8b-instruct'),
       systemPrompt: String(body.systemPrompt || '').trim(),
-      systemPromptModify: String(body.systemPromptModify || '').trim(), // Added & sanitized
+      systemPromptModify: String(body.systemPromptModify || '').trim(),
       apiKey: String(body.apiKey || '').trim(),
     });
 
-    return NextResponse.json(settings);
+    return NextResponse.json({ ...settings, apiKey: maskApiKey(settings.apiKey) });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

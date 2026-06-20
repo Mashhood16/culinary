@@ -10,8 +10,8 @@ function isSafeLocalUrl(url: string | null): boolean {
 }
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState('admin@globalrecipehub.com');
-  const [password, setPassword] = useState('admin123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 

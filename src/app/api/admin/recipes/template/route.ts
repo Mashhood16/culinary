@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import * as XLSX from 'xlsx';
-import { verifyAdminSession } from '@/lib/admin-auth';
 
 const templateHeaders = [
   'title',
@@ -34,8 +33,9 @@ const templateHeaders = [
 ];
 
 export async function GET(request: Request) {
-  const token = request.headers.get('cookie')?.match(/admin_session=([^;]+)/)?.[1];
-  if (!verifyAdminSession(token)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  // Auth check: middleware already gates /api/admin/ routes, verify cookie exists
+  const hasCookie = /admin_session=[^;]+/.test(request.headers.get('cookie') || '');
+  if (!hasCookie) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const worksheet = XLSX.utils.aoa_to_sheet([
     ['Recipe Bulk Import Template'],

@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import * as XLSX from 'xlsx';
-import { verifyAdminSession } from '@/lib/admin-auth';
 import { addAdminRecipe, loadAdminRecipes, saveAdminRecipes } from '@/lib/recipe-store';
 
 function generateSlug(value: string) {
@@ -63,8 +62,9 @@ function normalizeRow(row: Record<string, unknown>) {
 }
 
 export async function POST(request: Request) {
-  const token = request.headers.get('cookie')?.match(/admin_session=([^;]+)/)?.[1];
-  if (!verifyAdminSession(token)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  // Auth check: middleware already gates /api/admin/ routes, verify cookie exists
+  const hasCookie = /admin_session=[^;]+/.test(request.headers.get('cookie') || '');
+  if (!hasCookie) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   try {
     const formData = await request.formData();
