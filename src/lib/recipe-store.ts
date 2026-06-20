@@ -75,14 +75,12 @@ function normalizeRecipe(recipe: Record<string, unknown>): AdminRecipe {
 }
 
 export type ColorPalette = {
-  vibrant: string;
-  muted: string;
-  darkVibrant: string;
-  lightVibrant: string;
-  darkMuted: string;
-  lightMuted: string;
-  dominant: string;
-  gradient: string;
+  /** Edge colors sampled by sharp */
+  leftColor?: string;
+  rightColor?: string;
+  topColor?: string;
+  bottomColor?: string;
+  /** Pre-computed CSS gradients */
   gradientLight: string;
   gradientDark: string;
 };

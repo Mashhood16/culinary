@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 /**
- * Backfill script: extracts color palettes from recipe images using node-vibrant
- * and stores them in the recipes-data.json file.
+ * Backfill script: extracts color palettes from recipe images using sharp
+ * and stores them in recipes-data.json.
+ *
+ * Sharp resizes the image to a tiny thumbnail, samples edge pixels (left, right,
+ * top, bottom), and builds a CSS gradient from those colors.
  *
  * Usage: node scripts/backfill-colors.mjs
  */
@@ -9,14 +12,12 @@
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const RECIPES_FILE = path.join(ROOT, 'recipes-data.json');
 const CATALOG_FILE = path.join(ROOT, 'src', 'lib', 'recipe-catalog-exact.json');
-
-// Use node-vibrant/node for Node.js (avoids browser canvas APIs)
-const { Vibrant } = await import('node-vibrant/node');
 
 function rgbToHex(r, g, b) {
   return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
@@ -47,51 +48,78 @@ function lighten(hex, factor) {
   );
 }
 
-function extractPaletteFallback() {
-  return {
-    vibrant: '#d97706',
-    muted: '#92400e',
-    darkVibrant: '#78350f',
-    lightVibrant: '#fbbf24',
-    darkMuted: '#451a03',
-    lightMuted: '#fef3c7',
-    dominant: '#b45309',
-    gradient: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)',
+/** Average an array of [r,g,b] tuples into a single hex color. */
+function avgColor(pixels) {
+  if (!pixels.length) return '#888888';
+  const r = Math.round(pixels.reduce((s, p) => s + p[0], 0) / pixels.length);
+  const g = Math.round(pixels.reduce((s, p) => s + p[1], 0) / pixels.length);
+  const b = Math.round(pixels.reduce((s, p) => s + p[2], 0) / pixels.length);
+  return rgbToHex(r, g, b);
+}
+
+/** Extract edge colors from an image URL using sharp. */
+async function extractColors(imageUrl) {
+  const fallback = {
     gradientLight: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)',
     gradientDark: 'linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)',
   };
-}
 
-async function extractColors(imageUrl) {
   try {
-    const palette = await Vibrant.from(imageUrl).getPalette();
+    // Fetch image as buffer first (sharp can't fetch URLs directly)
+    const res = await fetch(imageUrl);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const buffer = Buffer.from(await res.arrayBuffer());
 
-    const vibrant = palette.Vibrant?.hex || '#d97706';
-    const muted = palette.Muted?.hex || '#92400e';
-    const darkVibrant = palette.DarkVibrant?.hex || '#78350f';
-    const lightVibrant = palette.LightVibrant?.hex || '#fbbf24';
-    const darkMuted = palette.DarkMuted?.hex || '#451a03';
-    const lightMuted = palette.LightMuted?.hex || '#fef3c7';
-    const dominant = palette.Vibrant?.hex || palette.Muted?.hex || '#b45309';
+    // Resize to 20x12 thumbnail — tiny but enough for edge sampling
+    const { data, info } = await sharp(buffer)
+      .resize(20, 12, { fit: 'cover' })
+      .removeAlpha()
+      .raw()
+      .toBuffer({ resolveWithObject: true });
 
-    const gradientLight = `linear-gradient(135deg, ${lightMuted} 0%, ${lighten(vibrant, 0.5)} 50%, ${lighten(muted, 0.3)} 100%)`;
-    const gradientDark = `linear-gradient(135deg, ${darkMuted} 0%, ${darken(vibrant, 0.5)} 50%, ${darken(muted, 0.4)} 100%)`;
+    const { width, height, channels } = info;
+    const pixels = [];
+    for (let i = 0; i < data.length; i += channels) {
+      pixels.push([data[i], data[i + 1], data[i + 2]]);
+    }
+
+    // Sample edges: 3-pixel strip from each side for robustness against borders
+    const strip = 3;
+    const left = [];
+    const right = [];
+    const top = [];
+    const bottom = [];
+    for (let y = 0; y < height; y++) {
+      for (let dx = 0; dx < strip; dx++) left.push(pixels[y * width + dx]);
+      for (let dx = 0; dx < strip; dx++) right.push(pixels[y * width + (width - 1 - dx)]);
+    }
+    for (let x = 0; x < width; x++) {
+      for (let dy = 0; dy < strip; dy++) top.push(pixels[dy * width + x]);
+      for (let dy = 0; dy < strip; dy++) bottom.push(pixels[(height - 1 - dy) * width + x]);
+    }
+
+    const leftHex = avgColor(left);
+    const rightHex = avgColor(right);
+    const topHex = avgColor(top);
+    const bottomHex = avgColor(bottom);
+
+    // Light gradient: use lightened edge colors for a soft, bright feel
+    const gradientLight = `linear-gradient(135deg, ${lighten(leftHex, 0.4)} 0%, ${lighten(topHex, 0.3)} 35%, ${lighten(rightHex, 0.4)} 65%, ${lighten(bottomHex, 0.35)} 100%)`;
+
+    // Dark gradient: use darkened edge colors
+    const gradientDark = `linear-gradient(135deg, ${darken(leftHex, 0.3)} 0%, ${darken(topHex, 0.25)} 35%, ${darken(rightHex, 0.3)} 65%, ${darken(bottomHex, 0.28)} 100%)`;
 
     return {
-      vibrant,
-      muted,
-      darkVibrant,
-      lightVibrant,
-      darkMuted,
-      lightMuted,
-      dominant,
-      gradient: gradientLight,
+      leftColor: leftHex,
+      rightColor: rightHex,
+      topColor: topHex,
+      bottomColor: bottomHex,
       gradientLight,
       gradientDark,
     };
   } catch (err) {
     console.error(`  ⚠ Failed: ${err.message}`);
-    return extractPaletteFallback();
+    return fallback;
   }
 }
 
@@ -122,10 +150,9 @@ for (const r of catalog.recipes || []) {
 }
 
 // Load recipes
-const recipesFile = RECIPES_FILE;
 let recipes = [];
-if (existsSync(recipesFile)) {
-  recipes = JSON.parse(readFileSync(recipesFile, 'utf8'));
+if (existsSync(RECIPES_FILE)) {
+  recipes = JSON.parse(readFileSync(RECIPES_FILE, 'utf8'));
 }
 
 console.log(`Found ${recipes.length} recipes in recipes-data.json`);
@@ -148,11 +175,10 @@ for (const r of catalogRecipes) {
 
 let processed = 0;
 let skipped = 0;
-let failed = 0;
 
 for (const [slug, recipe] of allRecipes) {
-  // Skip if already has colorPalette
-  if (recipe.colorPalette && recipe.colorPalette.vibrant) {
+  // Skip if already has sharp-extracted palette (has leftColor = new format)
+  if (recipe.colorPalette?.leftColor) {
     skipped++;
     continue;
   }
@@ -160,18 +186,21 @@ for (const [slug, recipe] of allRecipes) {
   const imageUrl = getImageUrl(recipe.image) || catalogImageBySlug.get(slug);
   if (!imageUrl) {
     console.log(`[${++processed}] ${slug}: no image, using fallback`);
-    recipe.colorPalette = extractPaletteFallback();
+    recipe.colorPalette = {
+      gradientLight: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)',
+      gradientDark: 'linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)',
+    };
     continue;
   }
 
   console.log(`[${++processed}] ${slug}: extracting from ${imageUrl.substring(0, 60)}...`);
   recipe.colorPalette = await extractColors(imageUrl);
-  console.log(`  ✓ dominant: ${recipe.colorPalette.dominant}, vibrant: ${recipe.colorPalette.vibrant}`);
+  console.log(`  ✓ left=${recipe.colorPalette.leftColor} top=${recipe.colorPalette.topColor} right=${recipe.colorPalette.rightColor}`);
 }
 
 // Save updated recipes
 const updatedRecipes = Array.from(allRecipes.values());
-writeFileSync(recipesFile, JSON.stringify(updatedRecipes, null, 2), 'utf8');
+writeFileSync(RECIPES_FILE, JSON.stringify(updatedRecipes, null, 2), 'utf8');
 
-console.log(`\nDone! Processed: ${processed}, Skipped (already had palette): ${skipped}`);
+console.log(`\nDone! Processed: ${processed}, Skipped (already had sharp palette): ${skipped}`);
 console.log(`Total recipes with color palettes: ${updatedRecipes.filter(r => r.colorPalette).length}`);

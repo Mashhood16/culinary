@@ -45,7 +45,7 @@ export default function GradientBackground({
       {isDark && (
         <div 
           className="absolute inset-0 pointer-events-none z-10"
-          style={{ background: 'rgba(17, 24, 39, 0.7)' }}
+          style={{ background: 'rgba(17, 24, 39, 0.6)' }}
         />
       )}
       {children}
