@@ -71,7 +71,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
                 src={imageUrl}
                 alt=""
                 aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover scale-150 blur-2xl opacity-60 dark:opacity-30"
+                className="absolute inset-0 w-full h-full object-cover scale-[1.4] blur-xl opacity-80 dark:opacity-40"
               />
               {/* Main image */}
               <ImageWithSkeleton 
