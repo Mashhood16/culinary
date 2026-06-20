@@ -66,12 +66,10 @@ export default async function RecipeDetailPage({ params }: PageProps) {
           const imageUrl = getImageUrl(recipe.image, { width: 1400, height: 900 });
           const altText = typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title;
           const palette = recipe.colorPalette;
-          const lightBg = palette?.gradientLight || 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)';
-          const darkBg = palette?.gradientDark || 'linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)';
+          const gradientBg = palette?.gradientLight || 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)';
           return (
             <GradientBackground
-              lightGradient={lightBg}
-              darkGradient={darkBg}
+              lightGradient={gradientBg}
               className="relative w-full min-h-[400px] rounded-3xl overflow-hidden shadow-md animate-fade-in"
             >
               {/* Main image */}

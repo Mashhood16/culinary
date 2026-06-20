@@ -4,29 +4,26 @@ import { useState, useEffect } from 'react';
 
 interface GradientBackgroundProps {
   lightGradient: string;
-  darkGradient: string;
   className?: string;
   children: React.ReactNode;
 }
 
 /**
  * Client component that renders a div with a gradient background
- * that switches between light and dark mode based on the document's class.
+ * that uses the light gradient in both modes, with a semi-transparent
+ * dark overlay in dark mode so the colors remain visible but muted.
  */
 export default function GradientBackground({ 
-  lightGradient, 
-  darkGradient, 
+  lightGradient,
   className = '',
   children 
 }: GradientBackgroundProps) {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check initial state
     const root = document.documentElement;
     setIsDark(root.classList.contains('dark'));
 
-    // Watch for theme changes
     const observer = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         if (mutation.attributeName === 'class') {
@@ -42,8 +39,15 @@ export default function GradientBackground({
   return (
     <div 
       className={className}
-      style={{ background: isDark ? darkGradient : lightGradient }}
+      style={{ background: lightGradient }}
     >
+      {/* Dark mode overlay - mutes the gradient colors while keeping them visible */}
+      {isDark && (
+        <div 
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{ background: 'rgba(17, 24, 39, 0.7)' }}
+        />
+      )}
       {children}
     </div>
   );
