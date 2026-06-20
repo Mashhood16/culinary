@@ -74,6 +74,19 @@ function normalizeRecipe(recipe: Record<string, unknown>): AdminRecipe {
   };
 }
 
+export type ColorPalette = {
+  vibrant: string;
+  muted: string;
+  darkVibrant: string;
+  lightVibrant: string;
+  darkMuted: string;
+  lightMuted: string;
+  dominant: string;
+  gradient: string;
+  gradientLight: string;
+  gradientDark: string;
+};
+
 export type AdminRecipe = {
   slug: string;
   title: string;
@@ -103,6 +116,7 @@ export type AdminRecipe = {
   steps?: string[];
   featured?: boolean;
   image: string | { url?: string; src?: string; alt?: string; status?: string };
+  colorPalette?: ColorPalette;
 };
 
 const filePath = path.join(process.cwd(), 'recipes-data.json');

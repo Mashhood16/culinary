@@ -7,6 +7,7 @@ import QuickEditButton from '@/components/QuickEditButton';
 import IngredientChecklist from '@/components/IngredientChecklist';
 import FavoriteButton from '@/components/FavoriteButton';
 import ImageWithSkeleton from '@/components/ImageWithSkeleton';
+import GradientBackground from '@/components/GradientBackground';
 
 export const dynamic = 'force-dynamic';
 
@@ -60,19 +61,19 @@ export default async function RecipeDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Image with blurred color background */}
+        {/* Image with color-matched gradient background */}
         {recipe.image && (() => {
           const imageUrl = getImageUrl(recipe.image, { width: 1400, height: 900 });
           const altText = typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title;
+          const palette = recipe.colorPalette;
+          const lightBg = palette?.gradientLight || 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)';
+          const darkBg = palette?.gradientDark || 'linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)';
           return (
-            <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden shadow-md animate-fade-in">
-              {/* Blurred background layer - creates the color gradient effect */}
-              <img
-                src={imageUrl}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover scale-[1.4] blur-xl opacity-80 dark:opacity-40"
-              />
+            <GradientBackground
+              lightGradient={lightBg}
+              darkGradient={darkBg}
+              className="relative w-full min-h-[400px] rounded-3xl overflow-hidden shadow-md animate-fade-in"
+            >
               {/* Main image */}
               <ImageWithSkeleton 
                 src={imageUrl}
@@ -83,7 +84,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
                 wrapperClassName="bg-transparent h-auto"
                 className="relative w-full h-auto max-h-[520px] object-contain" 
               />
-            </div>
+            </GradientBackground>
           );
         })()}
 
