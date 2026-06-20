@@ -23356,11 +23356,7 @@
       "turkish-soups",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-tarhana-soup",
-      "alt": "Tarhana Soup",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995668536-turkish-tarhana-soup.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23392,7 +23388,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "turkish-yayla-soup",
@@ -23416,11 +23413,7 @@
       "turkish-soups",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-yayla-soup",
-      "alt": "Yayla Soup",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995714105-turkish-yayla-soup.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23453,7 +23446,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "turkish-i-kembe-soup",
@@ -23477,11 +23471,7 @@
       "turkish-soups",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-i-kembe-soup",
-      "alt": "İşkembe Soup",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995758311-turkish-i-kembe-soup.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23517,7 +23507,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "turkish-tavuk-suyu-soup",
@@ -23541,11 +23532,7 @@
       "turkish",
       "turkish-soups"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-tavuk-suyu-soup",
-      "alt": "Tavuk Suyu Soup",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995803576-turkish-tavuk-suyu-soup.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23581,7 +23568,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "turkish-kelle-pa-a-soup",
@@ -23605,11 +23593,7 @@
       "turkish-soups",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-kelle-pa-a-soup",
-      "alt": "Kelle Paça Soup",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781995848848-turkish-kelle-pa-a-soup.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -23646,7 +23630,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-yangzhou-fried-rice",

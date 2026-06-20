@@ -128,16 +128,16 @@ export default async function Home() {
               <>
                 <h2 className="mt-3 text-2xl font-semibold">{featured.title}</h2>
                 <p className="mt-3 text-stone-300">{featured.description}</p>
-                <div className="mt-5 h-48 w-full rounded-3xl overflow-hidden bg-stone-800">
+                <div className="mt-5 w-full rounded-3xl overflow-hidden bg-stone-800 aspect-[4/3]">
                   <Image 
-                    src={getImageUrl(featured.image, { width: 800, height: 480 })} 
+                    src={getImageUrl(featured.image, { width: 800, height: 600 })} 
                     alt={typeof featured.image === 'object' && featured.image !== null && 'alt' in featured.image ? featured.image.alt || featured.title : featured.title} 
-                    width={800} height={480} 
+                    width={800} height={600} 
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 600px"
                     className="h-full w-full object-cover" 
                   />
                 </div>
-                <Link href={`/recipe-of-the-day?recipe=${featured.slug}`} className="mt-5 inline-block rounded-full bg-amber-500 px-4 py-2 text-stone-950 font-medium transition hover:-translate-y-0.5 hover:bg-amber-400">View full recipe</Link>
+                <Link href={`/recipe-of-the-day?recipe=${featured.slug}`} className="mt-5 inline-block text-center rounded-full bg-amber-500 px-4 py-3 text-stone-950 font-bold transition hover:-translate-y-0.5 hover:bg-amber-400">View full recipe</Link>
               </>
             ) : (
               <p className="mt-4 text-stone-300">Recipe data is currently unavailable.</p>
