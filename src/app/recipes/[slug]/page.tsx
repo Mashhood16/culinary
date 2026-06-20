@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import { summarizeMethodStep } from '@/lib/method-summary';
 import { getImageUrl } from '@/lib/recipe-image';
-import { getCuisineWithFlag } from '@/lib/cuisine-flags';
+import CuisineWithFlag from '@/components/CuisineWithFlag';
 import QuickEditButton from '@/components/QuickEditButton';
 import IngredientChecklist from '@/components/IngredientChecklist';
 import FavoriteButton from '@/components/FavoriteButton';
@@ -73,7 +73,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
 
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left w-full">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold">{getCuisineWithFlag(recipe.cuisine)}</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold"><CuisineWithFlag cuisine={recipe.cuisine} /></p>
             <h1 className="mt-4 text-4xl lg:text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">{recipe.title}</h1>
             <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">{recipe.description}</p>
             <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">

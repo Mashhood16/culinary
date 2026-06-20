@@ -5,7 +5,7 @@ import { summarizeMethodStep } from '@/lib/method-summary';
 import QuickEditButton from '@/components/QuickEditButton';
 
 import { getImageUrl } from '@/lib/recipe-image';
-import { getCuisineWithFlag } from '@/lib/cuisine-flags';
+import CuisineWithFlag from '@/components/CuisineWithFlag';
 
 
 // 1. Force the page to re-randomize every time, but render it on the server.
@@ -49,7 +49,7 @@ export default async function RecipeOfTheDayPage() {
         </div>
         
         <h1 className="text-4xl font-bold">{featured.title}</h1>
-        <p className="text-sm uppercase tracking-wider text-amber-600 dark:text-amber-500 font-semibold mt-2">{getCuisineWithFlag(featured.cuisine)}</p>
+        <p className="text-sm uppercase tracking-wider text-amber-600 dark:text-amber-500 font-semibold mt-2"><CuisineWithFlag cuisine={featured.cuisine} /></p>
         
         {featured.image && (
   <Image 

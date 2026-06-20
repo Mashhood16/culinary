@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import { getImageUrl } from '@/lib/recipe-image';
-import { getCuisineWithFlag } from '@/lib/cuisine-flags';
+import CuisineWithFlag from '@/components/CuisineWithFlag';
 import AIChefForm from '@/components/AIChefForm';
 import FavoritesList from '@/components/FavoritesList';
 import Image from 'next/image';
@@ -89,7 +89,9 @@ export default async function Home() {
                       className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" 
                     />
                   )}
-                  <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">{getCuisineWithFlag(recipe.cuisine)}</span>
+                  <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">
+                      <CuisineWithFlag cuisine={recipe.cuisine} />
+                  </span>
                 </div>
                 <h3 className="mt-4 text-xl font-bold font-serif text-stone-900 group-hover:text-amber-700 transition-colors dark:text-stone-100 line-clamp-1">{recipe.title}</h3>
                 <p className="mt-2 text-sm text-stone-600 dark:text-stone-300 line-clamp-2 leading-relaxed">{recipe.description}</p>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { loadPublicRecipes } from '@/lib/recipe-store';
 import { getImageUrl } from '@/lib/recipe-image';
-import { getCuisineWithFlag } from '@/lib/cuisine-flags';
+import CuisineWithFlag from '@/components/CuisineWithFlag';
 
 export default async function DessertsPage() {
   const allRecipes = await loadPublicRecipes();
@@ -30,7 +30,7 @@ export default async function DessertsPage() {
                 className="h-44 w-full object-cover"
               />
               <div className="p-5">
-                <p className="text-xs uppercase tracking-[0.3em] text-amber-700">{getCuisineWithFlag(recipe.cuisine)}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-amber-700"><CuisineWithFlag cuisine={recipe.cuisine} /></p>
                 <h2 className="mt-2 text-xl font-semibold">{recipe.title}</h2>
                 <p className="mt-2 text-sm text-stone-600">{recipe.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2 text-xs text-stone-700">
