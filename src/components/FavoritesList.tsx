@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image'; 
 import { getImageUrl } from '@/lib/recipe-image'; 
+import { getCuisineWithFlag } from '@/lib/cuisine-flags';
 
 export default function FavoritesList() {
   const [favorites, setFavorites] = useState<any[]>([]);
@@ -48,8 +49,8 @@ export default function FavoritesList() {
                 ) : (
                   <div className="flex h-full items-center justify-center text-stone-400 text-xs">No Image</div>
                 )}
-                <span className="absolute left-3 top-3 rounded-full bg-amber-100/90 backdrop-blur-md px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-950 shadow-sm border border-amber-200/40">
-                  {recipe.cuisine}
+                <span className="absolute left-3 top-3 rounded-full bg-stone-900/80 backdrop-blur-md px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm border border-white/10">
+                  {getCuisineWithFlag(recipe.cuisine)}
                 </span>
               </div>
               
