@@ -42,28 +42,6 @@ export default async function RecipeDetailPage({ params }: PageProps) {
         {/* Hero: Title, Description, Actions and Image Side-by-Side */}
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 animate-fade-in">
           
-          {/* Text Content */}
-          <div className="flex-1 text-center lg:text-left w-full">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold">{recipe.cuisine}</p>
-            <h1 className="mt-4 text-4xl lg:text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">{recipe.title}</h1>
-            <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">{recipe.description}</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-              <FavoriteButton 
-                slug={recipe.slug} 
-                title={recipe.title} 
-                cuisine={recipe.cuisine} 
-                image={getImageUrl(recipe.image, { width: 640, height: 400 })} 
-              />
-              <QuickEditButton slug={recipe.slug} />
-              <Link
-                href={`/ai?recipe=${recipe.slug}`}
-                className="inline-flex h-11 items-center justify-center rounded-full bg-amber-700 px-6 text-sm font-semibold text-white transition hover:bg-amber-600 shadow-sm"
-              >
-                ✨ Modify with AI
-              </Link>
-            </div>
-          </div>
-
           {/* Image Content */}
           {recipe.image && (() => {
             const imageUrl = getImageUrl(recipe.image, { width: 800, height: 600 });
@@ -91,6 +69,28 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               </div>
             );
           })()}
+
+          {/* Text Content */}
+          <div className="flex-1 text-center lg:text-left w-full">
+            <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold">{recipe.cuisine}</p>
+            <h1 className="mt-4 text-4xl lg:text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">{recipe.title}</h1>
+            <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">{recipe.description}</p>
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <FavoriteButton 
+                slug={recipe.slug} 
+                title={recipe.title} 
+                cuisine={recipe.cuisine} 
+                image={getImageUrl(recipe.image, { width: 640, height: 400 })} 
+              />
+              <QuickEditButton slug={recipe.slug} />
+              <Link
+                href={`/ai?recipe=${recipe.slug}`}
+                className="inline-flex h-11 items-center justify-center rounded-full bg-amber-700 px-6 text-sm font-semibold text-white transition hover:bg-amber-600 shadow-sm"
+              >
+                ✨ Modify with AI
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Story Section */}
