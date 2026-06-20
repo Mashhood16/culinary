@@ -12,14 +12,23 @@ import CuisineWithFlag from '@/components/CuisineWithFlag';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0; 
 
-export default async function RecipeOfTheDayPage() {
+interface PageProps {
+  searchParams: Promise<{ recipe?: string }>;
+}
+
+export default async function RecipeOfTheDayPage({ searchParams }: PageProps) {
+  const { recipe } = await searchParams;
   // 2. Fetch data directly on the server (No more loading spinners!)
   const recipes = await loadPublicRecipes();
   const publishedRecipes = recipes.filter(r => r.status === 'published');
   
-  const featured = publishedRecipes.length > 0 
-    ? publishedRecipes[Math.floor(Math.random() * publishedRecipes.length)] 
-    : null;
+  let featured = null;
+  if (recipe) {
+    featured = publishedRecipes.find(r => r.slug === recipe) || null;
+  }
+  if (!featured && publishedRecipes.length > 0) {
+    featured = publishedRecipes[Math.floor(Math.random() * publishedRecipes.length)];
+  }
 
   if (!featured) {
     return (
