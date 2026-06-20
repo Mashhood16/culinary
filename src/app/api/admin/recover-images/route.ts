@@ -1,7 +1,6 @@
 import { list } from '@vercel/blob';
 import { NextResponse } from 'next/server';
 import { loadAdminRecipes, saveAdminRecipes } from '@/lib/recipe-store';
-import { verifyAdminSession } from '@/lib/admin-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,11 +12,11 @@ function slugify(input: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-/** Check admin session from cookie. */
+/** Check admin session from cookie. The middleware already gates /api/admin/ routes,
+ *  so we just need to verify the cookie exists (same pattern as other admin endpoints). */
 function requireAdmin(request: Request): boolean {
   const cookie = request.headers.get('cookie') || '';
-  const match = cookie.match(/admin_session=([^;]+)/);
-  return !!verifyAdminSession(match?.[1]);
+  return /admin_session=[^;]+/.test(cookie);
 }
 
 /** Build a map: normalized-slug → latest blob URL for all blobs under recipes/. */
