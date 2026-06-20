@@ -39,53 +39,59 @@ export default async function RecipeDetailPage({ params }: PageProps) {
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
       <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 space-y-10">
         
-        {/* Hero: Title, Description, Actions */}
-        <div className="max-w-3xl mx-auto text-center animate-fade-in">
-          <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold">{recipe.cuisine}</p>
-          <h1 className="mt-4 text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">{recipe.title}</h1>
-          <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto">{recipe.description}</p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <FavoriteButton 
-              slug={recipe.slug} 
-              title={recipe.title} 
-              cuisine={recipe.cuisine} 
-              image={getImageUrl(recipe.image, { width: 640, height: 400 })} 
-            />
-            <QuickEditButton slug={recipe.slug} />
-            <Link
-              href={`/ai?recipe=${recipe.slug}`}
-              className="inline-flex h-11 items-center justify-center rounded-full bg-amber-700 px-6 text-sm font-semibold text-white transition hover:bg-amber-600 shadow-sm"
-            >
-              ✨ Modify with AI
-            </Link>
-          </div>
-        </div>
-
-        {/* Image with color-matched gradient background */}
-        {recipe.image && (() => {
-          const imageUrl = getImageUrl(recipe.image, { width: 1400, height: 900 });
-          const altText = typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title;
-          const palette = recipe.colorPalette;
-          const gradientBg = palette?.gradientLight || 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)';
-          return (
-            <GradientBackground
-              lightGradient={gradientBg}
-              className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-md animate-fade-in"
-            >
-              {/* Main image fills the container */}
-              <ImageWithSkeleton 
-                src={imageUrl}
-                alt={altText}
-                width={1400}
-                height={900}
-                sizes="100vw"
-                wrapperClassName="bg-transparent h-full"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectFit: 'cover' }}
+        {/* Hero: Title, Description, Actions and Image Side-by-Side */}
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 animate-fade-in">
+          
+          {/* Text Content */}
+          <div className="flex-1 text-center lg:text-left w-full">
+            <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold">{recipe.cuisine}</p>
+            <h1 className="mt-4 text-4xl lg:text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">{recipe.title}</h1>
+            <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">{recipe.description}</p>
+            <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <FavoriteButton 
+                slug={recipe.slug} 
+                title={recipe.title} 
+                cuisine={recipe.cuisine} 
+                image={getImageUrl(recipe.image, { width: 640, height: 400 })} 
               />
-            </GradientBackground>
-          );
-        })()}
+              <QuickEditButton slug={recipe.slug} />
+              <Link
+                href={`/ai?recipe=${recipe.slug}`}
+                className="inline-flex h-11 items-center justify-center rounded-full bg-amber-700 px-6 text-sm font-semibold text-white transition hover:bg-amber-600 shadow-sm"
+              >
+                ✨ Modify with AI
+              </Link>
+            </div>
+          </div>
+
+          {/* Image Content */}
+          {recipe.image && (() => {
+            const imageUrl = getImageUrl(recipe.image, { width: 800, height: 600 });
+            const altText = typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title;
+            const palette = recipe.colorPalette;
+            const gradientBg = palette?.gradientLight || 'linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)';
+            
+            return (
+              <div className="flex-1 w-full max-w-2xl mx-auto lg:max-w-none">
+                <GradientBackground
+                  lightGradient={gradientBg}
+                  className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl"
+                >
+                  <ImageWithSkeleton 
+                    src={imageUrl}
+                    alt={altText}
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    wrapperClassName="bg-transparent h-full"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </GradientBackground>
+              </div>
+            );
+          })()}
+        </div>
 
         {/* Story Section */}
         {recipe.history && (
