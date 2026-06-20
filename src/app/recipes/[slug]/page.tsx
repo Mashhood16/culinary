@@ -62,14 +62,14 @@ export default async function RecipeDetailPage({ params }: PageProps) {
 
         {/* Image */}
         {recipe.image && (
-          <div className="h-[480px] w-full rounded-3xl overflow-hidden shadow-md animate-fade-in">
+          <div className="w-full rounded-3xl shadow-md animate-fade-in bg-stone-100 dark:bg-stone-800">
             <ImageWithSkeleton 
               src={getImageUrl(recipe.image, { width: 1400, height: 900 })}
               alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
               width={1400}
               height={900}
               sizes="100vw"
-              className="h-full w-full object-cover object-center" 
+              className="w-full h-auto max-h-[520px] object-contain" 
             />
           </div>
         )}
