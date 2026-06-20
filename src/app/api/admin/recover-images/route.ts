@@ -118,15 +118,19 @@ export async function POST(request: Request) {
       return r;
     });
 
-    if (recovered > 0) {
-      await saveAdminRecipes(updated);
-    }
+    const pruned = updated.filter((r) => {
+      const currentImg = r.image as any;
+      return typeof currentImg === 'string' && currentImg.includes('blob.vercel-storage.com');
+    });
+
+    const removedCount = updated.length - pruned.length;
+
+    await saveAdminRecipes(pruned);
 
     return NextResponse.json({
-      message: recovered > 0
-        ? `Successfully recovered ${recovered} recipe images from Vercel Blob storage!`
-        : 'No recoverable images found. You may need to re-upload images manually via the admin panel.',
+      message: `Successfully recovered ${recovered} images and removed ${removedCount} scrap recipes without images.`,
       recovered,
+      removed: removedCount,
       totalBlobFiles: blobMap.size,
     });
   } catch (error: any) {
