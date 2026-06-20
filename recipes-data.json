@@ -21,11 +21,7 @@
       "pakistani",
       "rice-dishes"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-biryani",
-      "alt": "Chicken Biryani",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781978754522-pakistani-chicken-biryani.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -75,7 +71,8 @@
       "bottomColor": "#dde0f3",
       "gradientLight": "linear-gradient(135deg, #eaecf8 0%, #d9dde1 35%, #eceef9 65%, #e9ebf7 100%)",
       "gradientDark": "linear-gradient(135deg, #9a9dab 0%, #969b9f 35%, #9d9fac 65%, #9fa1af 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-beef-biryani",
@@ -99,11 +96,7 @@
       "pakistani",
       "rice-dishes"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-beef-biryani",
-      "alt": "Beef Biryani",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781978794063-pakistani-beef-biryani.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -143,7 +136,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-sindhi-biryani",
@@ -167,11 +161,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-sindhi-biryani",
-      "alt": "Sindhi Biryani",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781978838562-pakistani-sindhi-biryani.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -215,7 +205,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-memoni-biryani",
@@ -239,11 +230,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-memoni-biryani",
-      "alt": "Memoni Biryani",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781978891053-pakistani-memoni-biryani.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -286,7 +273,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-yakhni-pulao",
@@ -310,11 +298,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-yakhni-pulao",
-      "alt": "Yakhni Pulao",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781978934849-pakistani-yakhni-pulao.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -360,7 +344,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-kabuli-pulao",
@@ -384,11 +369,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-kabuli-pulao",
-      "alt": "Kabuli Pulao",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979019416-pakistani-kabuli-pulao.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -428,7 +409,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-pulao",
@@ -452,11 +434,7 @@
       "pakistani",
       "rice-dishes"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-pulao",
-      "alt": "Chicken Pulao",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979063615-pakistani-chicken-pulao.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -492,7 +470,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-matar-pulao",
@@ -516,11 +495,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-matar-pulao",
-      "alt": "Matar Pulao",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979108860-pakistani-matar-pulao.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -555,7 +530,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-zarda-rice",
@@ -579,11 +555,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-zarda-rice",
-      "alt": "Zarda Rice",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979154998-pakistani-zarda-rice.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -618,7 +590,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-tehri",
@@ -642,11 +615,7 @@
       "rice-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-tehri",
-      "alt": "Tehri",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979198446-pakistani-tehri.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -683,7 +652,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-karahi",
@@ -707,11 +677,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-karahi",
-      "alt": "Chicken Karahi",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979245092-pakistani-chicken-karahi.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -759,7 +725,8 @@
       "bottomColor": "#57504b",
       "gradientLight": "linear-gradient(135deg, #bdae9a 0%, #aaa399 35%, #ada69d 65%, #928d8a 100%)",
       "gradientDark": "linear-gradient(135deg, #66543d 0%, #655d52 35%, #534a40 65%, #3f3a36 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-mutton-karahi",
@@ -783,11 +750,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-mutton-karahi",
-      "alt": "Mutton Karahi",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979288594-pakistani-mutton-karahi.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -828,7 +791,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-white-karahi",
@@ -852,11 +816,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-white-karahi",
-      "alt": "White Karahi",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979334499-pakistani-white-karahi.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -896,7 +856,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-peshawari-karahi",
@@ -920,11 +881,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-peshawari-karahi",
-      "alt": "Peshawari Karahi",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979379358-pakistani-peshawari-karahi.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -960,7 +917,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-korma",
@@ -984,11 +942,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-korma",
-      "alt": "Chicken Korma",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979423869-pakistani-chicken-korma.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1029,7 +983,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-mutton-korma",
@@ -1053,11 +1008,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-mutton-korma",
-      "alt": "Mutton Korma",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979468711-pakistani-mutton-korma.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1097,7 +1048,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-nihari",
@@ -1121,11 +1073,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-nihari",
-      "alt": "Nihari",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979513632-pakistani-nihari.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1161,7 +1109,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-paya",
@@ -1185,11 +1134,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-paya",
-      "alt": "Paya",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979559219-pakistani-paya.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1227,7 +1172,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-haleem",
@@ -1251,11 +1197,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-haleem",
-      "alt": "Haleem",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979603678-pakistani-haleem.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1303,7 +1245,8 @@
       "bottomColor": "#acaeb0",
       "gradientLight": "linear-gradient(135deg, #d9dbda 0%, #d6cfcc 35%, #e4e8ee 65%, #c9cacc 100%)",
       "gradientDark": "linear-gradient(135deg, #868987 0%, #948c89 35%, #93979e 65%, #7c7d7f 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-qorma",
@@ -1327,11 +1270,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-qorma",
-      "alt": "Chicken Qorma",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979648686-pakistani-chicken-qorma.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1371,7 +1310,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-beef-qorma",
@@ -1395,11 +1335,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-beef-qorma",
-      "alt": "Beef Qorma",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979693636-pakistani-beef-qorma.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1439,7 +1375,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-aloo-gosht",
@@ -1463,11 +1400,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-aloo-gosht",
-      "alt": "Aloo Gosht",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979738333-pakistani-aloo-gosht.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1511,7 +1444,8 @@
       "bottomColor": "#57504b",
       "gradientLight": "linear-gradient(135deg, #bdae9a 0%, #aaa399 35%, #ada69d 65%, #928d8a 100%)",
       "gradientDark": "linear-gradient(135deg, #66543d 0%, #655d52 35%, #534a40 65%, #3f3a36 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-daal-gosht",
@@ -1535,11 +1469,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-daal-gosht",
-      "alt": "Daal Gosht",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979783690-pakistani-daal-gosht.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1578,7 +1508,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-palak-gosht",
@@ -1602,11 +1533,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-palak-gosht",
-      "alt": "Palak Gosht",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979828565-pakistani-palak-gosht.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1642,7 +1569,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-kofta-curry",
@@ -1666,11 +1594,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-kofta-curry",
-      "alt": "Kofta Curry",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979873403-pakistani-kofta-curry.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1713,7 +1637,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-handi",
@@ -1737,11 +1662,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-handi",
-      "alt": "Chicken Handi",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979918648-pakistani-chicken-handi.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1780,7 +1701,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-boneless-handi",
@@ -1804,11 +1726,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-boneless-handi",
-      "alt": "Boneless Handi",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781979963735-pakistani-boneless-handi.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1847,7 +1765,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-achari-chicken",
@@ -1871,11 +1790,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-achari-chicken",
-      "alt": "Achari Chicken",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980008574-pakistani-achari-chicken.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1916,7 +1831,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-butter-chicken",
@@ -1940,11 +1856,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-butter-chicken",
-      "alt": "Butter Chicken",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980053409-pakistani-butter-chicken.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -1987,7 +1899,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-mutton-rogan-josh",
@@ -2011,11 +1924,7 @@
       "meat-curries-karahi-and-handi",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-mutton-rogan-josh",
-      "alt": "Mutton Rogan Josh",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980098870-pakistani-mutton-rogan-josh.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2054,7 +1963,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-tikka",
@@ -2078,11 +1988,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-tikka",
-      "alt": "Chicken Tikka",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980143605-pakistani-chicken-tikka.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2118,7 +2024,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-malai-tikka",
@@ -2142,11 +2049,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-malai-tikka",
-      "alt": "Chicken Malai Tikka",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980188470-pakistani-chicken-malai-tikka.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2184,7 +2087,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-beef-seekh-kebab",
@@ -2208,11 +2112,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-beef-seekh-kebab",
-      "alt": "Beef Seekh Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980233729-pakistani-beef-seekh-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2251,7 +2151,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-seekh-kebab",
@@ -2275,11 +2176,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-seekh-kebab",
-      "alt": "Chicken Seekh Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980278608-pakistani-chicken-seekh-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2318,7 +2215,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-reshmi-kebab",
@@ -2342,11 +2240,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-reshmi-kebab",
-      "alt": "Reshmi Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980323674-pakistani-reshmi-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2384,7 +2278,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chapli-kebab",
@@ -2408,11 +2303,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chapli-kebab",
-      "alt": "Chapli Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980368653-pakistani-chapli-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2454,7 +2345,8 @@
       "bottomColor": "#65524a",
       "gradientLight": "linear-gradient(135deg, #a39895 0%, #bd9d85 35%, #b69a89 65%, #9b8f89 100%)",
       "gradientDark": "linear-gradient(135deg, #473a37 0%, #78563c 35%, #5d3d29 65%, #493b35 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-shami-kebab",
@@ -2478,11 +2370,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-shami-kebab",
-      "alt": "Shami Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980413571-pakistani-shami-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2521,7 +2409,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-gola-kebab",
@@ -2545,11 +2434,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-gola-kebab",
-      "alt": "Gola Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980458460-pakistani-gola-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2587,7 +2472,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-bihari-kebab",
@@ -2611,11 +2497,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-bihari-kebab",
-      "alt": "Bihari Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980503221-pakistani-bihari-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2653,7 +2535,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-dhaga-kebab",
@@ -2677,11 +2560,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-dhaga-kebab",
-      "alt": "Dhaga Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980548295-pakistani-dhaga-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2718,7 +2597,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-mutton-chops",
@@ -2742,11 +2622,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-mutton-chops",
-      "alt": "Mutton Chops",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980593594-pakistani-mutton-chops.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2781,7 +2657,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-tandoori-chicken",
@@ -2805,11 +2682,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-tandoori-chicken",
-      "alt": "Tandoori Chicken",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980640511-pakistani-tandoori-chicken.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2844,7 +2717,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-fish-tikka",
@@ -2868,11 +2742,7 @@
       "pakistani",
       "seafood"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-fish-tikka",
-      "alt": "Fish Tikka",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980683702-pakistani-fish-tikka.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2907,7 +2777,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-behari-boti",
@@ -2931,11 +2802,7 @@
       "pakistani",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-behari-boti",
-      "alt": "Behari Boti",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980728542-pakistani-behari-boti.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -2972,7 +2839,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-boti",
@@ -2996,11 +2864,7 @@
       "main",
       "pakistani"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-boti",
-      "alt": "Chicken Boti",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980773662-pakistani-chicken-boti.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3035,7 +2899,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-bun-kebab",
@@ -3059,11 +2924,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-bun-kebab",
-      "alt": "Bun Kebab",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980818814-pakistani-bun-kebab.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3097,7 +2958,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-anda-shami-burger",
@@ -3121,11 +2983,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-anda-shami-burger",
-      "alt": "Anda Shami Burger",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980863513-pakistani-anda-shami-burger.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3158,7 +3016,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chicken-roll",
@@ -3182,11 +3041,7 @@
       "pakistani-street-food",
       "snack"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chicken-roll",
-      "alt": "Chicken Roll",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980910168-pakistani-chicken-roll.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3222,7 +3077,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-beef-roll",
@@ -3246,11 +3102,7 @@
       "pakistani-street-food",
       "snack"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-beef-roll",
-      "alt": "Beef Roll",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980953560-pakistani-beef-roll.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3286,7 +3138,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-club-sandwich",
@@ -3310,11 +3163,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-club-sandwich",
-      "alt": "Club Sandwich",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781980999385-pakistani-club-sandwich.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3349,7 +3198,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chana-chaat",
@@ -3373,11 +3223,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chana-chaat",
-      "alt": "Chana Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981043564-pakistani-chana-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3414,7 +3260,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-fruit-chaat",
@@ -3438,11 +3285,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-fruit-chaat",
-      "alt": "Fruit Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981090358-pakistani-fruit-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3475,7 +3318,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-dahi-bhallay",
@@ -3499,11 +3343,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-dahi-bhallay",
-      "alt": "Dahi Bhallay",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981133952-pakistani-dahi-bhallay.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3540,7 +3380,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-papri-chaat",
@@ -3564,11 +3405,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-papri-chaat",
-      "alt": "Papri Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981178515-pakistani-papri-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3604,7 +3441,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-gol-gappay",
@@ -3628,11 +3466,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-gol-gappay",
-      "alt": "Gol Gappay",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981223540-pakistani-gol-gappay.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3671,7 +3505,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-aloo-chaat",
@@ -3695,11 +3530,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-aloo-chaat",
-      "alt": "Aloo Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981268587-pakistani-aloo-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3734,7 +3565,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chana-chaat-masala",
@@ -3758,11 +3590,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chana-chaat-masala",
-      "alt": "Chana Chaat Masala",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981313602-pakistani-chana-chaat-masala.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3799,7 +3627,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-samosa-chaat",
@@ -3823,11 +3652,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-samosa-chaat",
-      "alt": "Samosa Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981358588-pakistani-samosa-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3863,7 +3688,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-kachori-chaat",
@@ -3887,11 +3713,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-kachori-chaat",
-      "alt": "Kachori Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981403654-pakistani-kachori-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3927,7 +3749,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-tikki-chaat",
@@ -3951,11 +3774,7 @@
       "snack",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-tikki-chaat",
-      "alt": "Tikki Chaat",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981448715-pakistani-tikki-chaat.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -3990,7 +3809,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-saag",
@@ -4014,11 +3834,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-saag",
-      "alt": "Saag",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981493572-pakistani-saag.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4055,7 +3871,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-makki-ki-roti",
@@ -4079,11 +3896,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-makki-ki-roti",
-      "alt": "Makki Ki Roti",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981538405-pakistani-makki-ki-roti.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4114,7 +3927,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-sarson-ka-saag",
@@ -4138,11 +3952,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-sarson-ka-saag",
-      "alt": "Sarson Ka Saag",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981583967-pakistani-sarson-ka-saag.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4177,7 +3987,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-bhindi-masala",
@@ -4201,11 +4012,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-bhindi-masala",
-      "alt": "Bhindi Masala",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981630353-pakistani-bhindi-masala.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4241,7 +4048,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-baingan-bharta",
@@ -4265,11 +4073,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-baingan-bharta",
-      "alt": "Baingan Bharta",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981673869-pakistani-baingan-bharta.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4305,7 +4109,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-mixed-vegetable-curry",
@@ -4329,11 +4134,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-mixed-vegetable-curry",
-      "alt": "Mixed Vegetable Curry",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981718808-pakistani-mixed-vegetable-curry.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4371,7 +4172,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-chana-masala",
@@ -4395,11 +4197,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-chana-masala",
-      "alt": "Chana Masala",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981763584-pakistani-chana-masala.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4437,7 +4235,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-dal-mash",
@@ -4461,11 +4260,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-dal-mash",
-      "alt": "Dal Mash",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981809378-pakistani-dal-mash.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4502,7 +4297,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-dal-chana",
@@ -4526,11 +4322,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-dal-chana",
-      "alt": "Dal Chana",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981853663-pakistani-dal-chana.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4566,7 +4358,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-dal-tarka",
@@ -4590,11 +4383,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-dal-tarka",
-      "alt": "Dal Tarka",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981899857-pakistani-dal-tarka.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4631,7 +4420,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-kadhi-pakora",
@@ -4655,11 +4445,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-kadhi-pakora",
-      "alt": "Kadhi Pakora",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981943251-pakistani-kadhi-pakora.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4699,7 +4485,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-lahori-channay",
@@ -4723,11 +4510,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-lahori-channay",
-      "alt": "Lahori Channay",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781981988405-pakistani-lahori-channay.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4764,7 +4547,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-murgh-cholay",
@@ -4788,11 +4572,7 @@
       "pakistani",
       "traditional-and-regional-dishes"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-murgh-cholay",
-      "alt": "Murgh Cholay",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781982033684-pakistani-murgh-cholay.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4832,7 +4612,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-sajji",
@@ -4856,11 +4637,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-sajji",
-      "alt": "Sajji",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781982078461-pakistani-sajji.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4894,7 +4671,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-dampukht",
@@ -4918,11 +4696,7 @@
       "traditional-and-regional-dishes",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/pakistani-dampukht",
-      "alt": "Dampukht",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781982123570-pakistani-dampukht.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -4960,7 +4734,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "pakistani-landi",
