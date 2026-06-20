@@ -7,7 +7,6 @@ import QuickEditButton from '@/components/QuickEditButton';
 import IngredientChecklist from '@/components/IngredientChecklist';
 import FavoriteButton from '@/components/FavoriteButton';
 import ImageWithSkeleton from '@/components/ImageWithSkeleton';
-import AdaptiveImageContainer from '@/components/AdaptiveImageContainer';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,20 +60,32 @@ export default async function RecipeDetailPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Image */}
-        {recipe.image && (
-          <AdaptiveImageContainer src={getImageUrl(recipe.image)}>
-            <ImageWithSkeleton 
-              src={getImageUrl(recipe.image, { width: 1400, height: 900 })}
-              alt={typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title}
-              width={1400}
-              height={900}
-              sizes="100vw"
-              wrapperClassName="bg-transparent"
-              className="w-full h-auto max-h-[520px] object-contain" 
-            />
-          </AdaptiveImageContainer>
-        )}
+        {/* Image with blurred color background */}
+        {recipe.image && (() => {
+          const imageUrl = getImageUrl(recipe.image, { width: 1400, height: 900 });
+          const altText = typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title;
+          return (
+            <div className="relative w-full rounded-3xl overflow-hidden shadow-md animate-fade-in">
+              {/* Blurred background layer - creates the color gradient effect */}
+              <img
+                src={imageUrl}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover scale-150 blur-2xl opacity-60 dark:opacity-30"
+              />
+              {/* Main image */}
+              <ImageWithSkeleton 
+                src={imageUrl}
+                alt={altText}
+                width={1400}
+                height={900}
+                sizes="100vw"
+                wrapperClassName="bg-transparent"
+                className="relative w-full h-auto max-h-[520px] object-contain" 
+              />
+            </div>
+          );
+        })()}
 
         {/* Story Section */}
         {recipe.history && (
