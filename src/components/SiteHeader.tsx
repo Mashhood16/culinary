@@ -32,8 +32,7 @@ export default function SiteHeader() {
           <Image src="/logo-light.png" alt="Culinarriest" width={220} height={88} className="h-[48px] md:h-[56px] lg:h-[64px] w-auto object-contain" />
         </Link>
 
-        <div className="flex i
-        tems-center gap-3 text-sm text-stone-700 dark:text-stone-200">
+        <div className="flex items-center gap-3 text-sm text-stone-700 dark:text-stone-200">
           <div className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => {
               // 3. Highlight Logic: If current path matches href, use amber colors

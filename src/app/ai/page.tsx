@@ -144,7 +144,7 @@ function AIPageContent() {
   useEffect(() => {
     async function fetchRecipes() {
       try {
-        const res = await fetch('/api/admin/recipes', { cache: 'no-store' });
+        const res = await fetch('/api/recipes', { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
           const publicOnly = data.filter((r: AdminRecipe) => 
