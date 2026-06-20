@@ -114,7 +114,9 @@ export default async function Home() {
           <div className="mt-6 grid gap-3 sm:grid-cols-2 flex-grow">
             {popularCuisines.map((item) => (
               <Link key={item.name} href={`/recipes?cuisine=${encodeURIComponent(item.name)}`} className="group flex items-center justify-between rounded-2xl border border-stone-100 bg-stone-50/50 p-4 transition hover:border-amber-200 dark:border-stone-800 dark:bg-stone-950/40">
-                <span className="font-semibold text-stone-850 dark:text-stone-200 group-hover:text-amber-700 dark:group-hover:text-amber-500">{item.name}</span>
+                <span className="font-semibold text-stone-850 dark:text-stone-200 group-hover:text-amber-700 dark:group-hover:text-amber-500">
+                  <CuisineWithFlag cuisine={item.name} />
+                </span>
                 <span className="rounded-full bg-white dark:bg-stone-900 px-2.5 py-1 text-xs font-bold text-stone-500 shadow-sm border border-stone-100">{item.count}</span>
               </Link>
             ))}

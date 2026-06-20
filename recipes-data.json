@@ -19462,11 +19462,7 @@
       "regional-american-dishes-pizza-and-sandwiches",
       "seafood"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/american-hawaiian-poke-bowl",
-      "alt": "Hawaiian Poke Bowl",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997695105-american-hawaiian-poke-bowl.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -19506,7 +19502,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "american-hot-brown",
@@ -19530,11 +19527,7 @@
       "regional-american-dishes-pizza-and-sandwiches",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/american-hot-brown",
-      "alt": "Hot Brown",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997738888-american-hot-brown.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -19570,7 +19563,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "american-monte-cristo-sandwich",
@@ -20113,11 +20107,7 @@
       "main",
       "southern-cajun-and-creole-cuisine"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/american-chicken-and-dumplings",
-      "alt": "Chicken and Dumplings",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997783360-american-chicken-and-dumplings.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -20164,7 +20154,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "american-biscuits-and-gravy",
@@ -20188,11 +20179,7 @@
       "southern-cajun-and-creole-cuisine",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/american-biscuits-and-gravy",
-      "alt": "Biscuits and Gravy",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997828299-american-biscuits-and-gravy.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -20233,7 +20220,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "american-country-ham",
@@ -20378,11 +20366,7 @@
       "seafood",
       "southern-cajun-and-creole-cuisine"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/american-blackened-catfish",
-      "alt": "Blackened Catfish",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997873599-american-blackened-catfish.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -20421,7 +20405,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "american-cheeseburger",
@@ -20445,11 +20430,7 @@
       "classic-american-meat-dishes",
       "snack"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/american-cheeseburger",
-      "alt": "Cheeseburger",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997918407-american-cheeseburger.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -20488,7 +20469,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "american-hamburger",
@@ -21160,11 +21142,7 @@
       "turkish-desserts",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-k-nefe",
-      "alt": "Künefe",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781997963394-turkish-k-nefe.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -21198,7 +21176,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "turkish-s-tla",
@@ -21222,11 +21201,7 @@
       "turkish-desserts",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/turkish-s-tla",
-      "alt": "Sütlaç",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781998008297-turkish-s-tla.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -21260,7 +21235,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "turkish-kazandibi",
@@ -24543,11 +24519,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-hunan-beef",
-      "alt": "Hunan Beef",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781998053475-chinese-hunan-beef.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24584,7 +24556,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-cumin-lamb",
@@ -24608,11 +24581,7 @@
       "lamb",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-cumin-lamb",
-      "alt": "Cumin Lamb",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781998098418-chinese-cumin-lamb.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24651,7 +24620,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-braised-beef-stew",
@@ -24801,11 +24771,7 @@
       "chinese-beef-and-lamb-dishes",
       "main"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-beef-hot-pot",
-      "alt": "Beef Hot Pot",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781998143992-chinese-beef-hot-pot.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24842,7 +24808,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-mapo-tofu",
@@ -24866,11 +24833,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-mapo-tofu",
-      "alt": "Mapo Tofu",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781998188947-chinese-mapo-tofu.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -24912,7 +24875,8 @@
       "bottomColor": "#70594f",
       "gradientLight": "linear-gradient(135deg, #979194 0%, #6a6662 35%, #8e8880 65%, #a2938d 100%)",
       "gradientDark": "linear-gradient(135deg, #393235 0%, #201b17 35%, #2f271f 65%, #514039 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-kung-pao-tofu",
@@ -25182,11 +25146,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-buddhas-delight",
-      "alt": "Buddha’s Delight",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996793763-chinese-buddhas-delight.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25227,7 +25187,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-stir-fried-chinese-cabbage",
@@ -25251,11 +25212,7 @@
       "side",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-stir-fried-chinese-cabbage",
-      "alt": "Stir-Fried Chinese Cabbage",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996838825-chinese-stir-fried-chinese-cabbage.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25291,7 +25248,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-ma-po-tofu-mild-version",
@@ -25315,11 +25273,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-ma-po-tofu-mild-version",
-      "alt": "Ma Po Tofu—Mild Version",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996883896-chinese-ma-po-tofu-mild-version.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25356,7 +25310,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-spinach-with-garlic-sauce",
@@ -25380,11 +25335,7 @@
       "main",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-spinach-with-garlic-sauce",
-      "alt": "Spinach with Garlic Sauce",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996928615-chinese-spinach-with-garlic-sauce.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25418,7 +25369,8 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   },
   {
     "slug": "chinese-szechuan-eggplant",
@@ -25442,11 +25394,7 @@
       "side",
       "vegetarian"
     ],
-    "image": {
-      "publicId": "culinarriest/recipes/chinese-szechuan-eggplant",
-      "alt": "Szechuan Eggplant",
-      "status": "approved"
-    },
+    "image": "https://anj9zhcphmsohbrr.public.blob.vercel-storage.com/recipes/1781996974100-chinese-szechuan-eggplant.jpg",
     "alcoholFree": true,
     "containsAlcohol": false,
     "status": "published",
@@ -25484,6 +25432,7 @@
     "colorPalette": {
       "gradientLight": "linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fbbf24 100%)",
       "gradientDark": "linear-gradient(135deg, #451a03 0%, #78350f 50%, #92400e 100%)"
-    }
+    },
+    "is_ai_generated": true
   }
 ]

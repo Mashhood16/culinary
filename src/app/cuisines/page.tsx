@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { loadPublicRecipes } from '@/lib/recipe-store'; // Direct server-side data loading
+import CuisineWithFlag from '@/components/CuisineWithFlag';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,7 +39,9 @@ export default async function CuisinesPage() {
                 href={`/recipes?cuisine=${encodeURIComponent(item.name)}`} 
                 className="group rounded-3xl border border-stone-200 bg-stone-50/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:bg-white hover:shadow-md dark:border-stone-800 dark:bg-stone-950/40 dark:hover:border-stone-700 dark:hover:bg-stone-900"
               >
-                <p className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-500 transition-colors">{item.name}</p>
+                <p className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-amber-700 dark:group-hover:text-amber-500 transition-colors flex items-center gap-2">
+                  <CuisineWithFlag cuisine={item.name} />
+                </p>
                 <p className="mt-1 text-xs uppercase tracking-[0.25em] text-amber-700 dark:text-amber-500 font-semibold">{item.count} recipes</p>
                 
                 <ul className="mt-4 space-y-2 text-sm text-stone-600 dark:text-stone-300">
@@ -64,7 +67,7 @@ export default async function CuisinesPage() {
             {cuisineGroups.map((group) => (
               <li key={group.name} className="flex items-center gap-2">
                 <span className="text-amber-700 dark:text-amber-500 font-bold">•</span>
-                <span><strong>{group.name}</strong> — {group.count} recipes currently active in your digital library</span>
+                <span className="flex items-center gap-2"><strong><CuisineWithFlag cuisine={group.name} /></strong> — {group.count} recipes currently active in your digital library</span>
               </li>
             ))}
           </ul>
