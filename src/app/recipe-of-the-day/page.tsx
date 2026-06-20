@@ -9,6 +9,7 @@ import CuisineWithFlag from '@/components/CuisineWithFlag';
 
 
 // 1. Force the page to re-randomize every time, but render it on the server.
+export const dynamic = 'force-dynamic';
 export const revalidate = 0; 
 
 export default async function RecipeOfTheDayPage() {
@@ -41,9 +42,9 @@ export default async function RecipeOfTheDayPage() {
           <Link href="/" className="text-sm font-semibold text-amber-700 dark:text-amber-400 hover:underline">← Back to Home</Link>
           <div className="flex gap-2">
             {/* Server-side refresh: simple link to reload the page and get a new random recipe */}
-            <Link href="/recipe-of-the-day" className="text-sm font-semibold text-amber-700 dark:text-amber-400 hover:underline">
+            <a href="/recipe-of-the-day" className="text-sm font-semibold text-amber-700 dark:text-amber-400 hover:underline">
                 ↻ New Random Recipe
-            </Link>
+            </a>
             <QuickEditButton slug={featured.slug} />
           </div>
         </div>
