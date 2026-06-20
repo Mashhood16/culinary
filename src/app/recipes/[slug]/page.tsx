@@ -65,7 +65,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
           const imageUrl = getImageUrl(recipe.image, { width: 1400, height: 900 });
           const altText = typeof recipe.image === 'object' && recipe.image !== null && 'alt' in recipe.image ? recipe.image.alt || recipe.title : recipe.title;
           return (
-            <div className="relative w-full rounded-3xl overflow-hidden shadow-md animate-fade-in">
+            <div className="relative w-full min-h-[400px] rounded-3xl overflow-hidden shadow-md animate-fade-in">
               {/* Blurred background layer - creates the color gradient effect */}
               <img
                 src={imageUrl}
@@ -80,7 +80,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
                 width={1400}
                 height={900}
                 sizes="100vw"
-                wrapperClassName="bg-transparent"
+                wrapperClassName="bg-transparent h-auto"
                 className="relative w-full h-auto max-h-[520px] object-contain" 
               />
             </div>
