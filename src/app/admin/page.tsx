@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -782,6 +782,26 @@ export default function AdminPage() {
                   <h2 className="text-xl font-semibold text-stone-900">Change image</h2>
                   <p className="mt-1 text-sm text-stone-600">Filter the catalog and update recipe images one by one.</p>
                 </div>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    const btn = document.getElementById('recover-btn');
+                    if (btn) btn.innerText = 'Recovering...';
+                    try {
+                      const res = await fetch('/api/admin/recover-images', { method: 'POST', credentials: 'same-origin' });
+                      const data = await res.json();
+                      alert(data.message || (data.error ? `Error: ${data.error}` : 'Recovery complete.'));
+                      if (res.ok) window.location.reload();
+                    } catch (e: any) {
+                      alert(`Error: ${e.message}`);
+                    }
+                    if (btn) btn.innerText = 'Auto-Recover Images';
+                  }}
+                  id="recover-btn"
+                  className="rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700"
+                >
+                  Auto-Recover Images
+                </button>
               </div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
