@@ -37,7 +37,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
     : ["Follow the instructions on the recipe card."];
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
+    <main className="min-h-screen text-stone-900 dark:text-stone-100 font-sans page-transition">
       <section className="mx-auto max-w-7xl px-6 py-10 lg:px-10 space-y-10">
         
         {/* Hero: Title, Description, Actions and Image Side-by-Side */}
@@ -54,7 +54,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               <div className="flex-1 w-full max-w-2xl mx-auto lg:max-w-none">
                 <GradientBackground
                   lightGradient={gradientBg}
-                  className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl"
+                  className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-stone-300/40 dark:shadow-none ring-1 ring-stone-900/5"
                 >
                   <ImageWithSkeleton 
                     src={imageUrl}
@@ -73,9 +73,9 @@ export default async function RecipeDetailPage({ params }: PageProps) {
 
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left w-full">
-            <p className="text-sm uppercase tracking-[0.35em] text-amber-700 dark:text-amber-500 font-semibold"><CuisineWithFlag cuisine={recipe.cuisine} /></p>
-            <h1 className="mt-4 text-4xl lg:text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight">{recipe.title}</h1>
-            <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">{recipe.description}</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-brand-primary font-bold"><CuisineWithFlag cuisine={recipe.cuisine} /></p>
+            <h1 className="mt-4 text-4xl lg:text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 leading-tight tracking-tight">{recipe.title}</h1>
+            <p className="mt-6 text-lg text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">{recipe.description}</p>
             <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <FavoriteButton 
                 slug={recipe.slug} 
@@ -86,7 +86,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
               <QuickEditButton slug={recipe.slug} />
               <Link
                 href={`/ai?recipe=${recipe.slug}`}
-                className="inline-flex h-11 items-center justify-center rounded-full bg-amber-700 px-6 text-sm font-semibold text-white transition hover:bg-amber-600 shadow-sm"
+                className="inline-flex h-11 items-center justify-center rounded-full bg-brand-primary px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-primary/30 hover:bg-brand-primaryHover"
               >
                 ✨ Modify with AI
               </Link>
@@ -97,9 +97,9 @@ export default async function RecipeDetailPage({ params }: PageProps) {
         {/* Story Section */}
         {recipe.history && (
           <div className="max-w-3xl mx-auto animate-fade-in">
-            <div className="rounded-3xl border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900/95">
+            <div className="rounded-3xl border border-stone-200/60 bg-white/80 backdrop-blur-xl p-8 shadow-xl shadow-stone-200/40 dark:border-stone-800 dark:bg-stone-900/95 dark:shadow-none">
               <h2 className="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100 flex items-center gap-2">
-                <span className="text-amber-700">📖</span> The Story Behind This Recipe
+                <span className="text-brand-primary">📖</span> The Story Behind This Recipe
               </h2>
               <p className="mt-5 text-stone-600 dark:text-stone-300 leading-relaxed text-lg">{recipe.history}</p>
             </div>
@@ -108,7 +108,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
 
         {/* Bottom Section: Ingredients + Method side by side */}
         <div className="grid lg:grid-cols-2 gap-8 animate-fade-in">
-          <section className="rounded-3xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900/95 h-[520px]">
+          <section className="rounded-3xl border border-stone-200/60 bg-white/90 backdrop-blur-xl p-6 lg:p-8 shadow-xl shadow-stone-200/40 dark:border-stone-800 dark:bg-stone-900/95 dark:shadow-none h-[600px]">
             <IngredientChecklist 
               recipeTitle={recipe.title} 
               ingredients={ingredientList} 
@@ -117,7 +117,7 @@ export default async function RecipeDetailPage({ params }: PageProps) {
             />
           </section>
 
-          <section className="rounded-3xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900/95 h-[520px] flex flex-col">
+          <section className="rounded-3xl border border-stone-200/60 bg-white/90 backdrop-blur-xl p-6 lg:p-8 shadow-xl shadow-stone-200/40 dark:border-stone-800 dark:bg-stone-900/95 dark:shadow-none h-[600px] flex flex-col">
             <h2 className="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100 shrink-0 flex items-center gap-2">
               <span className="text-amber-700">👨‍🍳</span> Method
             </h2>

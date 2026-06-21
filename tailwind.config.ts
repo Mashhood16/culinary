@@ -14,6 +14,13 @@ const config: Config = {
         darkBrown: "#2B1200",
         warmBrown: "#4A2B00",
         cream: "#D1CCBA",
+        brand: {
+          primary: "var(--color-primary)",
+          primaryHover: "var(--color-primary-hover)",
+          secondary: "var(--color-secondary)",
+          accent: "var(--color-accent)",
+          accentHover: "var(--color-accent-hover)",
+        }
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

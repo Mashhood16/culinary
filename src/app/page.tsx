@@ -5,6 +5,7 @@ import CuisineWithFlag from '@/components/CuisineWithFlag';
 import AIChefForm from '@/components/AIChefForm';
 import FavoritesList from '@/components/FavoritesList';
 import Image from 'next/image';
+import { themeConfig } from '@/config/themeConfig';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,13 +35,13 @@ export default async function Home() {
   const totalCuisines = cuisinesList.length;
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf6_0%,#fffefb_45%,#fff7ed_100%)] text-stone-900 transition-colors duration-200 dark:bg-[linear-gradient(180deg,#111827_0%,#1f2937_45%,#111827_100%)] dark:text-stone-100 font-sans page-transition">
+    <main className="min-h-screen text-stone-900 transition-colors duration-200 dark:text-stone-100 font-sans page-transition">
       <section className="mx-auto grid w-full max-w-7xl gap-4 px-4 py-6 grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] lg:px-10">        
         {/* Main Hero */}
-        <article className="glass-card rounded-[32px] p-8 soft-ring dark:border-stone-800 dark:bg-stone-900/95">
-          <p className="text-sm uppercase tracking-[0.35em] text-amber-700 font-medium">Discover the world, one recipe at a time</p>
-          <h1 className="mt-4 text-3xl md:text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl">CULINARRIEST</h1>
-          <p className="mt-4 max-w-2xl text-lg text-stone-600 dark:text-stone-300">Explore global recipes with a premium, safe recipe approach and AI-assisted food science guidance.</p>
+        <article className="glass-card rounded-[32px] p-8 soft-ring border border-white/40 shadow-xl shadow-stone-200/20 dark:border-stone-800 dark:bg-stone-900/95">
+          <p className="text-sm uppercase tracking-[0.35em] text-brand-primary font-medium">Discover the world, one recipe at a time</p>
+          <h1 className="mt-4 text-3xl md:text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 lg:text-6xl tracking-tight">{themeConfig.brandName.toUpperCase()}</h1>
+          <p className="mt-4 max-w-2xl text-lg text-stone-600 dark:text-stone-300 font-medium">Explore global recipes with a premium, safe recipe approach and AI-assisted food science guidance.</p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/recipes" className="rounded-full bg-amber-700 px-5 py-3 text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-amber-800 font-medium">Explore recipes</Link>
             <Link href="/ai" className="rounded-full border border-stone-300 bg-white/80 px-5 py-3 text-stone-800 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-400 hover:text-amber-700 dark:border-stone-700 dark:bg-stone-900/80 dark:text-stone-100 font-medium">Ask the AI chef</Link>
@@ -58,7 +59,7 @@ export default async function Home() {
         </article>
 
         {/* Sidebar - Cook with what you have (AI Chef) */}
-        <div className="w-full rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+        <div className="w-full glass-card rounded-[32px] p-8 soft-ring border border-white/40 shadow-xl shadow-stone-200/20 dark:border-stone-800 dark:bg-stone-900/95">
           <AIChefForm />
         </div>
       </section>
@@ -108,16 +109,16 @@ export default async function Home() {
 
       {/* Cuisines & Recipe of the Day Section */}
       <section className="mx-auto w-full max-w-7xl px-4 pb-8 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        <article className="rounded-[32px] border border-stone-200 bg-white p-8 shadow-sm dark:border-stone-800 dark:bg-stone-900 flex flex-col">
-          <span className="text-xs uppercase tracking-[0.25em] text-amber-700 dark:text-amber-500 font-bold">Inspiration</span>
-            <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Popular cuisines</h2>
+        <article className="rounded-[32px] border border-stone-200/60 bg-white/80 backdrop-blur-xl p-8 shadow-xl shadow-stone-200/40 dark:border-stone-800 dark:bg-stone-900/90 dark:shadow-none flex flex-col">
+          <span className="text-xs uppercase tracking-[0.25em] text-brand-primary dark:text-brand-accent font-bold">Inspiration</span>
+            <h2 className="text-3xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2 tracking-tight">Popular Cuisines</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 flex-grow">
             {popularCuisines.map((item) => (
-              <Link key={item.name} href={`/recipes?cuisine=${encodeURIComponent(item.name)}`} className="group flex items-center justify-between rounded-2xl border border-stone-100 bg-stone-50/50 p-4 transition hover:border-amber-200 dark:border-stone-800 dark:bg-stone-950/40">
-                <span className="font-semibold text-stone-850 dark:text-stone-200 group-hover:text-amber-700 dark:group-hover:text-amber-500">
+              <Link key={item.name} href={`/recipes?cuisine=${encodeURIComponent(item.name)}`} className="group flex items-center justify-between rounded-2xl border border-stone-200/50 bg-white/60 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-brand-primary/30 dark:border-stone-800 dark:bg-stone-950/50 dark:hover:border-brand-primary/50">
+                <span className="font-semibold text-stone-800 dark:text-stone-200 group-hover:text-brand-primary transition-colors">
                   <CuisineWithFlag cuisine={item.name} />
                 </span>
-                <span className="rounded-full bg-white dark:bg-stone-900 px-2.5 py-1 text-xs font-bold text-stone-500 shadow-sm border border-stone-100">{item.count}</span>
+                <span className="flex h-7 min-w-[28px] items-center justify-center rounded-full bg-stone-100/80 px-2.5 text-xs font-bold text-stone-500 transition-colors group-hover:bg-brand-primary/10 group-hover:text-brand-primary dark:bg-stone-900 dark:text-stone-400 dark:group-hover:bg-brand-primary/20 dark:group-hover:text-brand-accent">{item.count}</span>
               </Link>
             ))}
           </div>
